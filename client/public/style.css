@@ -4,7 +4,7 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Bangers|Cinzel:400,700,900|Lato:100,300,400,700,900|Lobster|Lora:400,700|Mansalva|Muli:200,300,400,600,700,800,900|Open+Sans:300,400,600,700,800|Oswald:200,300,400,500,600,700|Roboto:100,300,400,500,700,900&display=swap');
 /* Used Google Fonts */
-font-family: 'Roboto', sans-serif;
+/* font-family: 'Roboto', sans-serif;
 font-family: 'Mansalva', cursive;
 font-family: 'Lato', sans-serif;
 font-family: 'Open Sans', sans-serif;
@@ -13,7 +13,7 @@ font-family: 'Lora', serif;
 font-family: 'Muli', sans-serif;
 font-family: 'Lobster', cursive;
 font-family: 'Cinzel', serif;
-font-family: 'Bangers', cursive;
+font-family: 'Bangers', cursive; */
 /* Used Google Fonts */
 *{
   margin:0;
@@ -108,7 +108,7 @@ ul {
   background-color: #111;
 }
 .section_padding_50 {
-  padding: 50px 0;
+  padding: 10px 0;
 }
 .bikes_bottom_header_one p {
   color: #fff;

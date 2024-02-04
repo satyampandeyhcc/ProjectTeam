@@ -46,9 +46,9 @@ function DefaultLayout(props) {
         </Row>
       </div>
       <div className="content">{props.children}</div>
-      <div className="footer text-center">
+      {/* <div className="footer text-center">
         <hr />
-      </div>
+      </div> */}
     </div>
   );
 }

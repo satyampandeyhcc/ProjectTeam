@@ -25,17 +25,45 @@ export const userRegister=(reqObj)=>async dispatch=>{
     
     dispatch({type: 'LOADING' , payload:true})
 
-    try {
-        const response = await axios.post('/api/users/register' , reqObj)
-        message.success('Registration successfull')
-        setTimeout(() => {
-            window.location.href='/login'
+    // try {
+    //     const response = await axios.post('/api/users/register' , reqObj)
+    //     message.success('Registration successfull')
+    //     setTimeout(() => {
+    //         window.location.href='/login'
          
-        }, 500);
+    //     }, 500);
        
-        dispatch({type: 'LOADING' , payload:false})
+    //     dispatch({type: 'LOADING' , payload:false})
         
-    } catch (error) {
+    // }
+    
+    try {
+        const checkUsernameResponse = await axios.post("/api/users/checkUsername", {
+          username: reqObj.username,
+        });
+    
+        if (checkUsernameResponse.data.exists) {
+          // If the username exists, reject the registration and display an error message
+          message.error("Username is already taken");
+          dispatch({ type: "loading", payload: false });
+          return;
+        }
+    
+        // If the username is available, proceed with the registration process
+        await axios.post("/api/users/register", reqObj);
+    
+        message.success("Registration Successful");
+    
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 500);
+    
+        dispatch({ type: "loading", payload: false });
+
+    }
+
+    
+    catch (error) {
         console.log(error)
         message.error('Something went wrong')
         dispatch({type: 'LOADING' , payload:false})
