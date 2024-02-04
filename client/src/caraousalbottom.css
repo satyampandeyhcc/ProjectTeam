@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+.BottomCaraousal {
+  font-family: 'Caveat Brush', cursive;
+  height:640px;
+  background:azure;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0%;
+  box-sizing: border-box;
+  margin-top: 91px;
+}
+
+
+.BottomCaraousal h1{
+  text-align: center;
+  color: #D76D6D;
+  font-weight: 700;
+  line-height: 106.5%;
+  font-style: normal;
+  /* font-family: 'Montserrat', sans-serif;
+   */
+   font-family: 'Caveat Brush', cursive;
+  font-size: 70px;
+  margin-top:35px;
+}
+/* h1 {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+/* .BottomCaraousal h1:after {
+  border-bottom: 3px solid #bd01ff;
+  content: '';
+  display: block;
+  width: 7%;
+  left: 55%;
+  position: absolute;
+} */
+.BottomCaraousal .item{
+  height: 100%;
+  width: 100%;
+  /* margin:20px; */
+  
+}
+.card-img-benefits{
+  border-radius: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.BottomCaraousal .item img{
+  height: 81%;
+  width: 100%;
+ transition: 0.3s ease-in;
+ border-radius: 40px;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.BottomCaraousal .content{
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    left: 10px;
+    top: 80%;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  height: fit-content;
+}
+.BottomCaraousal #comp .first{
+  position: absolute;
+    width: 106px;
+    height: 124px;
+    top: 243px;
+}
+.BottomCaraousal #comp{
+  padding-left: 13px;
+}
+
+.BottomCaraousal #comp img{
+    position:absolute;
+    width:100px;
+    height:100px;
+    top:243px;
+}
+
+.BottomCaraousal #cont{
+    /* position: absolute; */
+    /* top:303px; */
+    width: 390px;
+    height:105px;
+    padding-left: 150px;
+    padding-top: 20px;
+
+}
+
+.BottomCaraousal p{
+    color: #000;
+
+/* font-family: Poppins;
+font-size: 35px;
+font-style: normal;
+font-weight: 600;
+line-height: 100%; 35px */
+
+}
+
+.BottomCaraousal #cont p {
+  color: #000;
+font-size: 35px;
+font-style: normal;
+font-weight: 600;
+line-height: 100%; /* 35px */
+
+}
+
+
+
+.BottomCaraousal .iTYaYH {
+  height: 346px;
+  width: 100%;
+  margin: 15px;
+  background-color: rgba(255, 219, 69, 0.063);
+}
+
+.BottomCaraousal .hXJWji {
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+  height: 440px;
+  user-select: none;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 700px) {
+  /* CSS rules for screens with a width of 600 pixels or less */
+  .BottomCaraousal{
+    height: 700px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+
+.BottomCaraousal #cont{
+  /* position: absolute; */
+  /* top:303px; */
+  width: 280px;
+  height:105px;
+  padding-left: 40px;
+  padding-top: 30px;
+
+}
+.BottomCaraousal #comp img{
+  height: 15%;
+  width: 5%;
+}
+.BottomCaraousal #comp .first{
+  height: 19%;
+  width: 6%;
+}
+.BottomCaraousal h1{
+  font-weight: 600;
+  font-size: 45px;
+  text-align: center;
+  width: 80%;
+  margin-top:35px;
+}
+.BottomCaraousal #cont p {
+  color: #000;
+
+font-size: 25px;
+width: 80%;
+font-weight: 600;
+line-height: 100%; /* 35px */
+
+}
+}
+
+
+@media screen and (max-width: 403px) {
+
+
+  .BottomCaraousal .item img {
+    height: 81%;
+    width: 100%;
+    transition: 0.3s ease-in;
+    border-radius: 40px;
+    margin-left: 0px;
+    padding: 3px;
+  }
+  }
