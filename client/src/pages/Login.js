@@ -1,6 +1,6 @@
-import React from 'react'
+import {React,useEffect} from 'react'
 import {Row , Col , Form , Input} from 'antd'
-import { Link } from 'react-router-dom'
+import { Link,useHistory,useLocation } from 'react-router-dom'
 import {useDispatch , useSelector} from 'react-redux'
 import { userLogin } from '../redux/actions/userActions'
 import AOS from 'aos';
@@ -12,11 +12,34 @@ AOS.init();
 function Login() {
     const dispatch = useDispatch()
     const {loading} = useSelector(state=>state.alertsReducer)
+    const history = useHistory();
+    const location = useLocation();
+    const [form] = Form.useForm();
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const username = params.get("username");
+        const password = params.get("password");
+    
+        // Set login form values if username and password are present
+        if (username && password) {
+          form.setFieldsValue({ username, password });
+        }
+      }, [location.search, form]);
+    
+      function onFinish(values) {
+        dispatch(userLogin(values));
+        console.log(values);
+      }
+
+
     function onFinish(values) {
         dispatch(userLogin(values))
         console.log(values)
+        
 
  }
+
+
     return (
         <div className='login'>
             {loading && (<Spinner />)}
@@ -34,7 +57,7 @@ function Login() {
                      <h1 className='login-logo'>B I K E R I D I N G &nbsp;  V E N T U R E</h1>
                 </Col>
                 <Col lg={8} className='text-left p-5'>
-                    <Form layout='vertical' className='login-form p-5' onFinish={onFinish}>
+                    <Form layout='vertical' className='login-form p-5' onFinish={onFinish} form={form}>
                          <h1>Login</h1>
                          <hr />
                          <Form.Item name='username' label='Username' rules={[{required: true}]}>
