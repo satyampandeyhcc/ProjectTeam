@@ -216,7 +216,7 @@ ol li {
 }
 .bikes_works > a {
   display: inline-block;
-  float: left;
+  /* float: left; */
   position: relative;
   width: 33.33333333%;
   z-index: 1;

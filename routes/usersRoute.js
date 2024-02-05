@@ -27,9 +27,9 @@ router.post("/login", async(req, res) => {
 
 router.post("/register", async(req, res) => {
 
-    
-    const { username, password } = req.body;
-
+  const { username, password ,cpassword,mobileNumber} = req.body;
+  
+  console.log(req.body);
     try {
       const existingUser = await User.findOne({ username });
   
@@ -38,7 +38,7 @@ router.post("/register", async(req, res) => {
         return res.status(409).json({ error: "Username is already taken." });
       }
   
-      const newUser = new User({ username, password });
+      const newUser = new User({ username, password ,cpassword ,mobileNumber});
   
       await newUser.save();
   

@@ -6,6 +6,8 @@ import { userLogin } from '../redux/actions/userActions'
 import AOS from 'aos';
 import Spinner from '../components/Spinner';
 import 'aos/dist/aos.css'; 
+import DefaultLayout from '../components/DefaultLayout'
+
 //also use <link> for styles
 // ..
 AOS.init();
@@ -41,6 +43,7 @@ function Login() {
 
 
     return (
+       
         <div className='login'>
             {loading && (<Spinner />)}
             <Row gutter={16} className='d-flex align-items-center' >
@@ -60,7 +63,8 @@ function Login() {
                     <Form layout='vertical' className='login-form p-5' onFinish={onFinish} form={form}>
                          <h1>Login</h1>
                          <hr />
-                         <Form.Item name='username' label='Username' rules={[{required: true}]}>
+                         <Form.Item name='username' label='Email' rules={[ { required: true, message: "Please input your Email!" },
+              { type: 'email', message: 'Please enter a valid email address.' },]}>
                              <Input/>
                          </Form.Item>
                          <Form.Item name='password' label='Password' rules={[{required: true}]}>
@@ -80,6 +84,7 @@ function Login() {
             </Row>
 
         </div>
+      
     )
 }
 

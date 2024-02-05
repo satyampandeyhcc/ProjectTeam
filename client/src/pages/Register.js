@@ -13,9 +13,17 @@ function Register() {
   const history = useHistory();
   const [form] = Form.useForm();
   const {loading} = useSelector(state=>state.alertsReducer)
+
+  const [mobileNumber, setMobileNumber] = useState("");
+
+  const handleMobileNumberChange = (e) => {
+    setMobileNumber(e.target.value);
+  };
+
+  
     async function onFinish(values) {
       try {
-        await dispatch(userRegister(values));
+        await dispatch(userRegister({ ...values, mobileNumber }));
         console.log(values);
   
         // Redirect to login page with user credentials as query parameters
@@ -84,8 +92,9 @@ function Register() {
             <hr />
             <Form.Item
               name="username"
-              label="Username"
-              rules={[ { required: true, message: "Please input your username!" },]}
+              label="Email"
+              rules={[ { required: true, message: "Please input your Email!" },
+              { type: 'email', message: 'Please enter a valid email address.' },]}
             >
               <Input />
             </Form.Item>
@@ -111,6 +120,17 @@ function Register() {
                 help={!passwordMatch && "Passwords do not match."}
               >
               <Input />
+            </Form.Item>
+
+            <Form.Item
+              name="mobileNumber"
+              label="Mobile Number"
+              rules={[
+                { required: true, message: "Please input your mobile number!" },
+                { pattern: /^\d{10}$/, message: "Mobile number must be 10 digits." },
+              ]}
+            >
+              <Input onChange={handleMobileNumberChange} />
             </Form.Item>
 
             <button className="btn1 mt-2 mb-3">Register</button>
