@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {useDispatch , useSelector} from 'react-redux'
+import { contactFormSubmit } from "../redux/actions/userActions";
 
 // import Footer from "./Footer";
-// import contactimg from "../Component/images/conatct_form.jpeg";
-// import location from "../Component/images/Map Pin.png";
-// import mail from "../Component/images/Email.png";
-// import phone from "../Component/images/PhoneCall.png";
+import contactimg from "../components/images/conatct_form.jpeg";
+import location from "../components/images/Map Pin.png";
+import mail from "../components/images/Email.png";
+import phone from "../components/images/PhoneCall.png";
 import "../contact.css";
 import DefaultLayout from "../components/DefaultLayout";
+import Footer from "../components/Footer";
 // import { FaLOcation, FaPhone, FaVoicemail } from 'react-icons/fa';
 const Contact = () => {
+  // const [formData, setFormData] = useState({
+  //   name: "",
+
+  //   contact: "",
+  //   subject: "",
+  //   feedback: "",
+  // });
   const [formData, setFormData] = useState({
     name: "",
-
     contact: "",
     subject: "",
     feedback: "",
   });
+
+  const dispatch = useDispatch();
+ 
+  const { loading } = useSelector(state => state.alertsReducer);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,33 +38,22 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Add your form submission logic here
-    console.log("Form data submitted:", formData);
-
-    // try {
-    //   const response = await fetch("http://localhost:5000/api/response", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
-
-    //   if (response.ok) {
-    //     const responseData = await response.json();
-    //     console.log("Data saved successfully:", responseData);
-    //     alert("Submitted successful!");
-    //   } else {
-    //     const errorData = await response.json();
-    //     console.error("Error saving data:", errorData);
-    //     // throw new Error('Failed to save data');
-    //   }
-    // } catch (error) {
-    //   console.error("Error saving data:", error);
-    //   throw error;
-    // }
+    console.log(formData);
+    dispatch(contactFormSubmit(formData))
+      .then(() => {
+        setFormData({
+          name: "",
+          contact: "",
+          subject: "",
+          feedback: "",
+        });
+      })
+      .catch((error) => {
+        console.error('Error submitting contact form:', error);
+        // message.error('Failed to submit message. Please try again later.');
+      });
   };
+  
 
   return (
     <>
@@ -60,7 +62,7 @@ const Contact = () => {
       
         <div className="bg-image-main">
           <img className="w-100" alt="" 
-        //   src={contactimg}
+          src={contactimg}
            />
         </div>
         {/*Section: Contact v.2*/}
@@ -80,7 +82,7 @@ const Contact = () => {
                         <img
                           className="my-logo-contact mb-2 text-decoration-none"
                           alt=""
-                        //   src={location}
+                          src={location}
                         />
                         <p className="text-decoration-none text-dark">
                           {/* Show Room no.14,15 Darpan Residency Dhindsa Colony
@@ -101,7 +103,7 @@ const Contact = () => {
                         <img
                           className="my-logo-contact text-decoration-none mb-2"
                           alt=""
-                        //   src={mail}
+                          src={mail}
                         />
                         <p className="text-dark text-decoration-none">
                           BikeRidingVenture@gmail.com
@@ -118,7 +120,7 @@ const Contact = () => {
                         <img
                           className="my-logo-contact text-decoration-none text-dark mb-2"
                           alt=""
-                        //   src={phone}
+                          src={phone}
                         />
                         <p className="text-decoration-none text-dark">
                           77079-13579
@@ -245,13 +247,11 @@ const Contact = () => {
               className="z-depth-1-half map-container"
               style={{ height: "400px" }}
             >
-              <iframe
-                width="600"
-                height="450"
-                loading="lazy"
-                allowfullscreen
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d749.3570892366429!2d76.62865964166951!3d30.748175605838448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fe540b0c4b351%3A0x825036e1078ee30b!2sNew%20Guru%20Nanak%20Dairy%20%26%20Sweets!5e0!3m2!1sen!2sin!4v1704989151523!5m2!1sen!2sin"
-              ></iframe>
+          
+
+
+
+<iframe     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.4056134226753!2d83.43055267543323!3d26.73142947675562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39915dabad9320c1%3A0xa5881b33b5bb6d6a!2sMMMUT%2C%20Gorakhpur!5e0!3m2!1sen!2sin!4v1707237015567!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy"  ></iframe>
             </div>
           </Link>
         </div>
@@ -259,6 +259,7 @@ const Contact = () => {
         {/* <Footer /> */}
       
       </DefaultLayout>
+      <Footer/>
       </>
     </>
   );

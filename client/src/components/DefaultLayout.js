@@ -21,12 +21,10 @@ function DefaultLayout(props) {
               <div className="d-flex align-items-center">
                 <Link to="/">Home</Link>
                 <Link to="/viewbike" style={{ marginLeft: "20px" }}>
-                  BikeShowcase
+                  Book now
                 </Link>
 
-{token ?( <Link to="/userbookings" style={{ marginLeft: "20px" }}>
-                  My Bookings
-                </Link>) : (null)}
+
                
 
 
@@ -34,6 +32,9 @@ function DefaultLayout(props) {
                 <Link to="/contact" style={{ marginLeft: "20px" }}>
                   Contact
                 </Link>
+                {token ?( <Link to="/userbookings" style={{ marginLeft: "20px" }}>
+                  My Booking
+                </Link>) : (null)}
 
                 {!token ? (
                   <>

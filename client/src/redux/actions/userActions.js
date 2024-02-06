@@ -68,4 +68,33 @@ export const userRegister=(reqObj)=>async dispatch=>{
         message.error('Something went wrong')
         dispatch({type: 'LOADING' , payload:false})
     }
+
+
+
+
+
+}
+
+
+
+
+    
+    
+    
+    export const contactFormSubmit = (formData) => async (dispatch) => {
+        dispatch({ type: "LOADING", payload: true });
+  
+        try {
+            const response = await axios.post("/api/users/contact", formData);
+            if (response.status === 200) {
+        message.success("Message sent successfully!");
+    } else {
+        message.error("Failed to send message");
+    }
+    dispatch({ type: "LOADING", payload: false });
+} catch (error) {
+    console.error(error);
+    message.error("An error occurred while sending message");
+    dispatch({ type: "LOADING", payload: false });
+}
 }

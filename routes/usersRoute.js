@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel")
+const Contact = require("../models/contactModel");
 
 
 router.post("/login", async(req, res) => {
@@ -67,6 +68,33 @@ router.post("/register", async(req, res) => {
     }
   });
 
+
+  
+// POST request to handle form submission
+router.post("/contact", async (req, res) => {
+  try {
+    // Extracting form data from request body
+    const { name, contact, subject, feedback } = req.body;
+
+    // Create a new contact document
+    const newContact = new Contact({
+      name,
+      contact,
+      subject,
+      feedback
+    });
+
+    // Save the contact to the database
+    await newContact.save();
+
+    // Respond with success message
+    res.status(200).json({ message: "Contact form submitted successfully!" });
+  } catch (error) {
+    // Handle errors
+    console.error("Error submitting contact form:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 module.exports = router
 
