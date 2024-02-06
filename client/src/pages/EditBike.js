@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
 import Spinner from "../components/Spinner";
 import { addCar, editCar, getAllCars } from "../redux/actions/bikesActions";
+
+import { useParams } from "react-router-dom";
+
 function EditBike({ match }) {
+  const { carid } = useParams();
   const { cars } = useSelector((state) => state.carsReducer);
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
@@ -16,7 +20,8 @@ function EditBike({ match }) {
     } else {
       //find by id
       settotalcars(cars);
-      setcar(cars.find((o) => o._id == match.params.carid));
+      // setcar(cars.find((o) => o._id == match.params.carid));
+      setcar(cars.find((o) => o._id == carid));
       console.log(car);
     }
   }, [cars]);

@@ -3,15 +3,18 @@ import { useSelector , useDispatch } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
 import { getAllCars } from '../redux/actions/bikesActions'
 import { Col, Row  , DatePicker, Checkbox} from 'antd'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import Spinner from '../components/Spinner';
 import moment from 'moment'
+import Footer from '../components/Footer'
 const {RangePicker} = DatePicker
 function Home() {
+    const token=localStorage.getItem("user");
     const {cars} = useSelector(state=>state.carsReducer)
     const {loading} = useSelector(state=>state.alertsReducer)
     const [totalCars , setTotalcars] = useState([])
     const dispatch = useDispatch()
+    const navigate = useNavigate(); 
     
 
     useEffect(() => {
@@ -23,7 +26,13 @@ function Home() {
         setTotalcars(cars)
         
     }, [cars])
-
+    const handleBookNow = (carId) => {
+        if (token) {
+            navigate(`/booking/${carId}`); // Use navigate instead of history.push
+        } else {
+            navigate('/login'); // Navigate to login page if token is not available
+        }
+    };
 
     function setFilter(values){
 
@@ -61,11 +70,12 @@ function Home() {
 
 
         setTotalcars(temp)
-
+      
 
     }
 
     return (
+        <>
         <DefaultLayout>
 
              <Row className='mt-3' justify='center'>
@@ -97,7 +107,8 @@ function Home() {
                                     </div>
 
                                     <div>
-                                        <button className="btn1 mr-2"><Link to={`/booking/${car._id}`}>Book Now</Link></button>
+                                        {/* <button className="btn1 mr-2"><Link to={`/booking/${car._id}`}>Book Now</Link></button> */}
+                                        <button className="btn1 mr-2" onClick={() => handleBookNow(car._id)}>Book Now</button>
                                     </div>
 
                                </div>
@@ -108,6 +119,10 @@ function Home() {
               </Row>
 
         </DefaultLayout>
+
+        <Footer/>
+        </>
+    
     )
 }
 

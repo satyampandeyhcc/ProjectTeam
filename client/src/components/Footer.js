@@ -54,7 +54,7 @@ const Footer = () => {
             </h6>
             <p>
               <Link target='blank' to="https://maps.app.goo.gl/UN4CCqPbg4dnBaz67" className="text-reset">
-              Show Room no.14,15 <br /> Darpan Residency <br /> Chindsa Colony <br /> Khanpur, Kharar, 140301
+              Show Room no.14,15 <br /> Varanasi Residency <br /> Haewliya Colony <br /> Varanasi, UttarPradesh, 221007
               </Link>
             </p>
           </div>
@@ -102,14 +102,31 @@ const Footer = () => {
     {/* Copyright */}
     {/* Copyright */}
   </footer>
-  <div
-    className="text-center p-1 mb-3 mt-3"
-    style={{ backgroundColor: "rgba(254, 254, 254, 0.05)" }}
-  >
-    <p className="font-weight-bolder">Design &amp; Developed by  <Link target='blank' to="https://appeniusprivatelimited.com/" className="text-reset">
-            Appenius
-              </Link></p>
-  </div>
+
+
+
+
+  <div class="bikes_bottom_header_one section_padding_50 text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>
+              BikeRiding Venture ©2024 | All Rights Reserved, designed and deployed by
+              <a href="#">Satyam Pandey <i class="fa fa-love"></i></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
   
     </div>
   )

@@ -1,0 +1,52 @@
+.my-heading-contact-form{
+    color: var(--Gray-Scale-Gray-900, #1A1A1A);
+    
+    /* Body XXL/Body XXL, 600 */
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 36px */
+    }
+    .sub-head-contact-form{
+        color: var(--Gray-Scale-Gray-500, #808080);
+    
+    /* Body Small/Body Small, 400 */
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    }
+    .contact-form-input{
+        border-radius: 6px;
+    border: 1px solid var(--Gray-Scale-Gray-100, #E6E6E6);
+    background: var(--Gray-Scale-White, #FFF);
+    
+    }
+    .my-contact-btn{
+        border-radius: 43px;
+    background: var(--Branding-Success, #00B207);
+    color: white;
+    }
+    .my-logo-contact{
+        width: 51px;
+    height: 51px;
+    
+    }
+    #map {
+        height: 100%;
+    }
+    .map-container{
+        overflow:hidden;
+        padding-bottom:16.25%;
+        position:relative;
+        height:0;
+      }
+      .map-container iframe{
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
+      }

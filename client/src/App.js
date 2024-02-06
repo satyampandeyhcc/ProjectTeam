@@ -1,56 +1,37 @@
-//import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import {Route , BrowserRouter , Redirect} from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import BookingBike from './pages/BookingBike'
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import BookingBike from './pages/BookingBike';
 import 'antd/dist/antd.css';
 import UserBookings from './pages/UserBookings';
 import AddBike from './pages/AddBike';
 import AdminHome from './pages/AdminHome';
 import EditBike from './pages/EditBike';
 import FirstHome from './pages/FirstHome';
+import Contact from './pages/Contact';
 
 function App() {
   return (
     <div className="App">
-
-         
-         
-         <BrowserRouter>
-         <ProtectedRoute path='/' exact component={FirstHome} />
-             <ProtectedRoute path='/viewbike' exact component={Home} />
-
-             <Route path='/login' exact component={Login} />
-             <Route path='/register' exact component={Register} />
-             <ProtectedRoute path='/booking/:carid' exact component={BookingBike} />
-             <ProtectedRoute path='/userbookings' exact component={UserBookings} />
-             <ProtectedRoute path='/addcar' exact component={AddBike} />
-             <ProtectedRoute path='/editcar/:carid' exact component={EditBike} />
-             <ProtectedRoute path='/admin' exact component={AdminHome} />
-         
-         </BrowserRouter>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<FirstHome />} />
+          <Route path='/viewbike' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/booking/:carid' element={<BookingBike />} />
+          <Route path='/userbookings' element={<UserBookings />} />
+          <Route path='/addcar' element={<AddBike />} />
+          <Route path='/editcar/:carid' element={<EditBike />} />
+          <Route path='/admin' element={<AdminHome />} />
+          <Route path='/contact' element={<Contact />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
-
-
 export default App;
-
-
-export function ProtectedRoute(props)
-{
-
-
-    if(localStorage.getItem('user'))
-    {
-      return <Route {...props}/>
-    }
-    else{
-      return <Redirect to='/login'/>
-    }
-
-}

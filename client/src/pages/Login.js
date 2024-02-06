@@ -1,12 +1,13 @@
 import {React,useEffect} from 'react'
 import {Row , Col , Form , Input} from 'antd'
-import { Link,useHistory,useLocation } from 'react-router-dom'
+import { Link,useNavigate,useLocation } from 'react-router-dom'
 import {useDispatch , useSelector} from 'react-redux'
 import { userLogin } from '../redux/actions/userActions'
 import AOS from 'aos';
 import Spinner from '../components/Spinner';
 import 'aos/dist/aos.css'; 
 import DefaultLayout from '../components/DefaultLayout'
+import Footer from '../components/Footer'
 
 //also use <link> for styles
 // ..
@@ -14,7 +15,7 @@ AOS.init();
 function Login() {
     const dispatch = useDispatch()
     const {loading} = useSelector(state=>state.alertsReducer)
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
     const [form] = Form.useForm();
     useEffect(() => {
@@ -43,8 +44,11 @@ function Login() {
 
 
     return (
-       
+       <>
+          
         <div className='login'>
+
+
             {loading && (<Spinner />)}
             <Row gutter={16} className='d-flex align-items-center' >
 
@@ -82,8 +86,11 @@ function Login() {
                 </Col>
 
             </Row>
-
         </div>
+
+
+       
+        </>
       
     )
 }

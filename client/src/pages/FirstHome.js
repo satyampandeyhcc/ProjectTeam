@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 
 import { NavLink } from "react-router-dom";
 import DefaultLayout from '../components/DefaultLayout';
@@ -7,12 +7,13 @@ import CaraousalBottom from '../components/Caraousal';
 import Caraousalserv from '../components/Caraousalserv';
 import img7 from "../components/images/Component1.jpg"
 import Carahome from '../components/Carahome';
+import Footer from '../components/Footer'
 // import Footer from '../components/Footer';
 
 
 const FirstHome = () => {
   return (
-    
+    <>
         <DefaultLayout>
 
 <style>
@@ -138,6 +139,9 @@ At Plain Ventures, we prioritize your satisfaction and fun, ensuring every detai
 
         {/* <Footer/> */}
       </DefaultLayout>
+      
+<Footer/>
+      </>
      
     
   );

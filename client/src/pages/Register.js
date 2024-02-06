@@ -1,16 +1,18 @@
 import {React,useState,useEffect} from "react";
 import { Row, Col, Form, Input } from "antd";
-import { Link,useHistory } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import {useDispatch , useSelector} from 'react-redux'
 import { userRegister } from "../redux/actions/userActions";
 import AOS from 'aos';
 import Spinner from '../components/Spinner';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import DefaultLayout from "../components/DefaultLayout";
+import Footer from "../components/Footer";
 // ..
 AOS.init()
 function Register() {
   const dispatch = useDispatch()
-  const history = useHistory();
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const {loading} = useSelector(state=>state.alertsReducer)
 
@@ -27,7 +29,7 @@ function Register() {
         console.log(values);
   
         // Redirect to login page with user credentials as query parameters
-        history.push(`/login?username=${values.username}&password=${values.password}`);
+        navigate(`/login?username=${values.username}&password=${values.password}`);
       } catch (error) {
         console.error("Registration failed", error);
       }
@@ -75,6 +77,8 @@ function Register() {
 
 
   return (
+    <>
+      
     <div className="login">
       {loading && (<Spinner />)}
       <Row gutter={16} className="d-flex align-items-center">
@@ -141,6 +145,10 @@ function Register() {
         </Col>
       </Row>
     </div>
+    
+      
+    
+    </>
   );
 }
 
