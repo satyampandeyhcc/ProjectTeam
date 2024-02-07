@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Car = require("../models/bikeModel");
 
+
+
+
+
+
+
 router.get("/getallcars", async (req, res) => {
   try {
     const cars = await Car.find();

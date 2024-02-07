@@ -8,6 +8,7 @@ import Spinner from "../components/Spinner";
 //simport moment from "moment";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Popconfirm, message } from "antd";
+import AdminDefaultLayout from "../components/AdminDefaultLayout";
 const { RangePicker } = DatePicker;
 function AdminHome() {
   const { cars } = useSelector((state) => state.carsReducer);
@@ -24,7 +25,8 @@ function AdminHome() {
   }, [cars]);
 
   return (
-    <DefaultLayout>
+    <>
+    <AdminDefaultLayout>
       <Row justify="center" gutter={16} className="mt-2">
         <Col lg={20} sm={24}>
           <div className="d-flex justify-content-between align-items-center">
@@ -77,7 +79,8 @@ function AdminHome() {
           );
         })}
       </Row>
-    </DefaultLayout>
+     </AdminDefaultLayout>
+    </>
   );
 }
 

@@ -12,6 +12,8 @@ import AdminHome from './pages/AdminHome';
 import EditBike from './pages/EditBike';
 import FirstHome from './pages/FirstHome';
 import Contact from './pages/Contact';
+import AdminLogin from './pages/AdminLogin';
+import AdminResponse from './pages/AdminResponse';
 
 function App() {
   return (
@@ -28,6 +30,11 @@ function App() {
           <Route path='/editcar/:carid' element={<EditBike />} />
           <Route path='/admin' element={<AdminHome />} />
           <Route path='/contact' element={<Contact />} />
+
+
+
+          <Route path='/adminlogin' element={<AdminLogin/>}/>
+          <Route path='/adminresponse' element={<AdminResponse/>}/>
         </Routes>
       </BrowserRouter>
     </div>

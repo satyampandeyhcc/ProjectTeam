@@ -96,5 +96,20 @@ router.post("/contact", async (req, res) => {
   }
 });
 
+
+router.get("/contacts", async (req, res) => {
+  try {
+    // Fetch all contact responses from the database
+    const contacts = await Contact.find();
+
+    // Respond with the fetched contact responses
+    res.status(200).json(contacts);
+  } catch (error) {
+    // Handle errors
+    console.error("Error fetching contact responses:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = router
 

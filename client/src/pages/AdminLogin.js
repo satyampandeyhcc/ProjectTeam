@@ -2,41 +2,36 @@ import {React,useEffect} from 'react'
 import {Row , Col , Form , Input} from 'antd'
 import { Link,useNavigate,useLocation } from 'react-router-dom'
 import {useDispatch , useSelector} from 'react-redux'
-import { userLogin } from '../redux/actions/userActions'
+// import { userLogin } from '../redux/actions/userActions'
 import AOS from 'aos';
 import Spinner from '../components/Spinner';
 import 'aos/dist/aos.css'; 
 import DefaultLayout from '../components/DefaultLayout'
 import Footer from '../components/Footer'
+import { adminLogin } from '../redux/actions/adminActions'
 
 //also use <link> for styles
 // ..
 AOS.init();
-function Login() {
+function AdminLogin() {
     const dispatch = useDispatch()
     const {loading} = useSelector(state=>state.alertsReducer)
     const navigate = useNavigate();
     const location = useLocation();
     const [form] = Form.useForm();
-    useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        const username = params.get("username");
-        const password = params.get("password");
+ 
     
         // Set login form values if username and password are present
-        if (username && password) {
-          form.setFieldsValue({ username, password });
-        }
-      }, [location.search, form]);
+        
     
       function onFinish(values) {
-        dispatch(userLogin(values));
+        dispatch(adminLogin(values));
         console.log(values);
       }
 
 
     function onFinish(values) {
-        dispatch(userLogin(values))
+        dispatch(adminLogin(values))
         console.log(values)
         
 
@@ -65,9 +60,9 @@ function Login() {
                 </Col>
                 <Col lg={8} className='text-left p-5'>
                     <Form layout='vertical' className='login-form p-5' onFinish={onFinish} form={form}>
-                         <h1>Signin As User</h1>
+                         <h1>Signin As Admin</h1>
                          <hr />
-                         <Form.Item name='username' label='Email' rules={[ { required: true, message: "Please input your Email!" },
+                         <Form.Item name='email' label='Email' rules={[ { required: true, message: "Please input your Email!" },
               { type: 'email', message: 'Please enter a valid email address.' },]}>
                              <Input/>
                          </Form.Item>
@@ -75,13 +70,11 @@ function Login() {
                              <Input type='password'/>
                          </Form.Item>
 
-                         <button className='btn1 mt-2'>Signin</button>
+                         <button className='btn1 mt-2'>Login</button>
 
                          <hr />
 
-                         <Link to='/register'>Don't Have An Account Create One</Link><br/><br/>
-                         <Link to='/adminlogin'>Signin As Admin</Link>
-                         
+                         <Link to='/login'>Signin As User</Link>
                        
 
                     </Form>
@@ -97,4 +90,4 @@ function Login() {
     )
 }
 
-export default Login
+export default AdminLogin
