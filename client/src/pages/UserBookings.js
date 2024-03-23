@@ -10,7 +10,7 @@ function UserBookings() {
   const { bookings } = useSelector((state) => state.bookingsReducer);
   const {loading} = useSelector((state) => state.alertsReducer);
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(bookings);
+  // console.log(bookings);
   useEffect(() => {
     dispatch(getAllBookings());
   }, []);
@@ -22,13 +22,13 @@ function UserBookings() {
     
       <Row justify="center" gutter={16}>
         <Col lg={16} sm={24}>
-         
+         {console.log(bookings)}
             {bookings.filter(o=>o.user==user._id).map((booking) => {
              return <Row gutter={16} className="bs1 mt-3 text-left">
                 <Col lg={6} sm={24}>
-                    <p><b>{booking.car.name}</b></p>
+                    <p><b>{booking.car?.name}</b></p>
                     <p>Total hours : <b>{booking.totalHours}</b></p>
-                    <p>Rent per hour : <b>{booking.car.rentPerHour}</b></p>
+                    <p>Rent per hour : <b>{booking.car?.rentPerHour}</b></p>
                     <p>Total amount : <b>{booking.totalAmount}</b></p>
                 </Col>
 
@@ -40,7 +40,7 @@ function UserBookings() {
                 </Col>
 
                 <Col lg={6} sm={24} className='text-right'>
-                    <img style={{borderRadius:5}} src={booking.car.image}  height="140" className="p-2"/>
+                    <img style={{borderRadius:5}} src={booking.car?.image}  height="140" className="p-2"/>
                 </Col>
               </Row>;
             })}

@@ -13,8 +13,17 @@ import Carousal from "@itseasy21/react-elastic-carousel";
 // import img3 from "../Component/images/Rectangle 71.png"
 // import Bubble from "./Bubble";
 import img5 from "../components/images/Component1.jpg"
-import img6 from "../components/images/Component1.jpg"
-import img7 from "../components/images/Component1.jpg"
+import img6 from "../components/images/enjoyweek.jpg"
+import img7 from "../components/images/Affordableprice.jpg"
+
+
+import img9 from "../components/images/Satisfaction.jpg"
+
+import img11 from "../components/images/customer.jpg"
+
+
+import img13 from "../components/images/electric.jpg"
+
 // import img8 from "../Component/images/benefits_card4.jpeg";
 // import img9 from "../Component/images/benefits_card5.jpeg";
 // import React, { useRef } from 'react';
@@ -65,7 +74,7 @@ const CaraousalBottom = () => {
      
        <Item>
         <div className="item">
-          <img  src={img7} alt="ueis"  />
+          <img  src={img6} alt="ueis"  />
           <div id="comp">
           {/* <img  className="first" src={img5} alt="ueis"  /> */}
           </div>
@@ -92,7 +101,7 @@ const CaraousalBottom = () => {
        </Item>
        <Item>
         <div className="item">
-          <img src={img7} alt="ueis"  />
+          <img src={img9} alt="ueis"  />
           <div id="comp">
           {/* <img  src={img6} alt="ueis"  /> */}
           </div>
@@ -106,20 +115,20 @@ const CaraousalBottom = () => {
 
        <Item>
         <div className="item">
-          <img className='card-img-benefits' src={img7} alt="ueis"  />
+          <img className='card-img-benefits' src={img11} alt="ueis"  />
           <div id="comp">
           {/* <img  src={img7} alt="ueis"  /> */}
           </div>
           
           <div id="cont">
-          <p>BULLET BIKE</p>
+          <p>Enhanced Customer Experience</p>
           </div>
          
         </div>
        </Item>
        <Item>
         <div className="item">
-          <img className='card-img-benefits' src={img7} alt="ueis"  />
+          <img className='card-img-benefits' src={img13} alt="ueis"  />
           <div id="comp">
           {/* <img  src={img7} alt="ueis"  /> */}
           </div>
@@ -128,7 +137,7 @@ const CaraousalBottom = () => {
 
 
    
-         <p>BULLET BIKE</p>
+         <p>Eco-Friendly</p>
           </div>
          
         </div>

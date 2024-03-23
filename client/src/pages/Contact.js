@@ -97,7 +97,7 @@ const Contact = () => {
                     <Link
                       className="text-decoration-none"
                       target="blank"
-                      to="mailto:laughnlaundary@gmail.com"
+                      to="mailto:satyampandeyhcc@gmail.com"
                     >
                       <li className="mb-3">
                         <img
@@ -114,7 +114,7 @@ const Contact = () => {
                     <hr />
                     <Link
                       className="text-decoration-none "
-                      to="tel:+9177079-13579"
+                      to="tel:+918318453686"
                     >
                       <li className="mb-3">
                         <img
@@ -123,7 +123,7 @@ const Contact = () => {
                           src={phone}
                         />
                         <p className="text-decoration-none text-dark">
-                          77079-13579
+                          8318453686
                         </p>
                       </li>
                     </Link>

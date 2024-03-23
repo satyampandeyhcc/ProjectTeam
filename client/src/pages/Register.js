@@ -94,6 +94,31 @@ function Register() {
           <Form layout="vertical" className="login-form p-5" onFinish={onFinish} form={form}>
             <h1>Register</h1>
             <hr />
+
+          
+
+
+            <Form.Item
+  name="name"
+  label="Name"
+  rules={[
+    { required: true, message: "Please input your Name!" },
+    { type: 'string', message: 'Please enter a valid name' }
+  ]}
+>
+  <Input />
+</Form.Item>
+
+
+
+
+
+
+
+
+
+
+
             <Form.Item
               name="username"
               label="Email"

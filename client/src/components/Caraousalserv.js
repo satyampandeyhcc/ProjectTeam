@@ -16,7 +16,12 @@ import Carousal from "@itseasy21/react-elastic-carousel";
 // import img5 from "../Component/images/services_card5.png";
 // import img6 from "../Component/images/services_card_6.jpeg";
 
-import img7 from "../components/images/Component1.jpg"
+import img7 from "../components/images/longweeksbike.jpg"
+import img12 from "../components/images/longweek.avif"
+import img13 from "../components/images/camp.jpg"
+import img8 from "../components/images/riderimg.jpg"
+import img9 from "../components/images/widerange.jpg"
+import img10 from "../components/images/equipment.jpg"
 
 const Caraousalserv = () => {
   const breakPoints = [
@@ -56,7 +61,7 @@ const Caraousalserv = () => {
         </Item>
         <Item>
           <div className="item">
-            <img src={img7} alt="ueis" />
+            <img src={img12} alt="ueis" />
 
             <div id="cont">
               <p>One day Tours</p>
@@ -65,7 +70,7 @@ const Caraousalserv = () => {
         </Item>
         <Item>
           <div className="item">
-            <img src={img7} alt="ueis" />
+            <img src={img13} alt="ueis" />
 
             <div id="cont">
               <p>Camps And Events</p>
@@ -75,29 +80,29 @@ const Caraousalserv = () => {
 
         <Item>
           <div className="item">
-            <img src={img7} alt="ueis" />
+            <img src={img8} alt="ueis" />
 
             <div id="cont">
-              <p>Dry Cleaning</p>
+              <p>Experienced Riders</p>
             </div>
           </div>
         </Item>
 
         <Item>
           <div className="item">
-            <img src={img7} alt="ueis" />
+            <img src={img9} alt="ueis" />
 
             <div id="cont">
-              <p>Blanket Cleaning</p>
+              <p>Wide Range Of Bikes</p>
             </div>
           </div>
         </Item>
         <Item>
           <div className="item">
-            <img src={img7} alt="ueis" />
+            <img src={img10} alt="ueis" />
 
             <div id="cont">
-              <p>Shoe Cleaning</p>
+              <p>Advanced Safety Equipment</p>
             </div>
           </div>
         </Item>

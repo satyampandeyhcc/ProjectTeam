@@ -78,7 +78,7 @@ function Home() {
         <>
         <DefaultLayout>
 
-             <Row className='mt-3' justify='center'>
+             {/* <Row className='mt-3' justify='center'>
                  
                  <Col lg={20} sm={24} className='d-flex justify-content-left'>
 
@@ -86,7 +86,7 @@ function Home() {
                  
                  </Col>
 
-             </Row>
+             </Row> */}
 
               {loading == true && (<Spinner/>)}
 

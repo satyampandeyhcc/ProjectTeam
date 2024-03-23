@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 // import { FaWhatsapp } from "react-icons/fa";
-import logo from "../components/images/Component1.jpg";
+import logo from "../components/images/logoimg.jpg";
 // import "../Project.css";
 const Footer = () => {
   return  (
@@ -36,6 +36,12 @@ const Footer = () => {
                 className="  my-logo-footer"
                 alt=""
                 src={logo}
+
+                style={{
+                  width: "62%",
+                  height: "60%",
+                  borderRadius: "94px",
+                }}
               />
               </Link>
             </div>
@@ -77,17 +83,17 @@ const Footer = () => {
               Check us out
             </h6>
             <p className='icons'>
-              <Link target='blank' to="https://wa.me/c/917707913579" className="text-reset">
+              <Link target='blank' to="https://wa.me/c/918318453686" className="text-reset">
               <FaWhatsapp />
               </Link>
             </p>
             <p className='icons'>
-            <Link target='blank' to="https://www.instagram.com/laughnlaundry?utm_source=qr&igshid=OGU0MmVlOWVjOQ%3D%3D" className="text-reset">
+            <Link target='blank' to="https://www.instagram.com/pandey_satyam24/" className="text-reset">
             <FaInstagram />
               </Link>
             </p>
             <p className='icons'>
-            <Link target='blank' to="https://www.facebook.com/profile.php?id=61554678826276&mibextid=ZbW" className="text-reset">
+            <Link target='blank' to="https://www.facebook.com/profile.php?idW" className="text-reset">
             <FaFacebook />
               </Link>
               </p>
@@ -112,7 +118,7 @@ const Footer = () => {
           <div class="col-12">
             <p>
               BikeRiding Venture ©2024 | All Rights Reserved, designed and deployed by
-              <a href="#">Satyam Pandey <i class="fa fa-love"></i></a>
+              <a href="#">&nbsp;Satyam Pandey <i class="fa fa-love"></i></a>
             </p>
           </div>
         </div>
