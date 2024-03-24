@@ -17,15 +17,20 @@ function Register() {
   const {loading} = useSelector(state=>state.alertsReducer)
 
   const [mobileNumber, setMobileNumber] = useState("");
+ const [profileName, setprofileName] = useState("")
 
   const handleMobileNumberChange = (e) => {
     setMobileNumber(e.target.value);
   };
 
   
+  const handleNameChange = (e) => {
+    setprofileName(e.target.value);
+  };
+  
     async function onFinish(values) {
       try {
-        await dispatch(userRegister({ ...values, mobileNumber }));
+        await dispatch(userRegister({ ...values, mobileNumber,profileName }));
         console.log(values);
   
         // Redirect to login page with user credentials as query parameters
@@ -99,14 +104,14 @@ function Register() {
 
 
             <Form.Item
-  name="name"
+  name="profileName"
   label="Name"
   rules={[
     { required: true, message: "Please input your Name!" },
     { type: 'string', message: 'Please enter a valid name' }
   ]}
 >
-  <Input />
+  <Input onChange={handleNameChange} />
 </Form.Item>
 
 

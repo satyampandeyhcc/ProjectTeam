@@ -26,9 +26,39 @@ router.post("/login", async(req, res) => {
   
 });
 
+
+router.post("/updateprofile", async (req, res) => {
+  const { imagearr,id } = await req.body;
+  console.log(req.body);
+  console.log("15");
+  try {
+    const user = await User.findByIdAndUpdate(id,{imagearr:imagearr});
+    res.status(200).json({message:"updated"});
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error);
+  }
+});
+
+
+router.get("/getallimages", async(req, res) => {
+  // console.log(req.query.id);
+  try {
+      const id = await req.query.id;
+      const images = await User.findById(id);
+      console.log(images);
+      // const bookings = await User.find().populate('car')
+      res.send(images.imagearr);
+      
+  } catch (error) {
+      return res.status(400).json(error);
+  }
+
+});
+
 router.post("/register", async(req, res) => {
 
-  const { username, password ,cpassword,mobileNumber} = req.body;
+  const { username, password ,cpassword,mobileNumber,profileName} = req.body;
   
   console.log(req.body);
     try {
@@ -39,7 +69,7 @@ router.post("/register", async(req, res) => {
         return res.status(409).json({ error: "Username is already taken." });
       }
   
-      const newUser = new User({ username, password ,cpassword ,mobileNumber});
+      const newUser = new User({ username, password ,cpassword ,mobileNumber,profileName});
   
       await newUser.save();
   

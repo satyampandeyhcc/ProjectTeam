@@ -32,9 +32,25 @@ function DefaultLayout(props) {
                 <Link to="/contact" style={{ marginLeft: "20px" }}>
                   Contact
                 </Link>
-                {token ?( <Link to="/userbookings" style={{ marginLeft: "20px" }}>
+                {token ?( 
+                
+                <Link to="/userbookings" style={{ marginLeft: "20px" }}>
                   My Booking
-                </Link>) : (null)}
+                </Link>)
+                
+                
+                
+                : (null)}
+
+{token ?( 
+                
+                <Link to="/myprofile" style={{ marginLeft: "20px" }}>
+                  My Profile
+                </Link>)
+                
+                
+                
+                : (null)}
 
                 {!token ? (
                   <>
