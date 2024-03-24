@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
      mobileNumber:{type:String,required: true},
      createdAt: { type: Date, default: Date.now },
      imagearr: {type:Array},
+     verified:{type:Boolean,default:0},
      updatedAt: { type: Date, default: Date.now }
 })
 

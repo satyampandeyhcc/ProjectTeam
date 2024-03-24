@@ -15,6 +15,8 @@ import Contact from './pages/Contact';
 import AdminLogin from './pages/AdminLogin';
 import AdminResponse from './pages/AdminResponse';
 import Myprofile from './pages/Myprofile';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminProfile from './pages/AdminProfile';
 
 function App() {
   return (
@@ -37,6 +39,10 @@ function App() {
 
           <Route path='/adminlogin' element={<AdminLogin/>}/>
           <Route path='/adminresponse' element={<AdminResponse/>}/>
+          <Route path="/admindashboard" element={<AdminDashboard/>}/>
+
+          <Route path='/adminprofile' element={<AdminProfile />} />
+
         </Routes>
       </BrowserRouter>
     </div>

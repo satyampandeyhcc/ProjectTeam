@@ -5,6 +5,7 @@ import { alertsReducer } from './reducers/alertsReducer';
 import { carsReducer } from './reducers/bikesReducer';
 import { bookingsReducer } from './reducers/bookingsReducer';
 import { profileImageView  } from './reducers/imageReducer';
+import { statusView } from './reducers/statusReducer';
 const composeEnhancers = composeWithDevTools({});
 
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
    alertsReducer,
    bookingsReducer,
    profileImageView,
+   statusView ,
    
 })
 

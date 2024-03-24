@@ -92,7 +92,25 @@ export const getAllimages=(id)=>async dispatch=>{
   
   }
 
-    
+
+  
+
+export const getstatus=(id)=>async dispatch=>{
+
+    dispatch({type: 'LOADING' , payload:true})
+  
+    try {
+        const params  = {id:id};
+        const response = await axios.get('/api/users/status',{params})
+        dispatch({type: 'GET_STATUS', payload:response.data})
+        dispatch({type: 'LOADING' , payload:false})
+    } catch (error) {
+        console.log(error)
+        dispatch({type: 'LOADING' , payload:false})
+    }
+  
+  }
+
     
     
     export const contactFormSubmit = (formData) => async (dispatch) => {
@@ -121,6 +139,25 @@ export const ImageFormSubmit = (formData) => async (dispatch) => {
         const response = await axios.post("/api/users/updateprofile", formData);
         if (response.status === 200) {
     message.success("Message sent successfully!");
+} else {
+    message.error("Failed to send message");
+}
+dispatch({ type: "LOADING", payload: false });
+} catch (error) {
+console.error(error);
+message.error("An error occurred while sending message");
+dispatch({ type: "LOADING", payload: false });
+}
+}
+
+export const VerifySubmit = (formData) => async (dispatch) => {
+    dispatch({ type: "LOADING", payload: true });
+
+    try {
+        console.log(formData);
+        const response = await axios.post("/api/users/updateverify", formData);
+        if (response.status === 200) {
+    message.success("Verification status changed!");
 } else {
     message.error("Failed to send message");
 }

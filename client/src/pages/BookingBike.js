@@ -11,9 +11,19 @@ import AOS from "aos";
 import { useParams } from "react-router-dom";
 
 import "aos/dist/aos.css"; // You can also use <link> for styles
+import { getstatus } from "../redux/actions/userActions";
+
 const { RangePicker } = DatePicker;
 function BookingBike({ match }) {
   const { carid } = useParams();
+  const { verified } = useSelector((state) => state.statusView);
+ 
+  
+  
+  useEffect(() => {
+    dispatch(getstatus(JSON.parse(localStorage.getItem("user"))._id));
+  }, []);
+  
   const { cars } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
   const [car, setcar] = useState({});
@@ -132,7 +142,7 @@ function BookingBike({ match }) {
 
               <h3>Total Amount : {totalAmount}</h3>
 
-              <StripeCheckout
+              {verified?<StripeCheckout
                 shippingAddress
                 token={onToken}
                 currency="inr"
@@ -140,8 +150,8 @@ function BookingBike({ match }) {
                 // stripeKey="pk_test_51IYnC0SIR2AbPxU0TMStZwFUoaDZle9yXVygpVIzg36LdpO8aSG8B9j2C0AikiQw2YyCI8n4faFYQI5uG3Nk5EGQ00lCfjXYvZ"
                 stripeKey="pk_test_51OvXtUSED8rhSVdkZC0cnXzFrtPdrR3vUsDAazba7MAAiuYLd3Px8ChNcSX7u23Tmmq0UuaVJGFpgjNmSDUZJbiq00oskZnlt8"
               >
-                <button className="btn1">Book Now</button>
-              </StripeCheckout>
+               <button className="btn1">Book Now</button>
+              </StripeCheckout>:<button onClick={()=>window.location.href='/myprofile'} className="btn1">Go To verification</button>}
             </div>
           )}
         </Col>

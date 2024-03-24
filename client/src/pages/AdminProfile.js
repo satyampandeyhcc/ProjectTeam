@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
 import {
   ImageFormSubmit,
+  VerifySubmit,
   contactFormSubmit,
   getAllimages,
 } from "../redux/actions/userActions";
@@ -18,10 +19,31 @@ import phone from "../components/images/PhoneCall.png";
 import "../contact.css";
 import DefaultLayout from "../components/DefaultLayout";
 import Footer from "../components/Footer";
+import { useSearchParams } from "react-router-dom";
 import { getstatus } from "../redux/actions/userActions";
 // import { FaLOcation, FaPhone, FaVoicemail } from 'react-icons/fa';
 const Contact = () => {
 
+    const [queryParameters] = useSearchParams();
+    const _id = queryParameters.get("id");
+    const contact = queryParameters.get("contact");
+    const email = queryParameters.get("email");
+    const name = queryParameters.get("name");
+    const ver = queryParameters.get("verified")
+    const { verified } = useSelector((state) => state.statusView);
+
+    const [status, setstatus] = useState(ver==="false"?1:0);
+    console.log(ver);
+
+
+    useEffect(() => {
+        dispatch(getstatus(_id));
+    }, []);
+
+
+
+
+    
   const { profileImage } = useSelector((state) => state.profileImageView);
   useEffect(() => {
     if(profileImage.length!==0)
@@ -30,16 +52,7 @@ const Contact = () => {
   
   const [imagearr, setimagearr] = useState(profileImage);
 
-  const { _id,profileName,mobileNumber,username } = JSON.parse(localStorage.getItem("user"));
-  const { verified } = useSelector((state) => state.statusView);
-  
-  useEffect(() => {
-    dispatch(getstatus(JSON.parse(localStorage.getItem("user"))._id));
-    console.log(verified);
-  }, []);
-
-
-  console.log(_id);
+ 
 
   const [formData, setFormData] = useState({
     id: _id,
@@ -51,42 +64,14 @@ const Contact = () => {
   }, []);
   
 
-
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.alertsReducer);
 
- 
-
-  const handleChange = (id, event) => {
-    console.log(id);
-    const { name, value } = event.target;
-    const file = event.target.files[0];
-    const imageref = ref(storage, `images/${file.name}`);
-    uploadBytes(imageref, file).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        const newArray = [...imagearr];
-        newArray[id] = url;
-        
-        setFormData((prevData) => ({ ...prevData, imagearr: newArray }));
-        setimagearr(newArray);
-        
-        message.success("Updated Successfully!");
-        // document.findElementById("save").click();
-      });
-    });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const check = (id)=>{
-      return imagearr[id]!=="https://wumbo.net/symbols/plus/feature.png";
-    }
-    if(check(0) && check(1) && check(2) && check(3))
-      dispatch(ImageFormSubmit(formData));
-    else
-      message.info("Please fill all details");
-  };
+  const handleVerify = ()=>{
+    dispatch(VerifySubmit({id:_id,status:status}));
+    setstatus(!status);
+  }
 
   return (
     <>
@@ -103,10 +88,10 @@ const Contact = () => {
                 <div className="col-md-3 mb-5 text-start">
                   <div className="d-flex flex-column align-items-center">
                     <ul className="list-unstyled px-3 mb-0 text-center">
-                      <Link
+                      <div
                         className="text-decoration-none"
-                        target="blank"
-                        to="https://maps.app.goo.gl/Zh7NH5onwaH9VPXJA"
+                        
+                        
                       >
                         <li className="mb-3">
                         <div
@@ -115,29 +100,16 @@ const Contact = () => {
                           >
                             <img
                               src={imagearr[4]}
-                              onClick={() => {
-                                document.getElementById("file5").click();
-                              }}
+                              
                               style={{ width: "196px",  borderRadius:"50%"}}
                             />
-                             <input
-                            type="file" // Change input type to "file"
-                            id="file5" // Assign unique id for file input
-                            name="file5"  // Assign name for file input
-                            onChange={(e) => handleChange(4, e)} // Attach onChange event handler
-                            className="form-control contact-form-input p-4 text-dark"
-                            // required // Mark the field as required if necessary
-                            hidden
-                          />
+                            
                           </div>
                           <p className="text-decoration-none text-dark">
-                           {profileName}
-                          </p>
-                          <p className="text-decoration-none text-dark">
-                           {verified?"Verified":"Not Verified"}
+                           {name}
                           </p>
                         </li>
-                      </Link>
+                      </div>
 
                       <hr />
                       <Link
@@ -152,7 +124,7 @@ const Contact = () => {
                             src={mail}
                           />
                           <p className="text-dark text-decoration-none">
-                          {username}
+                          {email}
                           </p>
                         </li>
                       </Link>
@@ -169,7 +141,7 @@ const Contact = () => {
                             src={phone}
                           />
                           <p className="text-decoration-none text-dark">
-                            {mobileNumber}
+                            {contact}
                           </p>
                         </li>
                       </Link>
@@ -185,11 +157,10 @@ const Contact = () => {
                     
                   </p>
 
-                  <form
-                    // noValidate
+                  <div
                     id="contact-form"
                     name="contact-form"
-                    onSubmit={handleSubmit}
+                    
                   >
                    
 
@@ -198,24 +169,14 @@ const Contact = () => {
                       <div className="col-md-6">
                         <div className="md-form mb-3">
                           <p>Driving License Front</p>
-                          <input
-                            type="file" // Change input type to "file"
-                            id="file1" // Assign unique id for file input
-                            name="file1"  // Assign name for file input
-                            onChange={(e) => handleChange(0, e)} // Attach onChange event handler
-                            className="form-control contact-form-input p-4 text-dark"
-                            // required // Mark the field as required if necessary
-                            hidden
-                          />
+                         
                           <div
                             className="imgContainer"
                             style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[0]}
-                              onClick={() => {
-                                document.getElementById("file1").click();
-                              }}
+                             
                               style={{ width: "200px" , height:"200px"}}
                             />
                           </div>
@@ -226,24 +187,14 @@ const Contact = () => {
                       <div className="col-md-6">
                         <div className="md-form mb-3">
                           <p>Driving License Back</p>
-                          <input
-                            type="file" // Change input type to "file"
-                            id="file2" // Assign unique id for file input
-                            name="file2"  // Assign name for file input
-                            onChange={(e) => handleChange(1, e)} // Attach onChange event handler
-                            className="form-control contact-form-input p-4 text-dark"
-                            // required // Mark the field as required if necessary
-                            hidden
-                          />
+                         
                           <div
                             className="imgContainer"
                             style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[1]}
-                              onClick={() => {
-                                document.getElementById("file2").click();
-                              }}
+                             
                               style={{ width: "200px" , height:"200px"}}
                             />
                           </div>
@@ -257,24 +208,14 @@ const Contact = () => {
                       <div className="col-md-6">
                         <div className="md-form mb-3">
                           <p>Aadhar Card Front</p>
-                          <input
-                            type="file" // Change input type to "file"
-                            id="file3" // Assign unique id for file input
-                            name="file3"  // Assign name for file input
-                            onChange={(e) => handleChange(2, e)} // Attach onChange event handler
-                            className="form-control contact-form-input p-4 text-dark"
-                            // required // Mark the field as required if necessary
-                            hidden
-                          />
+                          
                           <div
                             className="imgContainer"
                             style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[2]}
-                              onClick={() => {
-                                document.getElementById("file3").click();
-                              }}
+                              
                               style={{ width: "200px" , height:"200px" }}
                             />
                           </div>
@@ -285,24 +226,14 @@ const Contact = () => {
                       <div className="col-md-6">
                         <div className="md-form mb-3">
                           <p>Aadhar Card Back</p>
-                          <input
-                            type="file" // Change input type to "file"
-                            id="file4" // Assign unique id for file input
-                            name="file4"  // Assign name for file input
-                            onChange={(e) => handleChange(3, e)} // Attach onChange event handler
-                            className="form-control contact-form-input p-4 text-dark"
-                            // required // Mark the field as required if necessary
-                            hidden
-                          />
+                          
                           <div
                             className="imgContainer"
                             style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[3]}
-                              onClick={() => {
-                                document.getElementById("file4").click();
-                              }}
+                              
                               style={{ width: "200px" , height:"200px" }}
                             />
                           </div>
@@ -313,16 +244,19 @@ const Contact = () => {
 
                     {/*Grid row*/}
                     <div className="text-center mt-2  text-md-left">
-                      <button
+                      {status?<button
                         className="btn my-contact-btn px-3 py-2 font-weight-bold text-white"
                         type="submit"
                         id="save"
+                        onClick={handleVerify}
                         // hidden
                       >
-                        Save Profile
-                      </button>
+                        Verify
+                      </button >:<button onClick={handleVerify} className="btn text-black my-contact-btn bg-green-300">
+                        Verified
+                        </button>}
                     </div>
-                  </form>
+                  </div>
 
                   <div className="status" />
                 </div>

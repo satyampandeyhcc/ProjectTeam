@@ -27,12 +27,12 @@ router.post("/login", async(req, res) => {
 });
 
 
-router.post("/updateprofile", async (req, res) => {
-  const { imagearr,id } = await req.body;
-  console.log(req.body);
-  console.log("15");
+router.post("/updateverify", async (req, res) => {
+  const { id,status } = await req.body;
+  // console.log(req.body);
+  // console.log("15");
   try {
-    const user = await User.findByIdAndUpdate(id,{imagearr:imagearr});
+    const user = await User.findByIdAndUpdate(id,{ verified:status});
     res.status(200).json({message:"updated"});
   } catch (error) {
     console.log(error);
@@ -40,6 +40,20 @@ router.post("/updateprofile", async (req, res) => {
   }
 });
 
+
+
+router.post("/updateprofile", async (req, res) => {
+  const { imagearr,id } = await req.body;
+  console.log(req.body);
+  console.log("15");
+  try {
+    const user = await User.findByIdAndUpdate(id,{imagearr:imagearr,verified:false});
+    res.status(200).json({message:"updated"});
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error);
+  }
+});
 
 router.get("/getallimages", async(req, res) => {
   // console.log(req.query.id);
@@ -55,6 +69,24 @@ router.get("/getallimages", async(req, res) => {
   }
 
 });
+
+router.get("/status", async(req, res) => {
+  // console.log(req.query.id);
+  try {
+      const id = await req.query.id;
+      const user = await User.findById(id);
+      // console.log(images);
+      // const bookings = await User.find().populate('car')
+      res.send(user.verified);
+      
+  } catch (error) {
+      return res.status(400).json(error);
+  }
+
+});
+
+
+
 
 router.post("/register", async(req, res) => {
 
@@ -137,6 +169,21 @@ router.get("/contacts", async (req, res) => {
   } catch (error) {
     // Handle errors
     console.error("Error fetching contact responses:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+router.get("/allusers", async (req, res) => {
+  try {
+    // Fetch all users from the database
+    const users = await User.find();
+
+    // Respond with the fetched users
+    res.status(200).json(users);
+  } catch (error) {
+    // Handle errors
+    console.error("Error fetching users:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
