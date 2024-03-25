@@ -12,7 +12,7 @@ import { storage } from "../fbconfig";
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { useEffect } from "react";
 // import Footer from "./Footer";
-import contactimg from "../components/images/editimg.jpeg";
+// import contactimg from "../components/images/editimg.jpeg";
 import location from "../components/images/Map Pin.png";
 import mail from "../components/images/Email.png";
 import phone from "../components/images/PhoneCall.png";
@@ -21,6 +21,7 @@ import DefaultLayout from "../components/DefaultLayout";
 import Footer from "../components/Footer";
 import { useSearchParams } from "react-router-dom";
 import { getstatus } from "../redux/actions/userActions";
+import AdminDefaultLayout from "../components/AdminDefaultLayout";
 // import { FaLOcation, FaPhone, FaVoicemail } from 'react-icons/fa';
 const Contact = () => {
 
@@ -69,6 +70,7 @@ const Contact = () => {
   const { loading } = useSelector((state) => state.alertsReducer);
 
   const handleVerify = ()=>{
+    console.log(_id);
     dispatch(VerifySubmit({id:_id,status:status}));
     setstatus(!status);
   }
@@ -76,9 +78,9 @@ const Contact = () => {
   return (
     <>
       <>
-        <DefaultLayout>
+        <AdminDefaultLayout>
           <div className="bg-image-main">
-            <img className="w-100" alt="" src={contactimg} />
+            {/* <img className="w-100" alt="" src={contactimg} /> */}
           </div>
           {/*Section: Contact v.2*/}
           <div className="container px-4 px-lg-0 py-3">
@@ -96,7 +98,7 @@ const Contact = () => {
                         <li className="mb-3">
                         <div
                             className="imgContainer"
-                            style={{ cursor: "pointer" }}
+                            // style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[4]}
@@ -172,7 +174,7 @@ const Contact = () => {
                          
                           <div
                             className="imgContainer"
-                            style={{ cursor: "pointer" }}
+                            // style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[0]}
@@ -190,7 +192,7 @@ const Contact = () => {
                          
                           <div
                             className="imgContainer"
-                            style={{ cursor: "pointer" }}
+                            // style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[1]}
@@ -211,7 +213,7 @@ const Contact = () => {
                           
                           <div
                             className="imgContainer"
-                            style={{ cursor: "pointer" }}
+                            // style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[2]}
@@ -229,7 +231,7 @@ const Contact = () => {
                           
                           <div
                             className="imgContainer"
-                            style={{ cursor: "pointer" }}
+                            // style={{ cursor: "pointer" }}
                           >
                             <img
                               src={imagearr[3]}
@@ -267,7 +269,7 @@ const Contact = () => {
      
           {/*Section: Contact v.2*/}
           {/* <Footer /> */}
-        </DefaultLayout>
+        </AdminDefaultLayout>
         <Footer />
       </>
     </>

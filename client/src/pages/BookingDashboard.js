@@ -7,7 +7,7 @@ import { document } from "postcss";
 
 import { useState } from "react";
 
-import Table from "../components/Table";
+import Table from "../components/BookingTable";
 // import AdminNavbar from "./AdminNavbar";
 // import AdminNavbar2 from "./AdminNavbar2";
 // import Responsesadmin from "./Response2";
@@ -28,13 +28,14 @@ const AdminDashboard = () => {
   const [response, setresponse] = useState(false);
   const [serialNumber, setSerialNumber] = useState(1);
   const [verifieddata, setverifieddata] = useState(0);
+
   const [numberVerified, setnumberVerified] = useState(0);
 
   useEffect(() => {
     // console.log(searchValue);
     const d = data2.filter((element) => {
       return (
-        element.profileName.toLowerCase().substring(0, searchValue.length) ===
+        element.user.profileName.toLowerCase().substring(0, searchValue.length) ===
         searchValue.toLowerCase()
       );
     });
@@ -47,18 +48,18 @@ const AdminDashboard = () => {
 
   const fetchAllUser = async () => {
     try {
-      const response = await fetch("/api/users/allusers");
+      const response = await fetch("/api/bookings/getallbookings");
       if (response.ok) {
         const data = await response.json();
 
         setverifieddata(data);
-
+        console.log(data);
+     
         setnumberVerified(data.reduce((acc,curr)=>{
-              return acc += curr.verified
-        },0));
+          return acc += curr.guideRequired
+    },0));
 
 
-        // console.log(number);
 
         setcopydata(data);
         setdata(data);
@@ -174,7 +175,7 @@ const AdminDashboard = () => {
       /> */}
 
       <AdminDefaultLayout>
-        <p className="dash-heading">User Dashboard</p>
+        <p className="dash-heading">Booking Dashboard</p>
 
         <div className="navbar search-nav navbar-light">
           <div className="container-search">
@@ -216,7 +217,7 @@ const AdminDashboard = () => {
               <div
                 className="card"
                 name="order-placed"
-                onClick={() => handleChange("order-placed")}
+               
               >
                 <div
                   className="card-body"
@@ -225,9 +226,9 @@ const AdminDashboard = () => {
                   <p className="card-title prices">{numberVerified}</p>
                   <p
                     className="card-subtitle mb-2 today-order"
-                    onClick={() => handleChange("order-placed")}
+                   
                   >
-                    Verified User
+                    GuideRequired
                   </p>
                 </div>
                 <div
@@ -269,7 +270,7 @@ const AdminDashboard = () => {
                     className="card-subtitle mb-2 today-order"
                     onClick={() => handleChange("picked")}
                   >
-                    Not Verified User
+                    Not GuideRequired
                   </p>
                 </div>
                 <div

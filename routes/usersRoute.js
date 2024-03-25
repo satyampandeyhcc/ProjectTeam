@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel")
 const Contact = require("../models/contactModel");
-
+const Booking = require("../models/bookingModel");
 
 router.post("/login", async(req, res) => {
 
@@ -48,7 +48,14 @@ router.post("/updateprofile", async (req, res) => {
   console.log("15");
   try {
     const user = await User.findByIdAndUpdate(id,{imagearr:imagearr,verified:false});
+
+
+    user.updatedAt = new Date();
+    await user.save();
     res.status(200).json({message:"updated"});
+
+
+
   } catch (error) {
     console.log(error);
     return res.status(400).json(error);
@@ -177,7 +184,7 @@ router.get("/contacts", async (req, res) => {
 router.get("/allusers", async (req, res) => {
   try {
     // Fetch all users from the database
-    const users = await User.find();
+    const users = await User.find().sort({ updatedAt: -1 });
 
     // Respond with the fetched users
     res.status(200).json(users);
@@ -187,6 +194,21 @@ router.get("/allusers", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+router.get("/allbookingusers", async (req, res) => {
+  try {
+    // Fetch all users from the database
+    const booking = await Booking.find();
+
+    // Respond with the fetched users
+    res.status(200).json(booking);
+  } catch (error) {
+    // Handle errors
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 module.exports = router
 

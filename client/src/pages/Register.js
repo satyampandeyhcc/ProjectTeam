@@ -130,7 +130,7 @@ function Register() {
               rules={[ { required: true, message: "Please input your Email!" },
               { type: 'email', message: 'Please enter a valid email address.' },]}
             >
-              <Input />
+              <Input    />
             </Form.Item>
             <Form.Item
                 name="password"
@@ -141,7 +141,7 @@ function Register() {
                 ]}
               >
                
-              <Input />
+              <Input type='password' />
             </Form.Item>
             <Form.Item
                 name="cpassword"
@@ -153,7 +153,7 @@ function Register() {
                 validateStatus={passwordMatch ? "success" : "error"}
                 help={!passwordMatch && "Passwords do not match."}
               >
-              <Input />
+              <Input type='password' />
             </Form.Item>
 
             <Form.Item

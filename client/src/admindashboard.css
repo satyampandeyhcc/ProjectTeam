@@ -391,7 +391,7 @@
     background: #303030;
     /* color: white; */
     margin: 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
     display: flex;
     flex-direction: row;
     justify-content: center;

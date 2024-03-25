@@ -19,6 +19,7 @@ import "../contact.css";
 import DefaultLayout from "../components/DefaultLayout";
 import Footer from "../components/Footer";
 import { getstatus } from "../redux/actions/userActions";
+import Spinner from "../components/Spinner";
 // import { FaLOcation, FaPhone, FaVoicemail } from 'react-icons/fa';
 const Contact = () => {
 
@@ -63,14 +64,16 @@ const Contact = () => {
     const { name, value } = event.target;
     const file = event.target.files[0];
     const imageref = ref(storage, `images/${file.name}`);
+    dispatch({type: 'LOADING' , payload:true})
     uploadBytes(imageref, file).then((snapshot) => {
+      
       getDownloadURL(snapshot.ref).then((url) => {
         const newArray = [...imagearr];
         newArray[id] = url;
         
         setFormData((prevData) => ({ ...prevData, imagearr: newArray }));
         setimagearr(newArray);
-        
+        dispatch({type: 'LOADING' , payload:false})
         message.success("Updated Successfully!");
         // document.findElementById("save").click();
       });
@@ -95,6 +98,7 @@ const Contact = () => {
           <div className="bg-image-main">
             <img className="w-100" alt="" src={contactimg} />
           </div>
+          {loading && (<Spinner />)}
           {/*Section: Contact v.2*/}
           <div className="container px-4 px-lg-0 py-3">
             <section className="mb-4">

@@ -21,6 +21,7 @@ const stripe = require("stripe")(
 
 router.post("/bookcar", async (req, res) => {
   const { token } = req.body;
+  console.log(req.body);
   try {
     const customer = await stripe.customers.create({
       email: token.email,
@@ -48,6 +49,7 @@ router.post("/bookcar", async (req, res) => {
     if (payment) {
       req.body.transactionId = payment.id;
       const newbooking = new Booking(req.body);
+      // console.log(req.body);
       await newbooking.save();
       const car = await Car.findOne({ _id: req.body.car });
       console.log(req.body.car);
@@ -68,7 +70,8 @@ router.get("/getallbookings", async(req, res) => {
 
     try {
 
-        const bookings = await Booking.find().populate('car')
+        const bookings = await Booking.find().populate('car').populate('user').sort({ createdAt: -1 })
+        // console.log(bookings);
         res.send(bookings)
         
     } catch (error) {
@@ -76,6 +79,9 @@ router.get("/getallbookings", async(req, res) => {
     }
   
 });
+
+
+
 
 
 module.exports = router;

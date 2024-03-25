@@ -17,6 +17,7 @@ import AdminResponse from './pages/AdminResponse';
 import Myprofile from './pages/Myprofile';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminProfile from './pages/AdminProfile';
+import BookingDashboard from './pages/BookingDashboard';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path='/adminlogin' element={<AdminLogin/>}/>
           <Route path='/adminresponse' element={<AdminResponse/>}/>
           <Route path="/admindashboard" element={<AdminDashboard/>}/>
+          <Route path="/bookingdashboard" element={<BookingDashboard/>}/>
 
           <Route path='/adminprofile' element={<AdminProfile />} />
 

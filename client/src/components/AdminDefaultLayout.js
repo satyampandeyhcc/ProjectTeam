@@ -25,6 +25,14 @@ function AdminDefaultLayout(props) {
                   User Account
                 </Link>
                
+                <Link to="/admindashboard" style={{ marginLeft: "20px" }}>
+                  User Dashboard
+                </Link>
+
+                <Link to="/bookingdashboard" style={{ marginLeft: "20px" }}>
+                  Booking Dashboard
+                </Link>
+
                 <Link to="/adminresponse" style={{ marginLeft: "20px" }}>
                   Response
                 </Link>

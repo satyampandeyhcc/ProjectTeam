@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 
 export default function Tablerow(props) {
   const data = props.data;
+  console.log(data.guideRequired);
 
-  // console.log(data);
+  console.log(data);
+  console.log(1223);
+  console.log(data._id)
 
   function formatDateTime12hr(dateString) {
     const date = new Date(dateString);
@@ -45,18 +48,29 @@ export default function Tablerow(props) {
         {props.sno}
       </th>
       <td className="td-red">
-        <Link to={`/adminprofile?id=${data._id}&name=${data.profileName}&email=${data.username}&contact=${data.mobileNumber}&verified=${data.verified}`} style={{ color: "#D97474" }}>
-          {data._id}
+        <Link to={`/adminprofile?id=${data.user._id}&name=${data.user.profileName}&email=${data.user.username}&contact=${data.user.mobileNumber}&verified=${data.user.verified}`} style={{ color: "#D97474" }}>
+          {data.user._id}
         </Link>
       </td>
-      <td className="td-style-maxi">{data.profileName} </td>
-      <td className="td-style-maxi">{data.username}</td>
-      <td className="td-style-maxi">{data.mobileNumber}</td>
+
+      <td className="td-style-maxi">{data.user.profileName} </td>
+      <td className="td-style-maxi">{data._id} </td>
+      <td className="td-style-maxi">{data.transactionId} </td>
+      <td className="td-style-maxi">{data.car?.name}</td>
       <td className="td-style-service">{formatDateTime12hr(data.createdAt)}</td>
-      <td className="td-style-maxi">{formatDateTime12hr(data.updatedAt)}</td>
+      <td className="td-style-maxi">{data.bookedTimeSlots.from}</td>
+      <td className="td-style-maxi">{data.bookedTimeSlots.to}</td>
+      <td className="td-style-maxi">{data.totalHours}</td>
+      <td className="td-style-maxi">{data.totalAmount}</td>
+      <td className="td-style-maxi">{data.car?.rentPerHour}</td>
+      <td className="td-style-maxi">{data.car?.fuelType}</td>
+      <td className="td-style-maxi">{data.guideRequired?"Yes":"NO"}</td>
+
+
+      {/* <td className="td-style-maxi">{formatDateTime12hr(data.updatedAt)}</td> */}
       {/* <td className="td-style-maxi">₹{data.totalAmount}</td> */}
 
-      <td>
+      {/* <td>
         {!data.verified?
         <div className="picked">
             Unverified
@@ -65,7 +79,7 @@ export default function Tablerow(props) {
           Verified
           </div>}
         
-      </td>
+      </td> */}
     </tr>
   );
 }
