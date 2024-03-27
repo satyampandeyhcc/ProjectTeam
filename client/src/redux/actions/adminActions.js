@@ -6,7 +6,7 @@ export const adminLogin=(reqObj)=>async dispatch=>{
     dispatch({type: 'LOADING' , payload:true})
 
     try {
-        const response = await axios.post('/admin/auth/login' , reqObj)
+        const response = await axios.post('https://bikeridingventure.onrender.com/admin/auth/login' , reqObj)
         localStorage.setItem('admin' , JSON.stringify(response.data))
         message.success('Login success')
         dispatch({type: 'LOADING' , payload:false})

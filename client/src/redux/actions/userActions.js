@@ -7,7 +7,7 @@ export const userLogin=(reqObj)=>async dispatch=>{
     console.log(reqObj);
 
     try {
-        const response = await axios.post('/api/users/login' , reqObj)
+        const response = await axios.post('https://bikeridingventure.onrender.com/api/users/login' , reqObj)
         localStorage.setItem('user' , JSON.stringify(response.data))
         message.success('Login success')
         dispatch({type: 'LOADING' , payload:false})
@@ -39,7 +39,7 @@ export const userRegister=(reqObj)=>async dispatch=>{
     // }
     
     try {
-        const checkUsernameResponse = await axios.post("/api/users/checkUsername", {
+        const checkUsernameResponse = await axios.post("https://bikeridingventure.onrender.com/api/users/checkUsername", {
           username: reqObj.username,
         });
     
@@ -83,7 +83,7 @@ export const getAllimages=(id)=>async dispatch=>{
   
     try {
         const params  = {id:id};
-        const response = await axios.get('/api/users/getallimages',{params})
+        const response = await axios.get('https://bikeridingventure.onrender.com/api/users/getallimages',{params})
         dispatch({type: 'GET_ALL_IMAGES', payload:response.data})
         dispatch({type: 'LOADING' , payload:false})
     } catch (error) {
@@ -102,7 +102,7 @@ export const getstatus=(id)=>async dispatch=>{
   
     try {
         const params  = {id:id};
-        const response = await axios.get('/api/users/status',{params})
+        const response = await axios.get('https://bikeridingventure.onrender.com/api/users/status',{params})
         dispatch({type: 'GET_STATUS', payload:response.data})
         dispatch({type: 'LOADING' , payload:false})
     } catch (error) {
@@ -118,7 +118,7 @@ export const getstatus=(id)=>async dispatch=>{
         dispatch({ type: "LOADING", payload: true });
   
         try {
-            const response = await axios.post("/api/users/contact", formData);
+            const response = await axios.post("https://bikeridingventure.onrender.com/api/users/contact", formData);
             if (response.status === 200) {
         message.success("Message sent successfully!");
     } else {
@@ -139,7 +139,7 @@ export const deleteBooking=(reqObj)=>async dispatch=>{
   dispatch({type: 'LOADING' , payload:true})
 
   try {
-       await axios.delete('/api/bookings/deletebooking/'+reqObj._id)
+       await axios.delete('https://bikeridingventure.onrender.com/api/bookings/deletebooking/'+reqObj._id)
      
        dispatch({type: 'LOADING' , payload:false})
        message.success('Booking deleted successfully')
@@ -162,7 +162,7 @@ export const ImageFormSubmit = (formData) => async (dispatch) => {
 
     try {
         console.log(formData);
-        const response = await axios.post("/api/users/updateprofile", formData);
+        const response = await axios.post("https://bikeridingventure.onrender.com/api/users/updateprofile", formData);
         if (response.status === 200) {
     message.success("Profile Updated Successfully!");
 } else {
@@ -181,7 +181,7 @@ export const VerifySubmit = (formData) => async (dispatch) => {
 
     try {
         console.log(formData);
-        const response = await axios.post("/api/users/updateverify", formData);
+        const response = await axios.post("https://bikeridingventure.onrender.com/api/users/updateverify", formData);
         if (response.status === 200) {
     message.success("Verification status changed!");
 } else {
