@@ -11,6 +11,19 @@ app.use('/api/users/' , require('./routes/usersRoute'))
 app.use('/api/bookings/' , require('./routes/bookingsRoute.js'))
 // app.use('/api/Contact/' , require('./routes/contactRoute'))
 app.use('/admin/auth', adminAuthRoute);
+const cors = require('cors');  
+app.use(cors());
+app.use((req, res, next) => {
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+app.use(express.json());
 
 const path = require('path')
 
