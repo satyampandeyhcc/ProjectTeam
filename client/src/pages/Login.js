@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { userRegister } from '../redux/actions/userActions'
 //also use <link> for styles
+import { FcGoogle } from "react-icons/fc";
 // ..
 AOS.init();
 function Login() {
@@ -113,7 +114,8 @@ function Login() {
                              <Input type='password'/>
                          </Form.Item>
 
-                         <button className='btn1 mt-2'>Signin</button>
+                         <button className='btn1 mt-2'>Signin</button> &nbsp;
+                         <FcGoogle style={{cursor:"pointer"}} onClick={handlegoogle}/>
 
                          <hr />
 
@@ -123,8 +125,8 @@ function Login() {
                        
 
                     </Form>
-
-                    <button onClick={handlegoogle} className="btn1 mt-2 mb-3">Signin with Google</button>
+                    
+                    {/* <button onClick={handlegoogle} className="btn1 mt-2 mb-3">Signin with Google</button> */}
                 </Col>
 
             </Row>
