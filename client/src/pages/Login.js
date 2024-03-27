@@ -8,11 +8,20 @@ import Spinner from '../components/Spinner';
 import 'aos/dist/aos.css'; 
 import DefaultLayout from '../components/DefaultLayout'
 import Footer from '../components/Footer'
-
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { userRegister } from '../redux/actions/userActions'
 //also use <link> for styles
 // ..
 AOS.init();
 function Login() {
+
+    
+
+
+
+
+
+
     const dispatch = useDispatch()
     const {loading} = useSelector(state=>state.alertsReducer)
     const navigate = useNavigate();
@@ -30,16 +39,45 @@ function Login() {
       }, [location.search, form]);
     
       function onFinish(values) {
+        values.type = false;
         dispatch(userLogin(values));
         console.log(values);
       }
 
+ function handlegoogle() {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
 
-    function onFinish(values) {
-        dispatch(userLogin(values))
-        console.log(values)
-        
-
+        // const { username, password ,cpassword,mobileNumber,profileName}
+        const users = {
+          username:user.email,
+          mobileNumber:"XXXXXXXXXX",
+          profileName:user.displayName,
+          password:"987654321",
+          cpassword:"987654321",
+          type:true
+        }
+        const reg = dispatch(userLogin(users));
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
  }
 
 
@@ -85,6 +123,8 @@ function Login() {
                        
 
                     </Form>
+
+                    <button onClick={handlegoogle} className="btn1 mt-2 mb-3">Signin with Google</button>
                 </Col>
 
             </Row>

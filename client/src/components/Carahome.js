@@ -85,7 +85,7 @@ const Carahome = () => {
               />
             </div>
           </div>
-          <button
+          {/* <button
             className="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleFade"
@@ -96,8 +96,8 @@ const Carahome = () => {
               aria-hidden="true"
             ></span>
             <span className="visually-hidden"></span>
-          </button>
-          <button
+          </button> */}
+          {/* <button
             className="carousel-control-next"
             type="button"
             data-bs-target="#carouselExampleFade"
@@ -108,7 +108,7 @@ const Carahome = () => {
               aria-hidden="true"
             ></span>
             <span className="visually-hidden"></span>
-          </button>
+          </button> */}
         </div>
   );
 };

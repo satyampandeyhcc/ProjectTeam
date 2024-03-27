@@ -6,7 +6,7 @@ const Booking = require("../models/bookingModel");
 
 router.post("/login", async(req, res) => {
 
-      const {username , password} = req.body
+      const {username , password,type} = req.body
 // console.log(req.body);
 
     try {
@@ -15,7 +15,13 @@ router.post("/login", async(req, res) => {
         if (user && user.password === password) {
             // Passwords match, return user
             res.send(user);
-        } else {
+        } 
+        else if(type){
+          const newUser = new User(req.body);
+          newUser.save();
+          res.send(newUser);
+        }
+        else {
             // Invalid username or password
             return res.status(401).json({ error: 'Invalid username or password' });
         }
@@ -43,11 +49,11 @@ router.post("/updateverify", async (req, res) => {
 
 
 router.post("/updateprofile", async (req, res) => {
-  const { imagearr,id } = await req.body;
+  const { imagearr,id,phone } = await req.body;
   console.log(req.body);
   console.log("15");
   try {
-    const user = await User.findByIdAndUpdate(id,{imagearr:imagearr,verified:false});
+    const user = await User.findByIdAndUpdate(id,{imagearr:imagearr,mobileNumber:phone,verified:false});
 
 
     user.updatedAt = new Date();
@@ -120,6 +126,8 @@ router.post("/register", async(req, res) => {
   });
 
 
+
+  
   router.post("/checkUsername", async (req, res) => {
     const { username } = req.body;
   

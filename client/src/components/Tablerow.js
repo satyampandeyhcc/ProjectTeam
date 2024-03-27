@@ -5,24 +5,15 @@ import { Link } from "react-router-dom";
 
 export default function Tablerow(props) {
   const data = props.data;
-
-  // console.log(data);
-
   function formatDateTime12hr(dateString) {
     const date = new Date(dateString);
-  
-    // Extract year, month, day, hour, and minute from the date object
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero indexed, so adding 1
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     let hour = date.getHours();
     const minute = String(date.getMinutes()).padStart(2, '0');
     const period = hour >= 12 ? 'PM' : 'AM';
-  
-    // Convert hour to 12-hour format
     hour = hour % 12 || 12;
-  
-    // Format the date as "year-month-day hour:minute AM/PM"
     return `${year}-${month}-${day}  ${hour}:${minute} ${period}`;
   }
   const [selectedValue, setSelectedValue] = useState(data.status);
@@ -66,6 +57,7 @@ export default function Tablerow(props) {
           </div>}
         
       </td>
+      
     </tr>
   );
 }

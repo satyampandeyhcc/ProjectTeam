@@ -55,9 +55,8 @@ const FirstHome = () => {
 
 
 .h1-text-home{
-    z-index: 2;
+    // z-index: 2;
     color: #e9d2b8;
-    // position: absolute;
     margin-top: -558px;
     font-size: 4vw;
     font-weight: 900;

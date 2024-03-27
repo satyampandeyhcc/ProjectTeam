@@ -35,8 +35,9 @@ const AdminDashboard = () => {
     // console.log(searchValue);
     const d = data2.filter((element) => {
       return (
-        element.user.profileName.toLowerCase().substring(0, searchValue.length) ===
-        searchValue.toLowerCase()
+        element.user.profileName
+          .toLowerCase()
+          .substring(0, searchValue.length) === searchValue.toLowerCase()
       );
     });
     setcopydata2(d);
@@ -54,12 +55,12 @@ const AdminDashboard = () => {
 
         setverifieddata(data);
         console.log(data);
-     
-        setnumberVerified(data.reduce((acc,curr)=>{
-          return acc += curr.guideRequired
-    },0));
 
-
+        setnumberVerified(
+          data.reduce((acc, curr) => {
+            return (acc += curr.guideRequired);
+          }, 0)
+        );
 
         setcopydata(data);
         setdata(data);
@@ -75,11 +76,16 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
+    setnumberVerified(
+      copydata.reduce((acc, curr) => {
+        return (acc += curr.guideRequired);
+      }, 0)
+    );
+  }, [copydata]);
+
+  useEffect(() => {
     fetchAllUser();
   }, []);
-
-
-
 
   let componentsArr = [];
   for (let i = 1; i <= Math.ceil(copydata.length / 3); i++) {
@@ -98,11 +104,13 @@ const AdminDashboard = () => {
   };
 
   const handleChange = (x) => {
-    // const d = copydata.filter((element) => {
-    //   return element.date === getFormattedDate() && element.status === x;
-    // });
-    // setdata(d);
-    // setcurrentindex(0);
+    const d = copydata.filter((element) => {
+      return element.guideRequired === x;
+
+      //  element.date === getFormattedDate() &&
+    });
+    setdata(d);
+    setcurrentindex(0);
   };
 
   useEffect(() => {
@@ -133,36 +141,28 @@ const AdminDashboard = () => {
     return `${year}-${month}-${day}`;
   }
 
-  //   useEffect(() => {
-  //     if (data.length) {
-  //       settoday(
-  //         data.reduce((acc, element) => {
-  //           return (
-  //             acc +
-  //             (element.date === getFormattedDate() &&
-  //               element.status === "order-placed")
-  //           );
-  //         }, 0)
-  //       );
-  //       setpickup(
-  //         data.reduce((acc, element) => {
-  //           return (
-  //             acc +
-  //             (element.date === getFormattedDate() && element.status === "picked")
-  //           );
-  //         }, 0)
-  //       );
-  //       setdrop(
-  //         data.reduce((acc, element) => {
-  //           return (
-  //             acc +
-  //             (element.date === getFormattedDate() &&
-  //               element.status === "out-for-delivery")
-  //           );
-  //         }, 0)
-  //       );
-  //     }
-  //   }, [copydata]);
+  useEffect(() => {
+    if (data.length) {
+      settoday(
+        data.reduce((acc, element) => {
+          return (
+            acc +
+            // element.date === getFormattedDate() &&
+            (element.status === "picked")
+          );
+        }, 0)
+      );
+      setpickup(
+        data.reduce((acc, element) => {
+          return (
+            acc +
+            // element.date === getFormattedDate() &&
+            (element.status === "out-for-delivery")
+          );
+        }, 0)
+      );
+    }
+  }, [copydata]);
 
   return (
     <>
@@ -216,25 +216,19 @@ const AdminDashboard = () => {
             <div className="cards" style={{ display: "flex" }}>
               <div
                 className="card"
-                name="order-placed"
-               
+                name="picked"
+                onClick={() => handleChange(true)}
               >
-                <div
-                  className="card-body"
-                  onClick={() => handleChange("order-placed")}
-                >
+                <div className="card-body" onClick={() => handleChange(true)}>
                   <p className="card-title prices">{numberVerified}</p>
                   <p
                     className="card-subtitle mb-2 today-order"
-                   
+                    onClick={() => handleChange(true)}
                   >
                     GuideRequired
                   </p>
                 </div>
-                <div
-                  className="card-msg"
-                  onClick={() => handleChange("order-placed")}
-                >
+                <div className="card-msg" onClick={() => handleChange(true)}>
                   <svg
                     width="64"
                     height="64"
@@ -258,25 +252,21 @@ const AdminDashboard = () => {
               </div>
               <div
                 className="card"
-                name="picked"
-                onClick={() => handleChange("picked")}
+                name="out-for-delivery"
+                onClick={() => handleChange(false)}
               >
-                <div
-                  className="card-body"
-                  onClick={() => handleChange("picked")}
-                >
-                  <p className="card-title prices">{data.length - numberVerified}</p>
+                <div className="card-body" onClick={() => handleChange(false)}>
+                  <p className="card-title prices">
+                    {copydata.length - numberVerified}
+                  </p>
                   <p
                     className="card-subtitle mb-2 today-order"
-                    onClick={() => handleChange("picked")}
+                    onClick={() => handleChange(false)}
                   >
                     Not GuideRequired
                   </p>
                 </div>
-                <div
-                  className="card-msg"
-                  onClick={() => handleChange("picked")}
-                >
+                <div className="card-msg" onClick={() => handleChange(false)}>
                   <svg
                     width="64"
                     height="64"

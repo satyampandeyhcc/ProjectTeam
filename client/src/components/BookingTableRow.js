@@ -2,8 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { Popconfirm } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { deleteBooking } from "../redux/actions/bookingActions";
 export default function Tablerow(props) {
+  const dispatch = useDispatch()
   const data = props.data;
   console.log(data.guideRequired);
 
@@ -65,21 +69,34 @@ export default function Tablerow(props) {
       <td className="td-style-maxi">{data.car?.rentPerHour}</td>
       <td className="td-style-maxi">{data.car?.fuelType}</td>
       <td className="td-style-maxi">{data.guideRequired?"Yes":"NO"}</td>
+      <td>
+      <Popconfirm
+                      title="Are you sure to delete this bike?"
+                      onConfirm={()=>{dispatch(deleteBooking({_id : data._id}))}}
+                      
+                      okText="Yes"
+                      cancelText="No"
+                    >
+                      <DeleteOutlined
+                        style={{ color: "red", cursor: "pointer" }}
+                      />
+                    </Popconfirm>
+      </td>
 
 
       {/* <td className="td-style-maxi">{formatDateTime12hr(data.updatedAt)}</td> */}
       {/* <td className="td-style-maxi">₹{data.totalAmount}</td> */}
 
-      {/* <td>
-        {!data.verified?
+      <td>
+        {!data.guideRequired?
         <div className="picked">
-            Unverified
+            GuideRequired
         </div>:
         <div className="out-for-delivery">
-          Verified
+          Not GuideRequired
           </div>}
         
-      </td> */}
+      </td>
     </tr>
   );
 }

@@ -27,25 +27,33 @@ const Contact = () => {
   useEffect(() => {
     if(profileImage.length!==0)
       setimagearr(profileImage);
+      // console.log(imagearr);
   }, [profileImage])
   
   const [imagearr, setimagearr] = useState(profileImage);
 
   const { _id,profileName,mobileNumber,username } = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const { verified } = useSelector((state) => state.statusView);
+  const [phoneNo, setphoneNo] = useState(mobileNumber);
   
   useEffect(() => {
     dispatch(getstatus(JSON.parse(localStorage.getItem("user"))._id));
-    console.log(verified);
+    // console.log(verified);
   }, []);
 
-
-  console.log(_id);
+  // console.log(imagearr);
+  // console.log(_id);
 
   const [formData, setFormData] = useState({
     id: _id,
     imagearr: imagearr,
   });
+
+  useEffect(() => {
+    setFormData({id:_id,imagearr:imagearr});
+  }, [imagearr])
+  
 
   useEffect(() => {
     dispatch(getAllimages(_id));
@@ -60,6 +68,7 @@ const Contact = () => {
  
 
   const handleChange = (id, event) => {
+    event.preventDefault();
     console.log(id);
     const { name, value } = event.target;
     const file = event.target.files[0];
@@ -81,13 +90,20 @@ const Contact = () => {
   };
 
   const handleSubmit = async (event) => {
+    console.log(formData);
     event.preventDefault();
     const check = (id)=>{
       return imagearr[id]!=="https://wumbo.net/symbols/plus/feature.png";
     }
-    if(check(0) && check(1) && check(2) && check(3))
+    if(check(0) && check(1) && check(2) && check(3) && (phoneNo!=="XXXXXXXXXX" && phoneNo.length===10))
+     { formData.phone = phoneNo;
+      localStorage.setItem("user",JSON.stringify({...user,mobileNumber:phoneNo}));
       dispatch(ImageFormSubmit(formData));
-    else
+  }
+  else if(phoneNo.length!==10){
+    message.error("Please enter 10 digit PhoneNo.")
+  }
+      else
       message.info("Please fill all details");
   };
 
@@ -162,7 +178,7 @@ const Contact = () => {
                       </Link>
 
                       <hr />
-                      <Link
+                      <div
                         className="text-decoration-none "
                         to="tel:+9177079-13579"
                       >
@@ -172,11 +188,11 @@ const Contact = () => {
                             alt=""
                             src={phone}
                           />
-                          <p className="text-decoration-none text-dark">
-                            {mobileNumber}
-                          </p>
+                          <input onChange={(e)=>setphoneNo(e.target.value)} value={phoneNo} className="text-decoration-none text-dark" placeholder="Enter Your Mobile Number"/>
+                            {/* {mobileNumber} */}
+                          {/* </> */}
                         </li>
-                      </Link>
+                      </div>
                     </ul>
                   </div>
                 </div>

@@ -21,6 +21,26 @@ export const bookCar = (reqObj) => async (dispatch) => {
   }
 };
 
+export const deleteBooking=(reqObj)=>async dispatch=>{
+
+  dispatch({type: 'LOADING' , payload:true})
+
+  try {
+       await axios.delete('/api/bookings/deletebooking/'+reqObj._id)
+     
+       dispatch({type: 'LOADING' , payload:false})
+       message.success('Booking deleted successfully')
+       setTimeout(() => {
+          window.location.reload()
+       }, 500);
+  } catch (error) {
+      console.log(error)
+      dispatch({type: 'LOADING' , payload:false})
+  }
+}
+
+
+
 export const getAllBookings=()=>async dispatch=>{
 
   dispatch({type: 'LOADING' , payload:true})

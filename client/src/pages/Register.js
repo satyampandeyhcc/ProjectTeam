@@ -10,7 +10,12 @@ import DefaultLayout from "../components/DefaultLayout";
 import Footer from "../components/Footer";
 // ..
 AOS.init()
+
 function Register() {
+ 
+
+
+
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -30,10 +35,11 @@ function Register() {
   
     async function onFinish(values) {
       try {
-        await dispatch(userRegister({ ...values, mobileNumber,profileName }));
+        const reg = await dispatch(userRegister({ ...values, mobileNumber,profileName }));
         console.log(values);
   
         // Redirect to login page with user credentials as query parameters
+        if(reg!==false)
         navigate(`/login?username=${values.username}&password=${values.password}`);
       } catch (error) {
         console.error("Registration failed", error);
@@ -168,6 +174,7 @@ function Register() {
             </Form.Item>
 
             <button className="btn1 mt-2 mb-3">Register</button>
+           
             <br />
 
             <Link to="/login">Click Here to Login</Link>

@@ -4,6 +4,7 @@ import {message} from 'antd'
 export const userLogin=(reqObj)=>async dispatch=>{
     
     dispatch({type: 'LOADING' , payload:true})
+    console.log(reqObj);
 
     try {
         const response = await axios.post('/api/users/login' , reqObj)
@@ -45,8 +46,8 @@ export const userRegister=(reqObj)=>async dispatch=>{
         if (checkUsernameResponse.data.exists) {
           // If the username exists, reject the registration and display an error message
           message.error("Username is already taken");
-          dispatch({ type: "loading", payload: false });
-          return;
+          dispatch({ type: "LOADING", payload: false });
+          return false;
         }
     
         // If the username is available, proceed with the registration process
@@ -58,7 +59,7 @@ export const userRegister=(reqObj)=>async dispatch=>{
           window.location.href = "/login";
         }, 500);
     
-        dispatch({ type: "loading", payload: false });
+        dispatch({ type: "LOADING", payload: false });
 
     }
 
@@ -131,6 +132,31 @@ export const getstatus=(id)=>async dispatch=>{
 }
 }
 
+
+
+export const deleteBooking=(reqObj)=>async dispatch=>{
+
+  dispatch({type: 'LOADING' , payload:true})
+
+  try {
+       await axios.delete('/api/bookings/deletebooking/'+reqObj._id)
+     
+       dispatch({type: 'LOADING' , payload:false})
+       message.success('Booking deleted successfully')
+       setTimeout(() => {
+          window.location.reload()
+       }, 500);
+  } catch (error) {
+      console.log(error)
+      dispatch({type: 'LOADING' , payload:false})
+  }
+}
+
+
+
+
+
+
 export const ImageFormSubmit = (formData) => async (dispatch) => {
     dispatch({ type: "LOADING", payload: true });
 
@@ -138,7 +164,7 @@ export const ImageFormSubmit = (formData) => async (dispatch) => {
         console.log(formData);
         const response = await axios.post("/api/users/updateprofile", formData);
         if (response.status === 200) {
-    message.success("Message sent successfully!");
+    message.success("Profile Updated Successfully!");
 } else {
     message.error("Failed to send message");
 }
