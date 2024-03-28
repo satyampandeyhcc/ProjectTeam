@@ -37,7 +37,7 @@ function Register() {
       try {
         const reg = await dispatch(userRegister({ ...values, mobileNumber,profileName }));
         console.log(values.username);
-        const response = await fetch('/api/users/welcomeSendEmail', {
+        const response = await fetch('https://bikeridingventure.onrender.com/api/users/welcomeSendEmail', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

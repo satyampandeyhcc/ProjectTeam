@@ -1,10 +1,19 @@
 import axios from "axios";
 import { message } from "antd";
+
+const api = axios.create({
+  baseURL: "https://bikeridingventure.onrender.com/",
+  // baseURL: "http://localhost:5000",
+});
+
 export const bookCar = (reqObj) => async (dispatch) => {
+
+
+
   dispatch({ type: "LOADING", payload: true });
 
   try {
-     await axios.post("/api/bookings/bookcar" , reqObj);
+     await api.post("/api/bookings/bookcar" , reqObj);
      console.log(reqObj);
 
     dispatch({ type: "LOADING", payload: false });
@@ -26,7 +35,7 @@ export const deleteBooking=(reqObj)=>async dispatch=>{
   dispatch({type: 'LOADING' , payload:true})
 
   try {
-       await axios.delete('/api/bookings/deletebooking/'+reqObj._id)
+       await api.delete('/api/bookings/deletebooking/'+reqObj._id)
      
        dispatch({type: 'LOADING' , payload:false})
        message.success('Booking deleted successfully')
@@ -46,7 +55,7 @@ export const getAllBookings=()=>async dispatch=>{
   dispatch({type: 'LOADING' , payload:true})
 
   try {
-      const response = await axios.get('/api/bookings/getallbookings')
+      const response = await api.get('/api/bookings/getallbookings')
       dispatch({type: 'GET_ALL_BOOKINGS', payload:response.data})
       dispatch({type: 'LOADING' , payload:false})
   } catch (error) {

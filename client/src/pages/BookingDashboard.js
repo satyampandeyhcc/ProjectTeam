@@ -49,7 +49,7 @@ const AdminDashboard = () => {
 
   const fetchAllUser = async () => {
     try {
-      const response = await fetch("/api/bookings/getallbookings");
+      const response = await fetch("https://bikeridingventure.onrender.com/api/bookings/getallbookings");
       if (response.ok) {
         const data = await response.json();
 

@@ -47,7 +47,7 @@ const AdminDashboard = () => {
 
   const fetchAllUser = async () => {
     try {
-      const response = await fetch("/api/users/allusers");
+      const response = await fetch("https://bikeridingventure.onrender.com/api/users/allusers");
       if (response.ok) {
         const data = await response.json();
 

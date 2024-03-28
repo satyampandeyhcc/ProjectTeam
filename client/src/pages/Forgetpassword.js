@@ -29,7 +29,7 @@ function ForgetPassword() {
       console.log(email,password);
       dispatch({type: 'LOADING' , payload:true})
       try {
-        const response = await fetch('/api/users/passChange', {
+        const response = await fetch('https://bikeridingventure.onrender.com/api/users/passChange', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ function ForgetPassword() {
         // e.preventDefault();
         dispatch({type: 'LOADING' , payload:true})
         try {
-          const response = await fetch('/api/users/sendEmail', {
+          const response = await fetch('https://bikeridingventure.onrender.com/api/users/sendEmail', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ function ForgetPassword() {
       dispatch({type: 'LOADING' , payload:true})
       console.log(email);
       try {
-        const response = await fetch('/api/users/verify', {
+        const response = await fetch('https://bikeridingventure.onrender.com/api/users/verify', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
