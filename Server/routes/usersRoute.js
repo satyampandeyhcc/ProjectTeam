@@ -3,33 +3,104 @@ const router = express.Router();
 const User = require("../models/userModel")
 const Contact = require("../models/contactModel");
 const Booking = require("../models/bookingModel");
+const bcrypt = require('bcryptjs');
+const { sendEmail } = require("../Middleware/sendEmail");
+const getOTPByEmail = require("../Controllers/OtpFetch.js");
+const { welcomeSendEmail } = require("../Middleware/welcome.js");
+// router.post("/login", async(req, res) => {
 
-router.post("/login", async(req, res) => {
-
-      const {username , password,type} = req.body
+//       const {username , password,type} = req.body
 // console.log(req.body);
 
-    try {
-        const user = await User.findOne({ username });
-        // console.log(user);
-        if (user && user.password === password) {
-            // Passwords match, return user
-            res.send(user);
-        } 
-        else if(type){
-          const newUser = new User(req.body);
-          newUser.save();
-          res.send(newUser);
-        }
-        else {
-            // Invalid username or password
-            return res.status(401).json({ error: 'Invalid username or password' });
-        }
-    } catch (error) {
-        console.error("Error occurred:", error);
-        return res.status(500).json({ error: 'Internal Server Error' });
-    }
+//     try {
+//         const user = await User.findOne({ username });
+//         // console.log(user);
+//         if (user && user.password === password) {
+//             // Passwords match, return user
+//             res.send(user);
+//         } 
+//         else if(type){
+//           const newUser = new User(req.body);
+//           newUser.save();
+//           console.log(1232221)
+//           res.send(newUser);
+//         }
+//         else {
+//             // Invalid username or password
+//             return res.status(401).json({ error: 'Invalid username or password' });
+//         }
+//     } catch (error) {
+//         console.error("Error occurred:", error);
+//         return res.status(500).json({ error: 'Internal Server Error' });
+//     }
   
+// });
+
+
+router.post("/register", async(req, res) => {
+  const { username, password, cpassword, mobileNumber, profileName } = req.body;
+
+  try {
+    const existingUser = await User.findOne({ username });
+
+    if (existingUser) {
+      console.log("Username is already taken");
+      return res.status(409).json({ error: "Username is already taken." });
+    }
+
+    // Hash the password and confirm password
+    const hashedPassword = await bcrypt.hash(password, 10); // 10 is the saltRounds
+    const hashedConfirmPassword = await bcrypt.hash(cpassword, 10); // 10 is the saltRounds
+
+    const newUser = new User({ username, password: hashedPassword, cpassword: hashedConfirmPassword, mobileNumber, profileName });
+
+    await newUser.save();
+
+    return res.status(201).json({ message: "Registration successful." });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Something went wrong." });
+  }
+});
+
+router.post("/login", async(req, res) => {
+  const {username , password,type} = req.body;
+  console.log(req.body);
+
+  try {
+    const user = await User.findOne({ username });
+
+    if (user) {
+      // Compare hashed password
+      if(type){
+         res.send(user);
+         return;
+      }
+
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      
+      if (passwordMatch) {
+        res.send(user);
+      } else {
+        return res.status(401).json({ error: 'Invalid username or password' });
+      }
+  }
+     else if (type) {
+      // Hash the password before saving
+      const hashedPassword = await bcrypt.hash(password, 10); // 10 is the saltRounds
+
+      const newUser = new User({ ...req.body, password: hashedPassword });
+      console.log(newUser);
+      await newUser.save();
+      
+      res.send(newUser);
+    } else {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+  } catch (error) {
+    console.error("Error occurred:", error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 
@@ -101,29 +172,29 @@ router.get("/status", async(req, res) => {
 
 
 
-router.post("/register", async(req, res) => {
+// router.post("/register", async(req, res) => {
 
-  const { username, password ,cpassword,mobileNumber,profileName} = req.body;
+//   const { username, password ,cpassword,mobileNumber,profileName} = req.body;
   
-  console.log(req.body);
-    try {
-      const existingUser = await User.findOne({ username });
+//   console.log(req.body);
+//     try {
+//       const existingUser = await User.findOne({ username });
   
-      if (existingUser) {
-        console.log("Username is already taken");
-        return res.status(409).json({ error: "Username is already taken." });
-      }
+//       if (existingUser) {
+//         console.log("Username is already taken");
+//         return res.status(409).json({ error: "Username is already taken." });
+//       }
   
-      const newUser = new User({ username, password ,cpassword ,mobileNumber,profileName});
+//       const newUser = new User({ username, password ,cpassword ,mobileNumber,profileName});
   
-      await newUser.save();
+//       await newUser.save();
   
-      return res.status(201).json({ message: "Registration successful." });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: "Something went wrong." });
-    }
-  });
+//       return res.status(201).json({ message: "Registration successful." });
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).json({ error: "Something went wrong." });
+//     }
+//   });
 
 
 
@@ -216,6 +287,60 @@ router.get("/allbookingusers", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+
+
+
+
+
+router.put("/passChange", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Find the user by username
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Update the user's password
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(202).json({ message: 'Password updated successfully!' });
+  } catch (error) {
+    console.error('Update failed:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.post("/sendEmail", sendEmail);
+router.post("/welcomeSendEmail", welcomeSendEmail);
+
+router.post("/verify" , getOTPByEmail)
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router

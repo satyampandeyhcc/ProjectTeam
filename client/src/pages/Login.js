@@ -62,8 +62,8 @@ function Login() {
           username:user.email,
           mobileNumber:"XXXXXXXXXX",
           profileName:user.displayName,
-          password:"987654321",
-          cpassword:"987654321",
+          password:"$2a$10$UjCEhtdnKn.bnk8uVPERDunvx9HLZt.UyDwkhY58/YaW/4KE33ywe",
+          cpassword:"$2a$10$JLfozFH85oyWYy1KrYTcBu3cCpFjRCAZwQGIXx2cF4hk2xqpckdqu",
           type:true
         }
         const reg = dispatch(userLogin(users));
@@ -115,10 +115,16 @@ function Login() {
                          </Form.Item>
 
                          <button className='btn1 mt-2'>Signin</button> &nbsp;
-                         <FcGoogle style={{cursor:"pointer"}} onClick={handlegoogle}/>
+                         <FcGoogle style={{cursor:"pointer"  ,
+                        width: "74px",
+                        height: "38px"}} onClick={handlegoogle}/>
 
                          <hr />
-
+                         {/* <h4></h4> */}
+            <Link to={'/forgot-pass'}>
+           Forgot password?
+            </Link>
+            <br></br>
                          <Link to='/register'>Don't Have An Account Create One</Link><br/><br/>
                          <Link to='/adminlogin'>Signin As Admin</Link>
                          

@@ -11,7 +11,7 @@ const Responses = () => {
 
   const fetchResponses = async () => {
     try {
-      const response = await fetch("https://bikeridingventure.onrender.com/api/users/contacts");
+      const response = await fetch("/api/users/contacts");
       if (response.ok) {
         const data = await response.json();
         setResp(data);

@@ -18,7 +18,9 @@ import Myprofile from './pages/Myprofile';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminProfile from './pages/AdminProfile';
 import BookingDashboard from './pages/BookingDashboard';
-
+// import EmailOtpForm from './pages/ForgotPass';
+import ForgetPassword from './pages/Forgetpassword';
+// import ConfirmPassword from './pages/ConfirmPassword';
 function App() {
   return (
     <div className="App">
@@ -35,7 +37,9 @@ function App() {
           <Route path='/admin' element={<AdminHome />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/myprofile' element={<Myprofile />} />
-
+          <Route path='/forgot-pass' element={<ForgetPassword/>} />
+          {/* <Route path='/forgot-pass' element={<EmailOtpForm />} /> */}
+          {/* <Route path='/confirm-pass' element={<ConfirmPassword/>} /> */}
 
 
           <Route path='/adminlogin' element={<AdminLogin/>}/>
@@ -44,7 +48,7 @@ function App() {
           <Route path="/bookingdashboard" element={<BookingDashboard/>}/>
 
           <Route path='/adminprofile' element={<AdminProfile />} />
-
+          
         </Routes>
       </BrowserRouter>
     </div>

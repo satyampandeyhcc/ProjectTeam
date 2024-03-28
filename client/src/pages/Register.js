@@ -36,11 +36,18 @@ function Register() {
     async function onFinish(values) {
       try {
         const reg = await dispatch(userRegister({ ...values, mobileNumber,profileName }));
-        console.log(values);
+        console.log(values.username);
+        const response = await fetch('/api/users/welcomeSendEmail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: values.username }),
+        });
   
         // Redirect to login page with user credentials as query parameters
-        if(reg!==false)
-        navigate(`/login?username=${values.username}&password=${values.password}`);
+        // if(reg!==false)
+        // navigate(`/login?username=${values.username}&password=${values.password}`);
       } catch (error) {
         console.error("Registration failed", error);
       }

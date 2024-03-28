@@ -4,9 +4,9 @@ import {message} from 'antd'
 export const adminLogin=(reqObj)=>async dispatch=>{
     
     dispatch({type: 'LOADING' , payload:true})
-
+    // https://bikeridingventure.onrender.com
     try {
-        const response = await axios.post('https://bikeridingventure.onrender.com/admin/auth/login' , reqObj)
+        const response = await axios.post('/admin/auth/login' , reqObj)
         localStorage.setItem('admin' , JSON.stringify(response.data))
         message.success('Login success')
         dispatch({type: 'LOADING' , payload:false})
