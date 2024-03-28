@@ -6,7 +6,15 @@ const cors = require('cors');
 
 app.use(express.json());
 app.use(cors());
-
+app.use(
+    cors({
+      origin: "*",
+      methods: ["GET", "POST"],
+      allowedHeaders: ["Content-Type"],
+    })
+  );
+  
+  
 const adminAuthRoute = require('./routes/adminAuthRoute');
 
 app.use('/api/cars/' , require('./routes/bikesRoute'))
