@@ -102,7 +102,7 @@ const Caraousalserv = () => {
             <img src={img10} alt="ueis" />
 
             <div id="cont">
-              <p>Advanced Safety Equipment</p>
+              <p>Advanced Safety</p>
             </div>
           </div>
         </Item>

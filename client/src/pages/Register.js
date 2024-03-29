@@ -35,7 +35,7 @@ function Register() {
   
     async function onFinish(values) {
       try {
-      await dispatch(userRegister({ ...values, mobileNumber,profileName }));
+     const user= await dispatch(userRegister({ ...values, mobileNumber,profileName }));
         console.log(values.username);
         const response = await fetch('https://bikeridingventure.onrender.com/api/users/welcomeSendEmail', {
           method: 'POST',
@@ -46,7 +46,7 @@ function Register() {
         });
   
         // Redirect to login page with user credentials as query parameters
-      
+      if(user)
         navigate(`/login?username=${values.username}&password=${values.password}`);
       } catch (error) {
         console.error("Registration failed", error);
