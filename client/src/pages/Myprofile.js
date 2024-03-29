@@ -42,6 +42,11 @@ const Contact = () => {
     // console.log(verified);
   }, []);
 
+  useEffect(() => {
+    setdisable(verified);
+  }, [verified]);
+  
+
   // console.log(imagearr);
   // console.log(_id);
 
@@ -59,7 +64,7 @@ const Contact = () => {
     dispatch(getAllimages(_id));
   }, []);
   
-
+  const [disable, setdisable] = useState(verified);
 
   const dispatch = useDispatch();
 
@@ -83,6 +88,8 @@ const Contact = () => {
         setFormData((prevData) => ({ ...prevData, imagearr: newArray }));
         setimagearr(newArray);
         dispatch({type: 'LOADING' , payload:false})
+        // dispatch(getstatus(JSON.parse(localStorage.getItem("user"))._id))
+        setdisable(false);
         message.success("Updated Successfully!");
         // document.findElementById("save").click();
       });
@@ -154,7 +161,7 @@ const Contact = () => {
                            {profileName}
                           </p>
                           <p className="text-decoration-none text-dark">
-                           {verified?"Verified":"Not Verified"}
+                           {disable?"Verified":"Not Verified"}
                           </p>
                         </li>
                       </Link>
@@ -338,6 +345,7 @@ const Contact = () => {
                         type="submit"
                         id="save"
                         // hidden
+                        disabled={disable}
                       >
                         Save Profile
                       </button>
