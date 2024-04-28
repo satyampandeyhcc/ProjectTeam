@@ -68,7 +68,24 @@ export default function Tablerow(props) {
       <td className="td-style-maxi">{data.totalAmount}</td>
       <td className="td-style-maxi">{data.car?.rentPerHour}</td>
       <td className="td-style-maxi">{data.car?.fuelType}</td>
-      <td className="td-style-maxi">{data.guideRequired?"Yes":"NO"}</td>
+      {/* <td className="td-style-maxi">{data.guideRequired?"Yes":"NO"}</td> */}
+     
+
+
+      {/* <td className="td-style-maxi">{formatDateTime12hr(data.updatedAt)}</td> */}
+      {/* <td className="td-style-maxi">₹{data.totalAmount}</td> */}
+
+      <td>
+        {!data.guideRequired?
+        <div className="picked">
+           NO
+        </div>:
+        <div className="out-for-delivery">
+          YES
+          </div>}
+        
+      </td>
+
       <td>
       <Popconfirm
                       title="Are you sure to delete this bike?"
@@ -81,21 +98,6 @@ export default function Tablerow(props) {
                         style={{ color: "red", cursor: "pointer" }}
                       />
                     </Popconfirm>
-      </td>
-
-
-      {/* <td className="td-style-maxi">{formatDateTime12hr(data.updatedAt)}</td> */}
-      {/* <td className="td-style-maxi">₹{data.totalAmount}</td> */}
-
-      <td>
-        {!data.guideRequired?
-        <div className="picked">
-            GuideRequired
-        </div>:
-        <div className="out-for-delivery">
-          Not GuideRequired
-          </div>}
-        
       </td>
     </tr>
   );

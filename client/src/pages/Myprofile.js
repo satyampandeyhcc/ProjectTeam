@@ -20,6 +20,7 @@ import DefaultLayout from "../components/DefaultLayout";
 import Footer from "../components/Footer";
 import { getstatus } from "../redux/actions/userActions";
 import Spinner from "../components/Spinner";
+import img7 from "../components/images/Green.jpg"
 // import { FaLOcation, FaPhone, FaVoicemail } from 'react-icons/fa';
 const Contact = () => {
 
@@ -117,6 +118,22 @@ const Contact = () => {
   return (
     <>
       <>
+     <style>
+      {
+
+          `
+          .verified{
+            height:70px;
+            width:150px;
+          }
+
+          .notverified{
+            color:red;
+            font-size:30px;
+          }
+          `
+      }
+     </style>
         <DefaultLayout>
           <div className="bg-image-main">
             <img className="w-100" alt="" src={contactimg} />
@@ -161,7 +178,12 @@ const Contact = () => {
                            {profileName}
                           </p>
                           <p className="text-decoration-none text-dark">
-                           {disable?"Verified":"Not Verified"}
+                           {disable?
+                           <>
+                           {/* <p className="verified"> Verified ✅ </p>  */}
+                           <img className=" mt-3 verified" alt="" src={img7} />
+                           </>
+                            :<p  className="notverified">Not Verified</p>}
                           </p>
                         </li>
                       </Link>
@@ -191,15 +213,16 @@ const Contact = () => {
                       >
                         <li className="mb-3">
                           <img
-                            className="my-logo-contact text-decoration-none text-dark mb-2"
+                            className="my-logo-contact text-decoration-none text-dark mb-2 phonering"
                             alt=""
                             src={phone}
+                           
                           />
-                          <input onChange={(e)=>setphoneNo(e.target.value)} value={phoneNo} className="text-decoration-none text-dark" placeholder="Enter Your Mobile Number"/>
                             {/* {mobileNumber} */}
                           {/* </> */}
                         </li>
                       </div>
+                          <input onChange={(e)=>setphoneNo(e.target.value)} value={phoneNo} className="text-decoration-none text-dark" placeholder="Enter Your Mobile Number"/>
                     </ul>
                   </div>
                 </div>
@@ -369,3 +392,6 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+

@@ -14,7 +14,7 @@ const Responses = () => {
       const response = await fetch("https://bikeridingventure.onrender.com/api/users/contacts");
       if (response.ok) {
         const data = await response.json();
-        setResp(data);
+        setResp(data.reverse());
         console.log("Response:", data);
       } else {
         console.error("Error fetching response:", response.statusText);

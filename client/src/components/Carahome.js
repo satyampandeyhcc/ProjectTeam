@@ -17,7 +17,7 @@ const Carahome = () => {
           id="carouselExampleFade"
           className="carousel slide carousel-fade"
           data-bs-ride="carousel"
-          style={{ objectFit: "contain !important",  zIndex:"-1000"}}
+          style={{ objectFit: "contain !important",   zIndex:"-1000"}}
         >
           <div className="carousel-inner" id="carousel">
             {/* <div className="carousel-caption" style={{ zIndex: "10" }}>
@@ -35,7 +35,7 @@ const Carahome = () => {
                 <button class="btn btn-outline-success text-white bg-success" type="submit">Search</button>
               </div>
             </div> */}
-            <div className="carousel-item active">
+            <div className="carousel-item active" >
               <img
                 // src="https://source.unsplash.com/random/900X700/?bike"
                 src="/image/bike.avf.jpg"

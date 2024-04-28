@@ -61,7 +61,29 @@ const FirstHome = () => {
     font-size: 4vw;
     font-weight: 900;
     width: 800px;
+
     padding-left: 88px;
+}
+
+
+
+@media only screen and (max-width: 1500px) and (min-width: 1000px) {
+  .h1-text-home {
+      margin-top: -500px; /* Adjusted margin for smaller screens */
+      font-size: 4vw; /* Adjusted font size for smaller screens */
+      width: 50%; /* Adjusted width for smaller screens */
+      padding-left: 20px; /* Adjusted padding for smaller screens */
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .h1-text-home {
+      margin-top: -493px; /* Adjusted margin for smaller screens */
+      font-size: 6vw; /* Adjusted font size for smaller screens */
+      width: 50%; /* Adjusted width for smaller screens */
+      padding-left: 20px; /* Adjusted padding for smaller screens */
+  }
 }
 
 // .btn-text-book{

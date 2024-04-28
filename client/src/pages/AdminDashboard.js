@@ -42,7 +42,7 @@ const AdminDashboard = () => {
   }, [searchValue, data2]);
 
   useEffect(() => {
-    setSerialNumber(currentindex * 3 + 1);
+    setSerialNumber(currentindex * 10 + 1);
   }, [currentindex]);
 
   const fetchAllUser = async () => {
@@ -87,7 +87,7 @@ const AdminDashboard = () => {
   }, []);
 
   let componentsArr = [];
-  for (let i = 1; i <= Math.ceil(copydata.length / 3); i++) {
+  for (let i = 1; i <= Math.ceil(copydata.length / 10); i++) {
     componentsArr.push(
       <Link key={i} onClick={() => setcurrentindex(i - 1)}>
         {i}
@@ -111,9 +111,24 @@ const AdminDashboard = () => {
     setcurrentindex(0);
   };
 
+
+
+  const handleChangeall = (x) => {
+    
+    const d = copydata.filter((element) => {
+      return element.verified == x || element.verified!=x;
+      // element.date === getFormattedDate() &&
+    });
+    setdata(d);
+    setcurrentindex(0);
+ 
+  };
+
+
+
   useEffect(() => {
-    setdata2(data.slice(currentindex * 3, (currentindex + 1) * 3));
-    setcopydata2(data.slice(currentindex * 3, (currentindex + 1) * 3));
+    setdata2(data.slice(currentindex * 10, (currentindex + 1) * 10));
+    setcopydata2(data.slice(currentindex * 10, (currentindex + 1) * 10));
   }, [data, currentindex]);
 
   function getFormattedDate() {
@@ -224,6 +239,58 @@ const AdminDashboard = () => {
         {display ? (
           <>
             <div className="cards" style={{ display: "flex" }}>
+
+
+            <div
+                className="card"
+                name="picked"
+                onClick={() => handleChangeall(true)}
+              >
+                <div className="card-body" onClick={() => handleChangeall(true)}>
+                  <p className="card-title prices">{copydata.length  }</p>
+                  <p
+                    className="card-subtitle mb-2 today-order"
+                    onClick={() => handleChangeall(true)}
+                  >
+                    Total User
+                  </p>
+                </div>
+                <div className="card-msg" onClick={() => handleChangeall(true)}>
+                  <svg
+                    width="64"
+                    height="64"
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{height: "65px",
+                      width: "81px"}}
+                  >
+                    <rect
+                      width="64"
+                      height="64"
+                      rx="32"
+                      fill="#F2994A"
+                      fill-opacity="0.2"
+                    />
+                    <path
+                      d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
+                      fill="#F39C12"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
               <div
                 className="card"
                 name="picked"

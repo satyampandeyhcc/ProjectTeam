@@ -47,7 +47,8 @@ export default function Table({data,  setdata, serialNumber}) {
               <th scope="col">Total Amount</th>
               <th scope="col">Bike RentPerHour</th>
               <th scope="col">Fuel Type</th>
-              <th scope="col">Guide Required</th>
+              <th scope="col">Driver Required</th>
+              <th scope="col">Delete Booking</th>
              
               {/* <th scope="col">Weight</th>
               <th scope="col">Amount</th> */}

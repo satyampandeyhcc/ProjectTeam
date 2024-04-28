@@ -30,7 +30,7 @@ function UserBookings() {
                     <p>Total hours : <b>{booking.totalHours}</b></p>
                     <p>Rent per hour : <b>{booking.car?.rentPerHour}</b></p>
                     <p>Total amount : <b>{booking.totalAmount}</b></p>
-                    <p>Guide Required : <b>{booking.guideRequired?"YES":"NO"}</b></p>
+                    <p>Driver Required : <b>{booking.guideRequired?"YES":"NO"}</b></p>
                 </Col>
 
                 <Col lg={12} sm={24}>

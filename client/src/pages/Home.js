@@ -78,6 +78,21 @@ function Home() {
         <>
         <DefaultLayout>
 
+            <style>
+            
+                {
+                    `
+                    @media only screen and (max-width: 1400px) and (min-width: 700px) {
+                        .carimg {
+                            
+                            width: 19vw; /* Adjusted width for smaller screens */
+                           
+                        }
+                      }
+                    `
+                }
+            </style>
+
              {/* <Row className='mt-3' justify='center'>
                  
                  <Col lg={20} sm={24} className='d-flex justify-content-left'>
@@ -104,6 +119,7 @@ function Home() {
                                     <div className='text-left pl-2'>
                                         <p>{car.name}</p>
                                         <p> Rent Per Hour {car.rentPerHour} /-</p>
+                                        <p></p>
                                     </div>
 
                                     <div>

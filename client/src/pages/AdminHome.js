@@ -26,6 +26,22 @@ function AdminHome() {
 
   return (
     <>
+
+
+<style>
+            
+            {
+                `
+                @media only screen and (max-width: 1400px) and (min-width: 700px) {
+                    .carimg {
+                        
+                        width: 19vw; /* Adjusted width for smaller screens */
+                       
+                    }
+                  }
+                `
+            }
+        </style>
     <AdminDefaultLayout>
       <Row justify="center" gutter={16} className="mt-2">
         <Col lg={20} sm={24}>
