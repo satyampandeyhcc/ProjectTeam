@@ -211,18 +211,22 @@ color: #000;
   margin-top:35px;
 }
 .BottomCaraousal #cont p {
+
+
   color: #000;
-
-font-size: 25px;
-width: 80%;
-font-weight: 600;
-line-height: 100%; /* 35px */
+  font-size: 21px;
+  width: 95%;
+  font-weight: 600;
+  line-height: 100%;
 
 }
 }
 
 
-@media screen and (max-width: 403px) {
+
+
+
+@media screen and (max-width: 399px) {
 
 
   .BottomCaraousal .item img {
@@ -233,4 +237,27 @@ line-height: 100%; /* 35px */
     margin-left: 0px;
     padding: 3px;
   }
+
+
+
+  .BottomCaraousal #cont p {
+
+
+   
+    font-size: 15px;
+    width: 86%;
+  
   }
+  }
+
+  @media screen and (max-width: 700px) and (min-width:500px) {
+
+    .BottomCaraousal #cont{
+      /* position: absolute; */
+      /* top:303px; */
+      width: 436px;
+      height:105px;
+      padding-left: 40px;
+      padding-top: 30px;
+
+    }}

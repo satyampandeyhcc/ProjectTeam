@@ -232,7 +232,22 @@ const Contact = () => {
                 <div className="col-md-8 ml-lg-5  mb-md-0 mb-5">
                   <h2 className="my-heading-contact-form">PROFILE</h2>
                   <p className="text-muted mt-2 sub-head-contact-form">
-                    
+
+
+
+                  {disable?
+                           <>
+                           {/* <p className="verified"> Verified ✅ </p>  */}
+                           <p>Enjoy your bike booking adventure!</p>
+                           </>
+                            :
+                            <>
+                            <p>Complete your Profile !! </p>
+                             <p> Account verification within 24 hours unlocks your bike booking adventure!</p>
+                             </>}
+                             
+                  
+              
                   </p>
 
                   <form
@@ -266,7 +281,7 @@ const Contact = () => {
                               onClick={() => {
                                 document.getElementById("file1").click();
                               }}
-                              style={{ width: "200px" , height:"200px"}}
+                              style={{ width: "200px" , height:"200px",     borderRadius:"20px",}}
                             />
                           </div>
                         </div>
@@ -294,7 +309,7 @@ const Contact = () => {
                               onClick={() => {
                                 document.getElementById("file2").click();
                               }}
-                              style={{ width: "200px" , height:"200px"}}
+                              style={{ width: "200px" , height:"200px" ,     borderRadius:"20px"}}
                             />
                           </div>
                         </div>
@@ -325,7 +340,7 @@ const Contact = () => {
                               onClick={() => {
                                 document.getElementById("file3").click();
                               }}
-                              style={{ width: "200px" , height:"200px" }}
+                              style={{ width: "200px" , height:"200px" ,     borderRadius:"20px" }}
                             />
                           </div>
                         </div>
@@ -353,7 +368,7 @@ const Contact = () => {
                               onClick={() => {
                                 document.getElementById("file4").click();
                               }}
-                              style={{ width: "200px" , height:"200px" }}
+                              style={{ width: "200px" , height:"200px" ,     borderRadius:"20px" }}
                             />
                           </div>
                         </div>
