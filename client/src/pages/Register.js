@@ -96,13 +96,37 @@ function Register() {
 
   return (
     <>
+
+
+<style>
+            {
+                `
+                @media only screen and (max-width: 1000px)  {
+                  .loginimg {
+                     display: none;
+                  }
+               
+                }
+
+
+                @media only screen and (max-width: 1464px)  {
+                
+                  .login-logo{
+                    display:none;
+                  }
+                }
+
+           
+                `
+            }
+          </style>
       
     <div className="login">
       {loading && (<Spinner />)}
       <Row gutter={16} className="d-flex align-items-center">
         <Col lg={16} style={{ position: "relative" }}>
           <img 
-           className='w-100'
+           className='w-100 loginimg'
            data-aos='slide-left'
            data-aos-duration='1500'
           src="https://img.redbull.com/images/c_fill,w_1200,h_630,g_auto,f_auto,q_auto/redbullcom/2020/12/3/c1zjbxauahxsq0vqb09s/the-old-world-visual" />

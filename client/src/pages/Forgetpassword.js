@@ -149,7 +149,28 @@ function ForgetPassword() {
 
     return (
        <>
-          
+          <style>
+            {
+                `
+                @media only screen and (max-width: 992px)  {
+                  .loginimg {
+                     display: none;
+                  }
+               
+                }
+
+
+                @media only screen and (max-width: 1464px)  {
+                
+                  .login-logo{
+                    display:none;
+                  }
+                }
+
+           
+                `
+            }
+          </style>
         <div className='login'>
 
 
@@ -158,7 +179,7 @@ function ForgetPassword() {
 
                 <Col lg={16} style={{position: 'relative'}}>
                     <img 
-                    className='w-100'
+                    className='w-100 loginimg'
                     data-aos='slide-right'
                     data-aos-duration='1500'
                     // src="https://pbs.twimg.com/media/CxdclKVWQAAPwzc?format=jpg&name=medium"

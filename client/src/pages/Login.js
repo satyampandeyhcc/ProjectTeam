@@ -84,7 +84,48 @@ function Login() {
 
     return (
        <>
-          
+          <style>
+            {
+                `
+                @media only screen and (max-width: 1000px)  {
+                  .loginimg {
+                     display: none;
+                  }
+               
+                }
+
+
+                @media only screen and (max-width: 1464px)  {
+                
+                  .login-logo{
+                    display:none;
+                  }
+                }
+
+                .googleicon {
+                  cursor: pointer;
+                  width: 4vw;
+                  height: 38px;
+              }
+              
+              @media only screen and (max-width: 700px) {
+                  .googleicon {
+                      cursor: pointer;
+                      width: 6vw;
+                      height: 38px;
+                  }
+              }
+
+              @media only screen and (max-width: 480px) {
+                .googleicon {
+                    cursor: pointer;
+                    width: 8vw;
+                    height: 38px;
+                }
+            }
+                `
+            }
+          </style>
         <div className='login'>
 
 
@@ -93,7 +134,7 @@ function Login() {
 
                 <Col lg={16} style={{position: 'relative'}}>
                     <img 
-                    className='w-100'
+                    className='w-100 loginimg'
                     data-aos='slide-right'
                     data-aos-duration='1500'
                     // src="https://pbs.twimg.com/media/CxdclKVWQAAPwzc?format=jpg&name=medium"
@@ -114,10 +155,8 @@ function Login() {
                              <Input type='password'/>
                          </Form.Item>
 
-                         <button className='btn1 mt-2'>Signin</button> &nbsp;
-                         <FcGoogle style={{cursor:"pointer"  ,
-                        width: "74px",
-                        height: "38px"}} onClick={handlegoogle}/>
+                         <button className='btn1 mt-2'>Signin</button> &nbsp;&nbsp;  
+                         <FcGoogle className='googleicon' onClick={handlegoogle}/>
 
                          <hr />
                          {/* <h4></h4> */}
