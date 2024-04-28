@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Hero Splendor Plus",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/15109/splendor-plus-right-side-view.jpeg?isig=0&q=80",
+    "rentPerHour": 200,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Hero Glamour Xtec",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/127611/glamour-xtec-right-side-view-9.png?isig=0&q=80",
+    "rentPerHour": 300,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Royal Enfield Himalayan",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/49739/himalayan-right-front-three-quarter-6.png?isig=0&q=80",
+    "rentPerHour": 600,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Royal Enfield Meteor 350",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/51245/meteor-350-right-front-three-quarter-9.jpeg?isig=0&q=80",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Royal Enfield Super Meteor 650",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/108885/super-meteor-650-right-front-three-quarter-8.png?isig=0&q=80",
+    "rentPerHour": 600,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Yamaha MT 15 V2",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/115871/mt-15-right-front-three-quarter-5.png?isig=0&q=80",
+    "rentPerHour": 500,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Yamaha R15S",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/107477/yzf-r15s-v30-right-front-three-quarter.jpeg?isig=0&q=80",
+    "rentPerHour": 550,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  },
+  {
+    "name": "Kawasaki Vulcan S",
+    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/145481/right-front-three-quarter.jpeg?isig=0&q=80",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+  
+]
