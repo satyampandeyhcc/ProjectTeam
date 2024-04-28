@@ -209,7 +209,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                                 <td class="pad" style="vertical-align: middle; color: #000000; font-family: inherit; font-size: 14px; padding-left: 10px; text-align: left;">
                                                                     <table class="icons-outer" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-table;">
                                                                         <tr>
-                                                                            <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"><img class="icon" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7481/LOGO_labor_1.png" height="auto" width="67" align="center" style="display: block; height: auto; margin: 0 auto; border: 0;"></td>
+                                                                            <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"><img class="icon" src="https://thumbs.dreamstime.com/z/biker-riding-motorcycle-illustration-logo-vector-isolated-best-company-illustrations-sticker-t-shirt-design-283335788.jpg?w=768" height="auto" width="67" align="center" style="display: block; height: auto; margin: 0 auto; border: 0;"></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
@@ -267,7 +267,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                         <table class="heading_block block-1" width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="pad">
-                                                                    <h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 62px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 74.39999999999999px;">BIKE RIDING</h1>
+                                                                    <h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 62px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 74.39999999999999px;">BIKE RIDING VENTURE</h1>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -547,7 +547,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             <tr>
                                                                 <td class="pad">
                                                                     <div style="color:#d5d5d5;direction:ltr;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:18px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:center;mso-line-height-alt:27px;">
-                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture </p>
+                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture. We are providing a variety of Bike with Affordable price. </p>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -591,7 +591,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             <tr>
                                                                 <td class="pad">
                                                                     <div style="color:#d5d5d5;direction:ltr;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:center;mso-line-height-alt:21px;">
-                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture </p>
+                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture. Every Bike have a Insurance.</p>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -620,7 +620,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             <tr>
                                                                 <td class="pad">
                                                                     <div style="color:#d5d5d5;direction:ltr;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:center;mso-line-height-alt:21px;">
-                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture </p>
+                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture. Every Bike in a well maintain condition. </p>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -649,7 +649,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             <tr>
                                                                 <td class="pad">
                                                                     <div style="color:#d5d5d5;direction:ltr;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:center;mso-line-height-alt:21px;">
-                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture </p>
+                                                                        <p style="margin: 0;">Welcome to Bike Riding Venture. Enjoy your weekened with BikeRiding Venture. We are provide a variety of services like providing driver if required,Long weekened Tour etc. </p>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -731,9 +731,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                         <table class="image_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="pad" style="width:100%;">
-                                                                    <div class="alignment" align="center" style="line-height:10px">
-                                                                        // <div style="max-width: 285px;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="outline:none" tabindex="-1"><img src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7481/back_car.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="285" alt="Car on the move" title="Car on the move" height="auto"></a></div>
-                                                                    </div>
+                                                                    
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -821,9 +819,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                         <table class="image_block block-7" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-                                                                    <div class="alignment" align="center" style="line-height:10px">
-                                                                        // <div class="fullWidth" style="max-width: 650px;"><img src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7481/yellow_car.png" style="display: block; height: auto; border: 0; width: 100%;" width="650" alt="Yellow Car" title="Yellow Car" height="auto"></div>
-                                                                    </div>
+                                                                    
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -882,7 +878,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                                 <td class="pad" style="vertical-align: middle; color: #000000; font-family: inherit; font-size: 14px; padding-left: 10px; text-align: left;">
                                                                     <table class="icons-outer" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-table;">
                                                                         <tr>
-                                                                            <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"><img class="icon" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7481/LOGO_labor_1.png" height="auto" width="67" align="center" style="display: block; height: auto; margin: 0 auto; border: 0;"></td>
+                                                                            <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"><img class="icon" src="https://thumbs.dreamstime.com/z/biker-riding-motorcycle-illustration-logo-vector-isolated-best-company-illustrations-sticker-t-shirt-design-283335788.jpg?w=768" height="auto" width="67" align="center" style="display: block; height: auto; margin: 0 auto; border: 0;"></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
@@ -898,51 +894,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="column column-2" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
-                                                        <table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-                                                            <tr>
-                                                                <td class="pad" style="padding-left:20px;text-align:center;width:100%;">
-                                                                    <h1 style="margin: 0; color: #000000; direction: ltr; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 18px; font-weight: 400; line-height: 200%; text-align: left; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 36px;"><strong>Links</strong></h1>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <table class="paragraph_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-                                                            <tr>
-                                                                <td class="pad" style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;">
-                                                                    <div style="color:#a9a9a9;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-                                                                        // <p style="margin: 0; word-break: break-word;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="text-decoration: none; color: #000000;" rel="noopener">Locations</a></p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-                                                            <tr>
-                                                                <td class="pad" style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;">
-                                                                    <div style="color:#a9a9a9;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-                                                                        <p style="margin: 0; word-break: break-word;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="text-decoration: none; color: #000000;" rel="noopener">Vehicles</a></p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-                                                            <tr>
-                                                                <td class="pad" style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;">
-                                                                    <div style="color:#a9a9a9;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-                                                                        <p style="margin: 0; word-break: break-word;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="text-decoration: none; color: #000000;" rel="noopener">Services</a></p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <table class="paragraph_block block-5" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-                                                            <tr>
-                                                                <td class="pad" style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;">
-                                                                    <div style="color:#a9a9a9;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-                                                                        // <p style="margin: 0; word-break: break-word;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="text-decoration: none; color: #000000;" rel="noopener">Unsubscribe</a></p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
+                                                   
                                                     <td class="column column-3" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
                                                         <table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                                             <tr>
@@ -955,7 +907,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             <tr>
                                                                 <td class="pad" style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;">
                                                                     <div style="color:#000000;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-                                                                        <p style="margin: 0; word-break: break-word;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="text-decoration: none; color: #000000;" rel="noopener">Info@company.com</a></p>
+                                                                        <p style="margin: 0; word-break: break-word;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="text-decoration: none; color: #000000;" rel="noopener">bikeridingventure@company.com</a></p>
                                                                     </div>
                                                                 </td>
                                                             </tr>
