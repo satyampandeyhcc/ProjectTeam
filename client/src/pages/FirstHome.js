@@ -35,6 +35,7 @@ const FirstHome = () => {
 .img-section5 {
   width: 50vw;
   height: auto;
+  border-radius:23px;
 }
 
 .my-main-heading {

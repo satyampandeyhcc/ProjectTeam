@@ -20,6 +20,8 @@ function AdminHome() {
     dispatch(getAllCars());
   }, []);
 
+  console.log(totalCars);
+
   useEffect(() => {
     setTotalcars(cars);
   }, [cars]);
@@ -37,6 +39,19 @@ function AdminHome() {
                         
                         width: 19vw; /* Adjusted width for smaller screens */
                        
+                    }
+                  }
+
+                  .car:hover {
+                    height: 230px;
+                    // font-size: 13px;
+                  }
+
+                  @media screen and (max-width: 1340px) and (min-width:992px) {
+                    /* Adjust the height of .car when hovered on smaller screens */
+                    .car:hover {
+                      height:260px;
+                      // font-size: 13px;
                     }
                   }
                 `
@@ -67,6 +82,7 @@ function AdminHome() {
                   <div className="text-left pl-2">
                     <p>{car.name}</p>
                     <p> Rent Per Hour {car.rentPerHour} /-</p>
+                    <p> Type: {car.fuelType} </p>
                   </div>
 
                   <div className="mr-4">

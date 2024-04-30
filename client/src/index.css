@@ -78,9 +78,18 @@ button{
   height: 160px;
   transition: 0.3s;
 }
+
+
+
 .car:hover{
-  height :220px;
+  height :300px;
 }
+
+
+
+
+
+
 .car:hover > .car-content{
 
     opacity: 1;
@@ -147,4 +156,13 @@ svg{
 }
 a{
   color: orangered !important;
+}
+
+
+@media screen and (max-width: 1340px) and (min-width:992px) {
+  /* Adjust the height of .car when hovered on smaller screens */
+  .car:hover {
+    height: 390px;
+    font-size: 13px;
+  }
 }

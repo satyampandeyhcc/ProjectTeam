@@ -50,12 +50,41 @@ function BookingBike({ match }) {
     }
   }, [guide, totalHours]);
 
-  function selectTimeSlots(values) {
-    setFrom(moment(values[0]).format("MMM DD yyyy HH:mm"));
-    setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
+  // function selectTimeSlots(values) {
+  //   setFrom(moment(values[0]).format("MMM DD yyyy HH:mm"));
+  //   setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
 
-    setTotalHours(values[1].diff(values[0], "hours"));
-  }
+  //   setTotalHours(values[1].diff(values[0], "hours"));
+  // }
+
+
+  function selectTimeSlots(values) {
+    // Check if values is null or empty
+    if (!values || values.length < 2) {
+        // Handle the case where values is null or empty
+        setFrom(null); // Reset from state
+        setTo(null); // Reset to state
+        setTotalHours(0); // Reset totalHours state
+        console.error("Invalid values array:", values);
+        return;
+    }
+
+    const startTime = moment(values[0]);
+    const endTime = moment(values[1]);
+
+    setFrom(startTime.format("MMM DD yyyy HH:mm"));
+    setTo(endTime.format("MMM DD yyyy HH:mm"));
+
+    const durationInMinutes = endTime.diff(startTime, "minutes", true) ; // Calculate duration in minutes with an additional minute
+
+    // Convert duration in minutes to hours with two decimal places of precision
+    const totalHours = (durationInMinutes / 60).toFixed(2);
+
+    setTotalHours(parseFloat(totalHours)); // Set total hours including minutes as a floating-point number with two decimal places
+}
+
+
+
 
   function onToken(token) {
     console.log(token);
@@ -137,7 +166,7 @@ function BookingBike({ match }) {
                   }
                 }}
               >
-                Guide Required
+                Driver Required
               </Checkbox>
 
               <h3>Total Amount : {totalAmount}</h3>

@@ -249,9 +249,20 @@ const Contact = () => {
             >
           
 
+          {/* <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7126.70412691475!2d83.43726885!3d26.73313905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39915ca4040a5505%3A0x7da217c563cebc36!2sSinghariya%2C%20Rapti%20Nagar%20Phase-4%2C%20Gorakhpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1714456502389!5m2!1sen!2sin" 
+  width="600" 
+  height="450" 
+  style={{ border: 0 }} // Convert the string style into a JavaScript object
+  allowFullScreen
+  loading="lazy"
+></iframe> */}
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.9107680000175!2d82.9916567!3d25.307201900000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2dff8ba7d909%3A0x1ff71cc1948b1f6c!2sRathyatra%20Crossing%2C%20Varanasi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1714461259040!5m2!1sen!2sin" width="600" height="450" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-<iframe     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.4056134226753!2d83.43055267543323!3d26.73142947675562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39915dabad9320c1%3A0xa5881b33b5bb6d6a!2sMMMUT%2C%20Gorakhpur!5e0!3m2!1sen!2sin!4v1707237015567!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy"  ></iframe>
+{/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.9107680000175!2d82.9916567!3d25.307201900000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2dff8ba7d909%3A0x1ff71cc1948b1f6c!2sRathyatra%20Crossing%2C%20Varanasi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1714461259040!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
+
+{/* <iframe     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.4056134226753!2d83.43055267543323!3d26.73142947675562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39915dabad9320c1%3A0xa5881b33b5bb6d6a!2sMMMUT%2C%20Gorakhpur!5e0!3m2!1sen!2sin!4v1707237015567!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy"  ></iframe> */}
             </div>
           </Link>
         </div>

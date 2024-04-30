@@ -62,6 +62,15 @@
     "fuelType": "petrol",
     "bookedTimeSlots": [],
     "capacity": 2
+  },
+
+  {
+    "name": "Honda DIO",
+    "image": "https://imgd.aeplcdn.com/664x374/n/cw/ec/150373/dio-right-front-three-quarter.png?isig=0&q=80",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
   }
   
 ]

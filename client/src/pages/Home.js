@@ -34,45 +34,50 @@ function Home() {
         }
     };
 
-    function setFilter(values){
+    function setFilter(values) {
 
-        var selectedFrom = moment(values[0] , 'MMM DD yyyy HH:mm')
-        var selectedTo = moment(values[1] , 'MMM DD yyyy HH:mm')
 
-        var temp=[]
 
-        for(var car of cars){
+        if (!values || values.length < 2) {
+            // Handle the case where values is null or empty
+            setTotalcars(cars)
+            console.error("Invalid values array:", values);
+            return;
 
-              if(car.bookedTimeSlots.length == 0){
-                  temp.push(car)
-              }
-              else{
-
-                   for(var booking of car.bookedTimeSlots) {
-
-                       if(selectedFrom.isBetween(booking.from , booking.to) ||
-                       selectedTo.isBetween(booking.from , booking.to) || 
-                       moment(booking.from).isBetween(selectedFrom , selectedTo) ||
-                       moment(booking.to).isBetween(selectedFrom , selectedTo)
-                       )
-                       {
-
-                       }
-                       else{
-                           temp.push(car)
-                       }
-
-                   }
-
-              }
-
+            
         }
 
 
-        setTotalcars(temp)
-      
 
+
+        var selectedFrom = moment(values[0], 'MMM DD yyyy HH:mm');
+        var selectedTo = moment(values[1], 'MMM DD yyyy HH:mm');
+        var temp = [];
+    
+        for (var car of cars) {
+            var hasOverlap = false;
+    
+            for (var booking of car.bookedTimeSlots) {
+                var bookingFrom = moment(booking.from);
+                var bookingTo = moment(booking.to);
+    
+                if (selectedFrom.isBetween(bookingFrom, bookingTo) ||
+                    selectedTo.isBetween(bookingFrom, bookingTo) ||
+                    bookingFrom.isBetween(selectedFrom, selectedTo) ||
+                    bookingTo.isBetween(selectedFrom, selectedTo)) {
+                    hasOverlap = true;
+                    break; // Exit the loop as soon as an overlap is found
+                }
+            }
+    
+            if (!hasOverlap) {
+                temp.push(car);
+            }
+        }
+    
+        setTotalcars(temp);
     }
+    
 
     return (
         <>
@@ -93,7 +98,7 @@ function Home() {
                 }
             </style>
 
-             {/* <Row className='mt-3' justify='center'>
+             <Row className='mt-3' justify='center'>
                  
                  <Col lg={20} sm={24} className='d-flex justify-content-left'>
 
@@ -101,7 +106,7 @@ function Home() {
                  
                  </Col>
 
-             </Row> */}
+             </Row>
 
               {loading == true && (<Spinner/>)}
 
@@ -119,7 +124,9 @@ function Home() {
                                     <div className='text-left pl-2'>
                                         <p>{car.name}</p>
                                         <p> Rent Per Hour {car.rentPerHour} /-</p>
-                                        <p></p>
+                                        <p> Type: {car.fuelType} </p>
+                                        <p>Picked at Rathyatra Churaha, Varanasi<br></br>
+Pin Code: 221010</p>
                                     </div>
 
                                     <div>
