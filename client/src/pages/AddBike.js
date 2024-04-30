@@ -4,6 +4,7 @@ import { useDispatch , useSelector } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
 import Spinner from '../components/Spinner'
 import { addCar } from '../redux/actions/bikesActions'
+import AdminDefaultLayout from "../components/AdminDefaultLayout";
 function AddBike() {
 
     const dispatch = useDispatch()
@@ -20,7 +21,10 @@ function AddBike() {
     return (
         // <DefaultLayout>
         <>
+
+        
                {loading && (<Spinner />)}
+               <AdminDefaultLayout>
                <Row justify='center mt-5'>
                    <Col lg={12} sm={24} xs={24} className='p-2'>
                        <Form className='bs1 p-2' layout='vertical' onFinish={onFinish}>
@@ -38,7 +42,10 @@ function AddBike() {
                            <Form.Item name='capacity' label='Weight' rules={[{required: true}]}>
                                <Input/>
                            </Form.Item>
-                           <Form.Item name='fuelType' label='Type / Description' rules={[{required: true}]}>
+                           <Form.Item name='fuelType' label='FuelType / Description' rules={[{required: true}]}>
+                               <Input/>
+                           </Form.Item>
+                           <Form.Item name='type' label='Description' rules={[{required: true}]}>
                                <Input/>
                            </Form.Item>
 
@@ -49,6 +56,7 @@ function AddBike() {
                        </Form>
                    </Col>
                </Row>
+               </AdminDefaultLayout>
 
         {/* // </DefaultLayout> */}
         </>

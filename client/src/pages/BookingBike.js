@@ -43,11 +43,14 @@ function BookingBike({ match }) {
     }
   }, [cars]);
   useEffect(() => {
-    setTotalAmount(totalHours * car.rentPerHour);
+    let calculatedTotalAmount = totalHours * car.rentPerHour;
     if (guide) {
-      //If need guide add x 30
-      setTotalAmount(totalAmount + 30 * totalHours);
+      // If guide is required, add $30 per hour
+      calculatedTotalAmount += 30 * totalHours;
     }
+    
+    // Round the totalAmount to two decimal places
+    setTotalAmount(parseFloat(calculatedTotalAmount.toFixed(2)));
   }, [guide, totalHours]);
 
   // function selectTimeSlots(values) {

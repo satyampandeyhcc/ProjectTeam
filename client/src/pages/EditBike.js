@@ -1,11 +1,12 @@
 import { Col, Row, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DefaultLayout from "../components/DefaultLayout";
+// import DefaultLayout from "../components/DefaultLayout";
 import Spinner from "../components/Spinner";
 import { addCar, editCar, getAllCars } from "../redux/actions/bikesActions";
 
 import { useParams } from "react-router-dom";
+import AdminDefaultLayout from "../components/AdminDefaultLayout";
 
 function EditBike({ match }) {
   const { carid } = useParams();
@@ -34,7 +35,7 @@ function EditBike({ match }) {
   }
 
   return (
-    <DefaultLayout>
+    <AdminDefaultLayout>
       {loading && <Spinner />}
       <Row justify="center mt-5">
         <Col lg={12} sm={24} xs={24} className='p-2'>
@@ -86,6 +87,11 @@ function EditBike({ match }) {
                 <Input />
               </Form.Item>
 
+
+              <Form.Item name='type' label='Description' rules={[{required: true}]}>
+                               <Input/>
+                           </Form.Item>
+
               <div className="text-right">
                 <button className="btn1">Edit BIKE</button>
               </div>
@@ -93,7 +99,7 @@ function EditBike({ match }) {
           )}
         </Col>
       </Row>
-    </DefaultLayout>
+    </AdminDefaultLayout>
   );
 }
 

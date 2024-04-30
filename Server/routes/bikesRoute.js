@@ -20,6 +20,7 @@ router.get("/getallcars", async (req, res) => {
 router.post("/addcar", async (req, res) => {
   try {
     const newcar = new Car(req.body);
+    console.log(newcar);
     await newcar.save();
     res.send("Bike added successfully");
   } catch (error) {
@@ -30,11 +31,13 @@ router.post("/addcar", async (req, res) => {
 router.post("/editcar", async (req, res) => {
   try {
     const car = await Car.findOne({ _id: req.body._id });
+    console.log(car);
     car.name = req.body.name;
     car.image = req.body.image;
     car.fuelType = req.body.fuelType;
     car.rentPerHour = req.body.rentPerHour;
     car.capacity = req.body.capacity;
+    car.type=req.body.type
 
     await car.save();
 

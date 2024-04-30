@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { NavLink } from "react-router-dom";
@@ -8,12 +8,42 @@ import Caraousalserv from '../components/Caraousalserv';
 import img7 from "../components/images/Component1.jpg"
 import Carahome from '../components/Carahome';
 import Footer from '../components/Footer'
+import Loader from "../components/Loader"
 // import Footer from '../components/Footer';
 
 
 const FirstHome = () => {
+
+  const loaderRef = useRef();
+  const [loading, setLoading] = useState(true);
+
+
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      // Perform any initial data fetching or setup here
+
+      // Simulate a 3-second delay for demonstration purposes
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Update loading state after the delay
+      setLoading(false);
+      if(loaderRef.current)
+      loaderRef.current.stopLoading();
+    };
+
+    fetchInitialData();
+  }, []);
+
+
   return (
     <>
+
+     {loading ? (
+        <Loader ref={loaderRef} />
+      ) : (
+
+        <>
         <DefaultLayout>
 
 <style>
@@ -163,6 +193,10 @@ At Plain Ventures, we prioritize your satisfaction and fun, ensuring every detai
       </DefaultLayout>
       
 <Footer/>
+
+</>
+
+)}
       </>
      
     
