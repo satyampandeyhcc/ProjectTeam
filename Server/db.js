@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// mongoose.set('strictQuery', true)
+mongoose.set('strictQuery', true)
 function connectDB(){
 
     mongoose.connect('mongodb+srv://satyampandeyhcc:satyam123@cluster0.xhfvufa.mongodb.net/satyampandeyhcc?retryWrites=true&w=majority' , {useUnifiedTopology: true , useNewUrlParser: true})

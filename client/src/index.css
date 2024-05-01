@@ -165,4 +165,12 @@ a{
     height: 390px;
     font-size: 13px;
   }
+
+  
+  .carimg{
+    height:130px;
+    width: auto;
+    border-radius: 5px;
+    transform: translateY(-50px);
+  }
 }

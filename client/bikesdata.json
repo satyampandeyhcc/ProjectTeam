@@ -73,4 +73,74 @@
     "capacity": 2
   }
   
+
+  ,
+  
+
+  {
+    "name": "Honda Activa",
+    "image": "https://www.carbike360.com/_next/image?url=https%3A%2F%2Fd2uqhpl0gyo7mc.cloudfront.net%2Fmedium_Honda_Activa_125_carbike360_10_4b0427b28c_c2c03b3e18.jpg&w=1200&q=100",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+
+
+  ,
+
+  {
+    "name": "Yamaha Aerox 155",
+    "image": "https://media.zigcdn.com/media/model/2021/Sep/yamaha-aerox-155-jk-right-side-view_360x240.jpg",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+
+  ,
+
+  {
+    "name": "TVS Jupiter",
+    "image": "https://media.zigcdn.com/media/model/2023/Oct/tvs-jupiter-110-right-side-view_360x240.jpg",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+
+  ,
+
+  {
+    "name": "Bounce Infinity",
+    "image": "https://cdn.motor1.com/images/mgl/G3Zqqq/s2/bounce-infinity-e1-limited-edition-electric-scooter-debuts-in-india.webp",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+
+  ,
+
+  {
+    "name": "Ampere Magnus EX",
+    "image": "https://bd.gaadicdn.com/upload/userfiles/images/5d9167d08f5b3.jpg",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+
+
+  ,
+
+  {
+    "name": "Ola S1 Pro",
+    "image": "https://media.zigcdn.com/media/model/2023/Mar/ola-s1-pro-right-side-view_600x400.jpg",
+    "rentPerHour": 400,
+    "fuelType": "petrol",
+    "bookedTimeSlots": [],
+    "capacity": 2
+  }
+  
 ]
