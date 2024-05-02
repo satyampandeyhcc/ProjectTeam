@@ -24,7 +24,7 @@ const Loader = forwardRef((props, ref) => {
     <div className="loader">
       <img alt="loader" src={logo} />
     </div>
-  </div>
+  // </div>
   );
 });
 

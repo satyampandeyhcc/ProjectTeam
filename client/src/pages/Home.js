@@ -133,7 +133,7 @@ function Home() {
                                     <p>Rent Per Hour {car.rentPerHour} /-</p>
                                     <p>Type: {car.fuelType}</p>
                                     <p>
-                                        Picked at Rathyatra Churaha, Varanasi
+                                        Pick at Rathyatra Chauraha, Varanasi
                                         <br />
                                         Pin Code: 221010
                                     </p>

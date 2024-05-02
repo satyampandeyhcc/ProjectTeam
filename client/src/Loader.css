@@ -36,3 +36,44 @@
     }
   }
   
+  
+
+  @media screen and (min-width: 1200px) and (max-width:1500px) {
+
+    .loader img {
+      height: 47vw;
+      margin-top: 107px;
+    }
+  
+  }
+
+
+
+  @media screen and (min-width: 600px) and (max-width:1200px) {
+
+    .loader img {
+      height: 47vw;
+      margin-top: 107px;
+    }
+  
+  }
+
+
+  @media screen and (min-width: 300px) and (max-width:600px) {
+
+    .loader img {
+      height: 60vw;
+      margin-top: 156px;
+    }
+  
+  }
+
+
+  @media screen and (min-width: 1501px)  {
+
+    .loader img {
+      height: 35vw;
+      margin-top: 100px;
+    }
+  
+  }

@@ -18,36 +18,41 @@ import Myprofile from './pages/Myprofile';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminProfile from './pages/AdminProfile';
 import BookingDashboard from './pages/BookingDashboard';
-// import EmailOtpForm from './pages/ForgotPass';
+
 import ForgetPassword from './pages/Forgetpassword';
-// import ConfirmPassword from './pages/ConfirmPassword';
+
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/forgot-pass' element={<ForgetPassword/>} />
           <Route path='/' element={<FirstHome />} />
           <Route path='/viewbike' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
           <Route path='/booking/:carid' element={<BookingBike />} />
           <Route path='/userbookings' element={<UserBookings />} />
-          <Route path='/addcar' element={<AddBike />} />
-          <Route path='/editcar/:carid' element={<EditBike />} />
-          <Route path='/admin' element={<AdminHome />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/myprofile' element={<Myprofile />} />
-          <Route path='/forgot-pass' element={<ForgetPassword/>} />
           {/* <Route path='/forgot-pass' element={<EmailOtpForm />} /> */}
           {/* <Route path='/confirm-pass' element={<ConfirmPassword/>} /> */}
 
 
+          <Route path='/admin' element={<AdminHome />} />
+          <Route path='/addcar' element={<AddBike />} />
+          <Route path='/editcar/:carid' element={<EditBike />} />
           <Route path='/adminlogin' element={<AdminLogin/>}/>
           <Route path='/adminresponse' element={<AdminResponse/>}/>
           <Route path="/admindashboard" element={<AdminDashboard/>}/>
           <Route path="/bookingdashboard" element={<BookingDashboard/>}/>
-
           <Route path='/adminprofile' element={<AdminProfile />} />
+
+
+
+
+
           
         </Routes>
       </BrowserRouter>
