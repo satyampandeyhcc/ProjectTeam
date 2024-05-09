@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
-import { deleteCar, getAllCars } from "../redux/actions/bikesActions";
+import { deleteBike, getAllBikes } from "../redux/actions/bikesActions";
 import { Col, Row, Divider, DatePicker, Checkbox, Edit } from "antd";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
@@ -11,20 +11,20 @@ import { Popconfirm, message } from "antd";
 import AdminDefaultLayout from "../components/AdminDefaultLayout";
 const { RangePicker } = DatePicker;
 function AdminHome() {
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { bikes } = useSelector((state) => state.bikesReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
-  const [totalCars, setTotalcars] = useState([]);
+  const [totalBikes, setTotalbikes] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCars());
+    dispatch(getAllBikes());
   }, []);
 
-  console.log(totalCars);
+  console.log(totalBikes);
 
   useEffect(() => {
-    setTotalcars(cars);
-  }, [cars]);
+    setTotalbikes(bikes);
+  }, [bikes]);
 
   return (
     <>
@@ -35,21 +35,21 @@ function AdminHome() {
             {
                 `
                 @media only screen and (max-width: 1400px) and (min-width: 700px) {
-                    .carimg {
+                    .bikeimg {
                         
                         width: 19vw; /* Adjusted width for smaller screens */
                        
                     }
                   }
 
-                  .car:hover {
+                  .bike:hover {
                     height: 230px;
                     // font-size: 13px;
                   }
 
                   @media screen and (max-width: 1340px) and (min-width:992px) {
-                    /* Adjust the height of .car when hovered on smaller screens */
-                    .car:hover {
+                    /* Adjust the height of .bike when hovered on smaller screens */
+                    .bike:hover {
                       height:260px;
                       // font-size: 13px;
                     }
@@ -63,7 +63,7 @@ function AdminHome() {
           <div className="d-flex justify-content-between align-items-center">
             <h3 className="mt-1 mr-2">Admin Panel</h3>
             <button className="btn1">
-              <a href="/addcar">ADD BIKE</a>
+              <a href="/addbike">ADD BIKE</a>
             </button>
           </div>
         </Col>
@@ -72,21 +72,21 @@ function AdminHome() {
       {loading == true && <Spinner />}
 
       <Row justify="center" gutter={16}>
-        {totalCars.map((car) => {
+        {totalBikes.map((bike) => {
           return (
             <Col lg={5} sm={24} xs={24}>
-              <div className="car p-2 bs1">
-                <img src={car.image} className="carimg" />
+              <div className="bike p-2 bs1">
+                <img src={bike.image} className="bikeimg" />
 
-                <div className="car-content d-flex align-items-center justify-content-between">
+                <div className="bike-content d-flex align-items-center justify-content-between">
                   <div className="text-left pl-2">
-                    <p>{car.name}</p>
-                    <p> Rent Per Hour {car.rentPerHour} /-</p>
-                    <p> Type: {car.fuelType} </p>
+                    <p>{bike.name}</p>
+                    <p> Rent Per Hour {bike.rentPerHour} /-</p>
+                    <p> Type: {bike.fuelType} </p>
                   </div>
 
                   <div className="mr-4">
-                    <Link to={`/editcar/${car._id}`}>
+                    <Link to={`/editbike/${bike._id}`}>
                       <EditOutlined
                         className="mr-3"
                         style={{ color: "green", cursor: "pointer" }}
@@ -95,7 +95,7 @@ function AdminHome() {
 
                     <Popconfirm
                       title="Are you sure to delete this bike?"
-                      onConfirm={()=>{dispatch(deleteCar({carid : car._id}))}}
+                      onConfirm={()=>{dispatch(deleteBike({bikeid : bike._id}))}}
                       
                       okText="Yes"
                       cancelText="No"

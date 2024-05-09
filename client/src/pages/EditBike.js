@@ -3,34 +3,34 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import DefaultLayout from "../components/DefaultLayout";
 import Spinner from "../components/Spinner";
-import { addCar, editCar, getAllCars } from "../redux/actions/bikesActions";
+import { addBike, editBike, getAllBikes } from "../redux/actions/bikesActions";
 
 import { useParams } from "react-router-dom";
 import AdminDefaultLayout from "../components/AdminDefaultLayout";
 
 function EditBike({ match }) {
-  const { carid } = useParams();
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { bikeid } = useParams();
+  const { bikes } = useSelector((state) => state.bikesReducer);
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
-  const [car, setcar] = useState();
-  const [totalcars, settotalcars] = useState([]);
+  const [bike, setbike] = useState();
+  const [totalbikes, settotalbikes] = useState([]);
   useEffect(() => {
-    if (cars.length == 0) {
-      dispatch(getAllCars());
+    if (bikes.length == 0) {
+      dispatch(getAllBikes());
     } else {
       //find by id
-      settotalcars(cars);
-      // setcar(cars.find((o) => o._id == match.params.carid));
-      setcar(cars.find((o) => o._id == carid));
-      console.log(car);
+      settotalbikes(bikes);
+      // setbike(bikes.find((o) => o._id == match.params.bikeid));
+      setbike(bikes.find((o) => o._id == bikeid));
+      console.log(bike);
     }
-  }, [cars]);
+  }, [bikes]);
 
   function onFinish(values) {
-    values._id = car._id;
+    values._id = bike._id;
 
-    dispatch(editCar(values));
+    dispatch(editBike(values));
     console.log(values);
   }
 
@@ -39,9 +39,9 @@ function EditBike({ match }) {
       {loading && <Spinner />}
       <Row justify="center mt-5">
         <Col lg={12} sm={24} xs={24} className='p-2'>
-          {totalcars.length > 0 && (
+          {totalbikes.length > 0 && (
             <Form
-              initialValues={car}
+              initialValues={bike}
               className="bs1 p-2"
               layout="vertical"
               onFinish={onFinish}

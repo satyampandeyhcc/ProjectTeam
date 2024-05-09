@@ -1,156 +1,206 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllCars } from '../redux/actions/bikesActions';
-import { Col, Row, DatePicker, Button, message } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-import Spinner from '../components/Spinner';
-import moment from 'moment';
+import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import { NavLink } from "react-router-dom";
 import DefaultLayout from '../components/DefaultLayout';
-import Footer from '../components/Footer';
-
-const { RangePicker } = DatePicker;
-
-function Home() {
-    const token = localStorage.getItem('user');
-    const { cars } = useSelector(state => state.carsReducer);
-    const { loading } = useSelector(state => state.alertsReducer);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const [totalCars, setTotalCars] = useState([]);
-    const [check, setCheck] = useState(false);
-    const [selectedRange, setSelectedRange] = useState([]);
-
-  
-
-    useEffect(() => {
-        dispatch(getAllCars());
-    }, [dispatch]);
-
-    useEffect(() => {
-        setTotalCars(cars);
-    }, [cars]);
+import CaraousalBottom from '../components/Caraousal';
+import Caraousalserv from '../components/Caraousalserv';
+import img7 from "../components/images/Component1.jpg"
+import Carahome from '../components/Carahome';
+import Footer from '../components/Footer'
+import Loader from "../components/Loader"
+// import Footer from '../components/Footer';
 
 
-    
+const Home = () => {
 
-    const setFilter = useCallback(values => {
-        if (!values || values.length < 2) {
-            setTotalCars(cars);
-            setCheck(false);
-            
-            return;
-        }
-        setSelectedRange(values);
-        setCheck(true);
-    }, [cars]);
+  const loaderRef = useRef();
+  const [loading, setLoading] = useState(true);
 
-    const filterCarsByDateRange = useMemo(() => {
-        return (car) => {
-            if (!check) return true;
 
-            const selectedFrom = moment(selectedRange[0], 'MMM DD yyyy HH:mm');
-            const selectedTo = moment(selectedRange[1], 'MMM DD yyyy HH:mm');
 
-            for (const booking of car.bookedTimeSlots) {
-                const bookingFrom = moment(booking.from);
-                const bookingTo = moment(booking.to);
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      // Perform any initial data fetching or setup here
 
-                if (
-                    selectedFrom.isBetween(bookingFrom, bookingTo) ||
-                    selectedTo.isBetween(bookingFrom, bookingTo) ||
-                    bookingFrom.isBetween(selectedFrom, selectedTo) ||
-                    bookingTo.isBetween(selectedFrom, selectedTo)
-                ) {
-                    return false;
-                }
-            }
+      // Simulate a 3-second delay for demonstration purposes
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-            return true;
-        };
-    }, [check, selectedRange]);
+      // Update loading state after the delay
+      setLoading(false);
+      if(loaderRef.current)
+      loaderRef.current.stopLoading();
+    };
 
-    const handleBookNow = useCallback(carId => {
-        if (token) {
-            if (check) {
-                navigate(`/booking/${carId}`);
-            } else {
-                message.info("Please select a Start and End date for your journey to check the availability of your desired bike.");
-            }
-        } else {
-            navigate('/login');
-        }
-    }, [token, check, navigate]);
+    fetchInitialData();
+  }, []);
 
-    const showAllCars = useCallback(() => {
-        setTotalCars(cars);
-    }, [cars]);
 
-    const filterByFuelType = useCallback(type => {
-    
-        
-        const filteredCars = cars.filter(car => car.type === type);
-        setTotalCars(filteredCars);
+  return (
+    <>
 
-        
-    }, [cars]);
+     {loading ? (
+        <Loader ref={loaderRef} />
+      ) : (
 
-    return (
+        <>
         <DefaultLayout>
-            <Row className="mt-3" justify="center">
-                <Col lg={20} sm={24} className="d-flex justify-content-left">
-                    <RangePicker showTime={{ format: 'HH:mm' }} format="MMM DD yyyy HH:mm" onChange={setFilter} />
-                </Col>
-            </Row>
-            <Row className="mt-3" justify="center">
-                <Col lg={20} sm={24} className="d-flex justify-content-left">
-                    {!check ? (
-                        <>
-                            <Button onClick={showAllCars}>All</Button>&nbsp;&nbsp;
-                            <Button onClick={() => filterByFuelType('Bike')}>Bike</Button>&nbsp;&nbsp;
-                            <Button onClick={() => filterByFuelType('Scooty')}>Scooty</Button> &nbsp;&nbsp;
-                            <Button onClick={() => filterByFuelType('Electric')}> Electric Vehicle</Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button onClick={showAllCars}>All</Button>&nbsp;&nbsp;
-                            <Button onClick={() => filterByFuelType('Bike')}>Bike</Button>&nbsp;&nbsp;
-                            <Button onClick={() => filterByFuelType('Scooty')}>Scooty</Button> &nbsp;&nbsp;
-                            <Button onClick={() => filterByFuelType('Electric')}> Electric Vehicle</Button>
-                        </>
-                    )}
-                </Col>
-            </Row>
-            {loading && <Spinner />}
-            <Row justify="center" gutter={16}>
-                {totalCars.filter(filterCarsByDateRange).map(car => (
-                    <Col lg={5} sm={24} xs={24} key={car._id}>
-                        <div className="car p-2 bs1">
-                            <img src={car.image} className="carimg" alt="car" />
-                            <div className="car-content d-flex align-items-center justify-content-between">
-                                <div className="text-left pl-2">
-                                    <p>{car.name}</p>
-                                    <p>Rent Per Hour {car.rentPerHour} /-</p>
-                                    <p>Type: {car.fuelType}</p>
-                                    <p>
-                                        Pick at Rathyatra Chauraha, Varanasi
-                                        <br />
-                                        Pin Code: 221010
-                                    </p>
-                                </div>
-                                <div>
-                                    <button className="btn1 mr-2" onClick={() => handleBookNow(car._id)}>
-                                        Book Now
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                ))}
-            </Row>
-            <Footer />
-        </DefaultLayout>
-    );
+
+<style>
+{
+            `
+
+            .reg-img {
+  object-fit: cover;
+  width: 69%;
 }
+
+/* styles.css */
+.my-section-5 {
+  padding: 20px;
+  background-color: #f5f5f5;
+
+}
+
+.img-section5 {
+  width: 50vw;
+  height: auto;
+  border-radius:23px;
+}
+
+.my-main-heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.my-para-section5 {
+  font-size: 18px;
+  line-height: 1.5;
+  padding:"20px"
+}
+.image-about{
+    display:flex;
+}
+
+
+
+
+.h1-text-home{
+    // z-index: 2;
+    color: #e9d2b8;
+    margin-top: -558px;
+    font-size: 4vw;
+    font-weight: 900;
+    width: 800px;
+
+    padding-left: 88px;
+}
+
+
+
+@media only screen and (max-width: 1500px) and (min-width: 1000px) {
+  .h1-text-home {
+      margin-top: -500px; /* Adjusted margin for smaller screens */
+      font-size: 4vw; /* Adjusted font size for smaller screens */
+      width: 50%; /* Adjusted width for smaller screens */
+      padding-left: 20px; /* Adjusted padding for smaller screens */
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .h1-text-home {
+      margin-top: -493px; /* Adjusted margin for smaller screens */
+      font-size: 6vw; /* Adjusted font size for smaller screens */
+      width: 50%; /* Adjusted width for smaller screens */
+      padding-left: 20px; /* Adjusted padding for smaller screens */
+  }
+}
+
+// .btn-text-book{
+//     // position: absolute;
+//     margin-left: -54vw;
+//     margin-top: 30vw;
+// }
+
+.btn-home{
+ 
+        display: inline-block;
+        margin-top: 4rem;
+        padding: 0.1rem 1rem;
+        background: rgb(243, 239, 239);
+        // cursor: pointer;
+        font-size: 1.4rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        text-align: center;
+        color: white;
+    }
+
+
+
+.btn-home:hover{
+    background:#d3a386;
+    color: #d3a386;
+}
+
+            `
+}
+</style>
+       
+<div>
+{/* <img data-speed="5" className="home-parallax" src="/image/bike.avf.jpg" alt=""  style={{objectFit:"cover", width:"100%"}}/> */}
+<Carahome/>
+<h1  className='h1-text-home' >
+Discover the joy of biking in the serene plains with Plain Ventures!  </h1>
+
+<NavLink className="btn-home  btn-text-book" to="/viewbike"style={{ color: "white" }}>Bike Showcase</NavLink>
+</div> 
+
+<CaraousalBottom/>
+
+
+
+<Caraousalserv/>
+
+
+<section className="container-fluid my-section-5">
+   
+          <div className="row">
+            <div className="col-lg-6 col-sm-12 col-md-6">
+              {/* <img className="img-section5 mt-5" src="images/section5.jpeg" alt="" /> */}
+              <img className="img-section5 mt-5" alt="" src={img7} />
+              {/* <h1 class="my-main-heading ">Every Spin Tells A story</h1> */}
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12">
+              <div className="mt-5 py-lg-5 w-75 m-5">
+                {/* <h1 className="font-weight-bold">Laugh n Laundry</h1> */}
+                <p className=" my-para-section5  mt-lg-2">
+                Welcome to BikeRiding Venture – Your Trusted Riding Partner!
+<br/> <br/>
+Discover the joy of biking in the serene plains with Plain Ventures! Specializing in top-notch bike adventures in flat landscapes, we bring the thrill of mountain biking to the plains. Our carefully crafted tours are designed by experienced riders who understand the needs of fellow biking enthusiasts.
+
+At Plain Ventures, we prioritize your satisfaction and fun, ensuring every detail of your biking experience is organized with style, passion, and expertise. Embrace the beauty of the plains as we take you on exciting rides, offering not just biking but a chance to immerse yourself in local culture, history, and traditions.
+
+{/* Choose Plain Ventures for an unforgettable biking experience where you'll ride through picturesque landscapes, enjoy delicious local cuisine, and connect with the community. We utilize locally operated services, contributing to the prosperity of the regions we explore. */}
+</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* <Footer/> */}
+      </DefaultLayout>
+      
+<Footer/>
+
+</>
+
+)}
+      </>
+     
+    
+  );
+};
 
 export default Home;

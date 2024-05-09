@@ -60,14 +60,14 @@ export default function Tablerow(props) {
       <td className="td-style-maxi">{data.user.profileName} </td>
       <td className="td-style-maxi">{data._id} </td>
       <td className="td-style-maxi">{data.transactionId} </td>
-      <td className="td-style-maxi">{data.car?.name}</td>
+      <td className="td-style-maxi">{data.bike?.name}</td>
       <td className="td-style-service">{formatDateTime12hr(data.createdAt)}</td>
       <td className="td-style-maxi">{data.bookedTimeSlots.from}</td>
       <td className="td-style-maxi">{data.bookedTimeSlots.to}</td>
       <td className="td-style-maxi">{data.totalHours}</td>
       <td className="td-style-maxi">{data.totalAmount}</td>
-      <td className="td-style-maxi">{data.car?.rentPerHour}</td>
-      <td className="td-style-maxi">{data.car?.fuelType}</td>
+      <td className="td-style-maxi">{data.bike?.rentPerHour}</td>
+      <td className="td-style-maxi">{data.bike?.fuelType}</td>
       {/* <td className="td-style-maxi">{data.guideRequired?"Yes":"NO"}</td> */}
      
 

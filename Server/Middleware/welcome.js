@@ -367,7 +367,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                                 <tr>
                                                                     <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
                                                                         <div class="alignment" align="center" style="line-height:10px">
-                                                                            <div class="fullWidth" style="max-width: 487.5px;"><img src="https://bd.gaadicdn.com/processedimages/indian/scout-bobber/source/scout-bobber62eb4a0d92990.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="487.5" alt="Car" title="Car" height="auto"></div>
+                                                                            <div class="fullWidth" style="max-width: 487.5px;"><img src="https://bd.gaadicdn.com/processedimages/indian/scout-bobber/source/scout-bobber62eb4a0d92990.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="487.5" alt="bike" title="bike" height="auto"></div>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -719,7 +719,7 @@ const welcomeSendEmail = expressAsyncHandler(async (req, res) => {
                                                             <tr>
                                                                 <td class="pad" style="width:100%;">
                                                                     <div class="alignment" align="center" style="line-height:10px">
-                                                                        <div style="max-width: 285px;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="outline:none" tabindex="-1"><img src="https://pngfre.com/wp-content/uploads/bike-png-from-pngfre-28-300x270.png" style="display: block; height: auto; border: 0; width: 100%;" width="285" alt="Car on the move" title="Car on the move" height="auto"></a></div>
+                                                                        <div style="max-width: 285px;"><a href="https://bikeridingventure.vercel.app/" target="_blank" style="outline:none" tabindex="-1"><img src="https://pngfre.com/wp-content/uploads/bike-png-from-pngfre-28-300x270.png" style="display: block; height: auto; border: 0; width: 100%;" width="285" alt="bike on the move" title="bike on the move" height="auto"></a></div>
                                                                     </div>
                                                                 </td>
                                                             </tr>

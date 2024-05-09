@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Car = require("../models/bikeModel");
+const Bike = require("../models/bikeModel");
 
 
 
@@ -8,38 +8,38 @@ const Car = require("../models/bikeModel");
 
 
 
-router.get("/getallcars", async (req, res) => {
+router.get("/getallbikes", async (req, res) => {
   try {
-    const cars = await Car.find();
-    res.send(cars);
+    const bikes = await Bike.find();
+    res.send(bikes);
   } catch (error) {
     return res.status(400).json(error);
   }
 });
 
-router.post("/addcar", async (req, res) => {
+router.post("/addbike", async (req, res) => {
   try {
-    const newcar = new Car(req.body);
-    console.log(newcar);
-    await newcar.save();
+    const newbike = new Bike(req.body);
+    console.log(newbike);
+    await newbike.save();
     res.send("Bike added successfully");
   } catch (error) {
     return res.status(400).json(error);
   }
 });
 
-router.post("/editcar", async (req, res) => {
+router.post("/editbike", async (req, res) => {
   try {
-    const car = await Car.findOne({ _id: req.body._id });
-    console.log(car);
-    car.name = req.body.name;
-    car.image = req.body.image;
-    car.fuelType = req.body.fuelType;
-    car.rentPerHour = req.body.rentPerHour;
-    car.capacity = req.body.capacity;
-    car.type=req.body.type
+    const bike = await Bike.findOne({ _id: req.body._id });
+    console.log(bike);
+    bike.name = req.body.name;
+    bike.image = req.body.image;
+    bike.fuelType = req.body.fuelType;
+    bike.rentPerHour = req.body.rentPerHour;
+    bike.capacity = req.body.capacity;
+    bike.type=req.body.type
 
-    await car.save();
+    await bike.save();
 
     res.send("Bike details updated successfully");
   } catch (error) {
@@ -47,10 +47,10 @@ router.post("/editcar", async (req, res) => {
   }
 });
 
-router.delete("/deletecar/:id", async (req, res) => {
+router.delete("/deletebike/:id", async (req, res) => {
   console.log(req.params.id);
   try {
-    await Car.deleteOne({ _id: req.params.id });
+    await Bike.deleteOne({ _id: req.params.id });
 
     res.send("Bike deleted successfully");
   } catch (error) {

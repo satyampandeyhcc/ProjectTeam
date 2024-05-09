@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "../components/DefaultLayout";
 import Spinner from "../components/Spinner";
-import { getAllCars } from "../redux/actions/bikesActions";
+import { getAllBikes } from "../redux/actions/bikesActions";
 import moment from "moment";
-import { bookCar } from "../redux/actions/bookingActions";
+import { bookBike } from "../redux/actions/bookingActions";
 import StripeCheckout from "react-stripe-checkout";
 import AOS from "aos";
 import { useParams } from "react-router-dom";
@@ -15,7 +15,7 @@ import { getstatus } from "../redux/actions/userActions";
 
 const { RangePicker } = DatePicker;
 function BookingBike({ match }) {
-  const { carid } = useParams();
+  const { bikeid } = useParams();
   const { verified } = useSelector((state) => state.statusView);
  
   
@@ -24,9 +24,9 @@ function BookingBike({ match }) {
     dispatch(getstatus(JSON.parse(localStorage.getItem("user"))._id));
   }, []);
   
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { bikes } = useSelector((state) => state.bikesReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
-  const [car, setcar] = useState({});
+  const [bike, setbike] = useState({});
   const dispatch = useDispatch();
   const [from, setFrom] = useState();
   const [to, setTo] = useState();
@@ -34,16 +34,16 @@ function BookingBike({ match }) {
   const [guide, setguide] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  //Find car by id
+  //Find bike by id
   useEffect(() => {
-    if (cars.length == 0) {
-      dispatch(getAllCars());
+    if (bikes.length == 0) {
+      dispatch(getAllBikes());
     } else {
-      setcar(cars.find((o) => o._id == carid));
+      setbike(bikes.find((o) => o._id == bikeid));
     }
-  }, [cars]);
+  }, [bikes]);
   useEffect(() => {
-    let calculatedTotalAmount = totalHours * car.rentPerHour;
+    let calculatedTotalAmount = totalHours * bike.rentPerHour;
     if (guide) {
       // If guide is required, add $30 per hour
       calculatedTotalAmount += 30 * totalHours;
@@ -94,7 +94,7 @@ function BookingBike({ match }) {
     const reqObj = {
       token,
       user: JSON.parse(localStorage.getItem("user"))._id,
-      car: car._id,
+      bike: bike._id,
       totalHours,
       totalAmount,
       guideRequired: guide,
@@ -104,7 +104,7 @@ function BookingBike({ match }) {
       },
     };
 
-    dispatch(bookCar(reqObj));
+    dispatch(bookBike(reqObj));
   }
 
   return (
@@ -117,8 +117,8 @@ function BookingBike({ match }) {
       >
         <Col lg={10} sm={24} xs={24} className="p-3">
           <img
-            src={car.image}
-            className="carimg2 bs1 w-100"
+            src={bike.image}
+            className="bikeimg2 bs1 w-100"
             data-aos="flip-left"
             data-aos-duration="1500"
           />
@@ -129,10 +129,10 @@ function BookingBike({ match }) {
             Bike Info
           </Divider>
           <div style={{ textAlign: "right" }}>
-            <p>{car.name}</p>
-            <p>{car.rentPerHour} Rent Per hour /-</p>
-            <p>Type / Description: {car.fuelType}</p>
-            <p> Weight : {car.capacity}</p>
+            <p>{bike.name}</p>
+            <p>{bike.rentPerHour} Rent Per hour /-</p>
+            <p>Type / Description: {bike.fuelType}</p>
+            <p> Weight : {bike.capacity}</p>
           </div>
 
           <Divider type="horizontal" dashed>
@@ -158,7 +158,7 @@ function BookingBike({ match }) {
                 Total Hours : <b>{totalHours}</b>
               </p>
               <p>
-                Rent Per Hour : <b>{car.rentPerHour}</b>
+                Rent Per Hour : <b>{bike.rentPerHour}</b>
               </p>
               <Checkbox
                 onChange={(e) => {
@@ -177,10 +177,10 @@ function BookingBike({ match }) {
               {verified?<StripeCheckout
                 shippingAddress
                 token={onToken}
-                currency="inr"
+                currency="INR"
                 amount={totalAmount * 100}
-                // stripeKey="pk_test_51IYnC0SIR2AbPxU0TMStZwFUoaDZle9yXVygpVIzg36LdpO8aSG8B9j2C0AikiQw2YyCI8n4faFYQI5uG3Nk5EGQ00lCfjXYvZ"
                 stripeKey="pk_test_51OvXtUSED8rhSVdkZC0cnXzFrtPdrR3vUsDAazba7MAAiuYLd3Px8ChNcSX7u23Tmmq0UuaVJGFpgjNmSDUZJbiq00oskZnlt8"
+                // stripeKey="pk_test_51PEY8qSBvNz3idXhsIT15bA0p3ZZ0MOkfVV6bhCC8SwGvhzpoaR0YfPl1vIkf7qAJohv4UyNWrL48cBWBjzvteav00eAF5nTVL"
               >
                <button className="btn1">Book Now</button>
               </StripeCheckout>:<button onClick={()=>window.location.href='/myprofile'} className="btn1">Go To verification</button>}
@@ -188,7 +188,7 @@ function BookingBike({ match }) {
           )}
         </Col>
 
-        {car.name && (
+        {bike.name && (
           <Modal
             visible={showModal}
             closable={false}
@@ -196,7 +196,7 @@ function BookingBike({ match }) {
             title="Booked time slots"
           >
             <div className="p-2">
-              {car.bookedTimeSlots.map((slot) => {
+              {bike.bookedTimeSlots.map((slot) => {
                 return (
                   <button className="btn1 mt-2">
                     {slot.from} - {slot.to}

@@ -6,14 +6,14 @@ const api = axios.create({
   // baseURL: "http://localhost:5000",
 });
 
-export const bookCar = (reqObj) => async (dispatch) => {
+export const bookBike = (reqObj) => async (dispatch) => {
 
 
 
   dispatch({ type: "LOADING", payload: true });
 
   try {
-     await api.post("/api/bookings/bookcar" , reqObj);
+     await api.post("/api/bookings/bookbike" , reqObj);
      console.log(reqObj);
 
     dispatch({ type: "LOADING", payload: false });

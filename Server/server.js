@@ -17,7 +17,7 @@ app.use(
   
 const adminAuthRoute = require('./routes/adminAuthRoute');
 
-app.use('/api/cars/' , require('./routes/bikesRoute'))
+app.use('/api/bikes/' , require('./routes/bikesRoute'))
 app.use('/api/users/' , require('./routes/usersRoute'))
 app.use('/api/bookings/' , require('./routes/bookingsRoute.js'))
 // app.use('/api/Contact/' , require('./routes/contactRoute'))

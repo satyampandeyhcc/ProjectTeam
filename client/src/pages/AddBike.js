@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch , useSelector } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
 import Spinner from '../components/Spinner'
-import { addCar } from '../redux/actions/bikesActions'
+import { addBike } from '../redux/actions/bikesActions'
 import AdminDefaultLayout from "../components/AdminDefaultLayout";
 function AddBike() {
 
@@ -14,7 +14,7 @@ function AddBike() {
 
          values.bookedTimeSlots=[]
 
-         dispatch(addCar(values))
+         dispatch(addBike(values))
          console.log(values)
     }
 

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 //adding schema for admin functions
-const carSchema = new mongoose.Schema({
+const bikeSchema = new mongoose.Schema({
 
     name : {type : String , required : true} ,
     image : {type : String , required : true} , 
@@ -20,5 +20,5 @@ const carSchema = new mongoose.Schema({
 }, {timestamps : true}
 
 )
-const carModel = mongoose.model('cars' , carSchema)
-module.exports = carModel
+const bikeModel = mongoose.model('bikes' , bikeSchema)
+module.exports = bikeModel

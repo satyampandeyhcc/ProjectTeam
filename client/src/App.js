@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/BikeShowcase';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import BookingBike from './pages/BookingBike';
@@ -10,7 +10,7 @@ import UserBookings from './pages/UserBookings';
 import AddBike from './pages/AddBike';
 import AdminHome from './pages/AdminHome';
 import EditBike from './pages/EditBike';
-import FirstHome from './pages/FirstHome';
+import FirstHome from './pages/Home';
 import Contact from './pages/Contact';
 import AdminLogin from './pages/AdminLogin';
 import AdminResponse from './pages/AdminResponse';
@@ -32,7 +32,7 @@ function App() {
           <Route path='/forgot-pass' element={<ForgetPassword/>} />
           <Route path='/' element={<FirstHome />} />
           <Route path='/viewbike' element={<Home />} />
-          <Route path='/booking/:carid' element={<BookingBike />} />
+          <Route path='/booking/:bikeid' element={<BookingBike />} />
           <Route path='/userbookings' element={<UserBookings />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/myprofile' element={<Myprofile />} />
@@ -41,8 +41,8 @@ function App() {
 
 
           <Route path='/admin' element={<AdminHome />} />
-          <Route path='/addcar' element={<AddBike />} />
-          <Route path='/editcar/:carid' element={<EditBike />} />
+          <Route path='/addbike' element={<AddBike />} />
+          <Route path='/editbike/:bikeid' element={<EditBike />} />
           <Route path='/adminlogin' element={<AdminLogin/>}/>
           <Route path='/adminresponse' element={<AdminResponse/>}/>
           <Route path="/admindashboard" element={<AdminDashboard/>}/>
