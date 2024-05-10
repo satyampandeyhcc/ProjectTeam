@@ -150,11 +150,13 @@ const Home = () => {
        
 <div>
 {/* <img data-speed="5" className="home-parallax" src="/image/bike.avf.jpg" alt=""  style={{objectFit:"cover", width:"100%"}}/> */}
-<Carahome/>
-<h1  className='h1-text-home' >
+
+  <Carahome/>
+  
+{/* <h1  className='h1-text-home' >
 Discover the joy of biking in the serene plains with Plain Ventures!  </h1>
 
-<NavLink className="btn-home  btn-text-book" to="/viewbike"style={{ color: "white" }}>Bike Showcase</NavLink>
+<NavLink className="btn-home  btn-text-book" to="/viewbike"style={{ color: "white" }}>Bike Showcase</NavLink> */}
 </div> 
 
 <CaraousalBottom/>
