@@ -122,7 +122,27 @@ function BikeShowcase() {
                 </Col>
             </Row>
             {loading && <Spinner />}
-            <Row justify="center" gutter={16}>
+
+            {totalBikes.length===0 ? (
+<>
+        
+        <style>
+          {`
+                  .emptyimg {
+                    height: 37.5vh;
+                  }
+              
+                
+                `}
+        </style>
+
+        </>
+      ) : (
+        <p></p>
+      )}
+
+
+            <Row justify="center" gutter={16} className='emptyimg'>
                 {totalBikes.filter(filterBikesByDateRange).map(bike => (
                     <Col lg={5} sm={24} xs={24} key={bike._id}>
                         <div className="bike p-2 bs1">
