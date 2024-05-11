@@ -81,7 +81,7 @@ function AdminHome() {
                 <div className="bike-content d-flex align-items-center justify-content-between">
                   <div className="text-left pl-2">
                     <p>{bike.name}</p>
-                    <p> Rent Per Hour {bike.rentPerHour} /-</p>
+                    <p> Rent Per Hour: ₹ {bike.rentPerHour} /-</p>
                     <p> Type: {bike.fuelType} </p>
                   </div>
 

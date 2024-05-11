@@ -39,7 +39,7 @@ function AddBike() {
                            <Form.Item name='rentPerHour' label='Rent per hour' rules={[{required: true}]}>
                                <Input/>
                            </Form.Item>
-                           <Form.Item name='capacity' label='Weight' rules={[{required: true}]}>
+                           <Form.Item name='capacity' label='Availabel Bikes' rules={[{required: true}]}>
                                <Input/>
                            </Form.Item>
                            <Form.Item name='fuelType' label='FuelType / Description' rules={[{required: true}]}>

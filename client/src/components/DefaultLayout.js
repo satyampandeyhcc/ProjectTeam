@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Row, Col } from "antd";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../components/images/logoimg.jpg";
+import email from "../components/images/Email.png";
+import phone from "../components/images/PhoneCall.png";
+// import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import Navbar from 'react-bootstrap/Navbar';
 // import "../Project.css";
 
 function DefaultLayout(props) {
@@ -22,6 +26,11 @@ function DefaultLayout(props) {
 
   return (
     <div>
+
+
+
+
+
       <style>
         {`
   
@@ -67,12 +76,38 @@ function DefaultLayout(props) {
     .my-nav-btn2:hover {
       text-decoration: none;
     }
+    .height123{
+      background:#f0f0f082;
+      height:10vh;
+    }
+
+    @media screen and (max-width: 1000px) {
+
+
+      .height123{
+        
+        height:auto;
+      }
+
+     
+    }
+
+    
+  
     
     `}
       </style>
+
+
+
+    
+
+
+
+
       <nav
-        style={{ background: "#f0f0f082" }}
-        className="navbar my-nav-bar navbar-expand-lg"
+        // style={{ background: "" ,height:"auto"}}
+        className="navbar my-nav-bar navbar-expand-lg height123"
       >
         <Link className="navbar-brand ml-3 w-50 my-links" to="/">
           <div style={{ display: "flex" }}>
@@ -145,6 +180,17 @@ function DefaultLayout(props) {
                 style={{ color: "orangered" }}
               >
                 Contact Us
+              </Link>
+            </li>
+
+
+            <li className="nav-item ml-2">
+              <Link
+                className="nav-link "
+                to="/allstore"
+                style={{ color: "orangered" }}
+              >
+                Available Branch
               </Link>
             </li>
 

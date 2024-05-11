@@ -154,7 +154,7 @@ router.get("/getallimages", async(req, res) => {
 
 });
 
-router.get("/status", async(req, res) => {
+router.get("/getstatus", async(req, res) => {
   // console.log(req.query.id);
   try {
       const id = await req.query.id;
@@ -245,7 +245,7 @@ router.post("/contact", async (req, res) => {
 });
 
 
-router.get("/contacts", async (req, res) => {
+router.get("/getAllcontact", async (req, res) => {
   try {
     // Fetch all contact responses from the database
     const contacts = await Contact.find();
@@ -322,7 +322,7 @@ router.put("/passChange", async (req, res) => {
 router.post("/sendEmail", sendEmail);
 router.post("/welcomeSendEmail", welcomeSendEmail);
 
-router.post("/verify" , getOTPByEmail)
+router.post("/verifyOTP" , getOTPByEmail)
 module.exports = router;
 
 

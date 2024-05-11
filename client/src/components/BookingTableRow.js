@@ -64,8 +64,8 @@ export default function Tablerow(props) {
       <td className="td-style-service">{formatDateTime12hr(data.createdAt)}</td>
       <td className="td-style-maxi">{data.bookedTimeSlots.from}</td>
       <td className="td-style-maxi">{data.bookedTimeSlots.to}</td>
-      <td className="td-style-maxi">{data.totalHours}</td>
-      <td className="td-style-maxi">{data.totalAmount}</td>
+      <td className="td-style-maxi">₹{data.totalHours}</td>
+      <td className="td-style-maxi">₹{data.totalAmount}</td>
       <td className="td-style-maxi">{data.bike?.rentPerHour}</td>
       <td className="td-style-maxi">{data.bike?.fuelType}</td>
       {/* <td className="td-style-maxi">{data.guideRequired?"Yes":"NO"}</td> */}

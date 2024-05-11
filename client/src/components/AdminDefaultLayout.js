@@ -198,7 +198,7 @@ function AdminDefaultLayout(props) {
             <li className="nav-item ml-2">
               <Link 
                 className="nav-link "
-                to="/admindashboard"
+                to="/adminuserdashboard"
                 style={{color:"orangered"}}
               >
                 User Dashboard
@@ -208,7 +208,7 @@ function AdminDefaultLayout(props) {
             <li className="nav-item ml-2">
               <Link
                 className="nav-link "
-                to="/bookingdashboard"
+                to="/adminbookingdashboard"
                 style={{color:"orangered"}}
               >
                 Booking Dashboard

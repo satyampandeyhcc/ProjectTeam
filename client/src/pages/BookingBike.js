@@ -8,7 +8,7 @@ import moment from "moment";
 import { bookBike } from "../redux/actions/bookingActions";
 import StripeCheckout from "react-stripe-checkout";
 import AOS from "aos";
-import { useParams } from "react-router-dom";
+import { useParams,NavLink } from "react-router-dom";
 
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import { getstatus } from "../redux/actions/userActions";
@@ -106,7 +106,10 @@ function BookingBike({ match }) {
 
     dispatch(bookBike(reqObj));
   }
-
+  const disabledDate = (current) => {
+    // Disable dates before today
+    return current && current < moment().startOf('day');
+  };
   return (
     <DefaultLayout>
       {loading && <Spinner />}
@@ -132,7 +135,14 @@ function BookingBike({ match }) {
             <p>{bike.name}</p>
             <p>{bike.rentPerHour} Rent Per hour /-</p>
             <p>Type / Description: {bike.fuelType}</p>
-            <p> Weight : {bike.capacity}</p>
+            <p> Available bikes : {bike.capacity}</p>
+
+            <p>Pick at :-&nbsp;
+                  <NavLink className="button-781" to="/allstore" style={{}}>
+                   Durgakund Churaha, Varanasi
+            </NavLink>
+
+            </p>
           </div>
 
           <Divider type="horizontal" dashed>
@@ -142,6 +152,7 @@ function BookingBike({ match }) {
             showTime={{ format: "HH:mm" }}
             format="MMM DD yyyy HH:mm"
             onChange={selectTimeSlots}
+            disabledDate={disabledDate}
           />
           <br />
           <button
@@ -172,7 +183,7 @@ function BookingBike({ match }) {
                 Driver Required
               </Checkbox>
 
-              <h3>Total Amount : {totalAmount}</h3>
+              <h3>Total Amount : ₹ {totalAmount}</h3>
 
               {verified?<StripeCheckout
                 shippingAddress

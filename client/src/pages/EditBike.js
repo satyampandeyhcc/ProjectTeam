@@ -74,7 +74,7 @@ function EditBike({ match }) {
               </Form.Item>
               <Form.Item
                 name="capacity"
-                label="Weight"
+                label="Availabel Bikes"
                 rules={[{ required: true }]}
               >
                 <Input />

@@ -1,3 +1,5 @@
+import email from "../components/images/Email.png";
+import phone from "../components/images/PhoneCall.png";
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +11,8 @@ import img7 from "../components/images/Component1.jpg"
 import Carahome from '../components/Carahome';
 import Footer from '../components/Footer'
 import Loader from "../components/Loader"
+import Navbar from 'react-bootstrap/Navbar';
+
 // import Footer from '../components/Footer';
 
 
@@ -44,7 +48,7 @@ const Home = () => {
       ) : (
 
         <>
-        <DefaultLayout>
+
 
 <style>
 {
@@ -144,9 +148,73 @@ const Home = () => {
     color: #d3a386;
 }
 
+
+
+
+
+.headname{
+  color:orange;
+ 
+}
+  @media only screen and (max-width: 1000px) {
+    .removenav {
+      // color: red;
+      display: none;
+    }
+
+    .headname{
+      justify-content: center;
+    }
+
+  
+  }
+
+  @media only screen and (max-width: 530px) {
+   
+
+    .headname{
+      font-size:3.5vw;
+    }
+
+  
+  }
+
             `
 }
 </style>
+
+
+<Navbar bg="dark" variant="dark" sticky="top" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', height: "37px" }}>
+<Navbar.Brand href="/" ><p className="headname" >Explore Varanasi live! Secure your ride today!</p></Navbar.Brand>
+<Navbar.Toggle />
+<Navbar.Collapse className="justify-content-end " >
+  <Navbar.Text  className='removenav'  >
+    <img
+      className="my-logo-nav"
+      alt=""
+      src={email}
+    />&nbsp;
+    <a style={{ textTransform: "none" }} href="mailto:bikeridingventure@gmail.com">
+      <span style={{ color: "orange" }}>&nbsp;bikeridingventure@gmail.com</span>
+    </a>
+  </Navbar.Text>
+  <Navbar.Text className='removenav'>
+    <img
+      className="my-logo-nav"
+      alt=""
+      src={phone}
+    />
+    <a href="tel:+918318453686">
+      <span style={{ color: "orange" }}>&nbsp;+91 8318453686</span>
+    </a>
+  </Navbar.Text>
+</Navbar.Collapse>
+</Navbar>
+
+
+        <DefaultLayout>
+
+
        
 <div>
 {/* <img data-speed="5" className="home-parallax" src="/image/bike.avf.jpg" alt=""  style={{objectFit:"cover", width:"100%"}}/> */}

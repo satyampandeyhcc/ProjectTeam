@@ -68,12 +68,10 @@ const Carahome = () => {
       @media only screen and (min-width: 400px) and (max-width: 519px) {
         .button-781{
         
-          top:48%;
-      margin-top: 3rem;
-      
-      font-size: 0.8rem;
-      
-      left:20%;
+          top: 58%;
+        margin-top: 3rem;
+        font-size: 0.8rem;
+        left: 36%;
       
         }
 
@@ -81,16 +79,13 @@ const Carahome = () => {
 
 
         .text123{
-          position:absolute;
-          top:10%;
+          position: absolute;
+          top: 10%;
           color: #e9d2b8;
-        
           font-size: 3.5vw;
           font-weight: 900;
-          width: 48vw;
-
-      
-          padding-left: 88px;
+          width: 46vw;
+          padding-left: 27px;
       }
 
       .imagecara{

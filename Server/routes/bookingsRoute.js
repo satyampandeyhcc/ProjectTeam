@@ -60,7 +60,9 @@ router.post("/bookbike", async (req, res) => {
       const bike = await Bike.findOne({ _id: req.body.bike });
       console.log(req.body.bike);
       bike.bookedTimeSlots.push(req.body.bookedTimeSlots);
-
+      // if(bike.capacity!=0)
+      bike.capacity -= 1;
+// console.log(111111111);
       await bike.save();
       res.send("Your booking is successful");
     } else {

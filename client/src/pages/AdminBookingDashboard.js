@@ -7,15 +7,15 @@ import { document } from "postcss";
 
 import { useState } from "react";
 
-import Table from "../components/Table";
+import Table from "../components/BookingTable";
 // import AdminNavbar from "./AdminNavbar";
 // import AdminNavbar2 from "./AdminNavbar2";
 // import Responsesadmin from "./Response2";
 import AdminDefaultLayout from "../components/AdminDefaultLayout";
-const AdminDashboard = () => {
+const AdminBookingDashboard = () => {
   const [today, settoday] = useState(0);
   const [pickup, setpickup] = useState(0);
-  // const [drop, setdrop] = useState(0);
+  const [drop, setdrop] = useState(0);
   const [data, setdata] = useState([]);
   const [data2, setdata2] = useState([]);
   const [copydata2, setcopydata2] = useState([]);
@@ -28,14 +28,16 @@ const AdminDashboard = () => {
   const [response, setresponse] = useState(false);
   const [serialNumber, setSerialNumber] = useState(1);
   const [verifieddata, setverifieddata] = useState(0);
+
   const [numberVerified, setnumberVerified] = useState(0);
 
   useEffect(() => {
     // console.log(searchValue);
     const d = data2.filter((element) => {
       return (
-        element.profileName.toLowerCase().substring(0, searchValue.length) ===
-        searchValue.toLowerCase()
+        element.user.profileName
+          .toLowerCase()
+          .substring(0, searchValue.length) === searchValue.toLowerCase()
       );
     });
     setcopydata2(d);
@@ -47,21 +49,18 @@ const AdminDashboard = () => {
 
   const fetchAllUser = async () => {
     try {
-    
-      // http://localhost:5000
-      const response = await fetch("  https://bikeridingventure.onrender.com/api/users/allusers");
+      const response = await fetch("https://bikeridingventure.onrender.com/api/bookings/getallbookings");
       if (response.ok) {
         const data = await response.json();
 
         setverifieddata(data);
+        console.log(data);
 
         setnumberVerified(
           data.reduce((acc, curr) => {
-            return (acc += curr.verified);
+            return (acc += curr.guideRequired);
           }, 0)
         );
-
-        // console.log(number);
 
         setcopydata(data);
         setdata(data);
@@ -79,7 +78,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     setnumberVerified(
       copydata.reduce((acc, curr) => {
-        return (acc += curr.verified);
+        return (acc += curr.guideRequired);
       }, 0)
     );
   }, [copydata]);
@@ -106,25 +105,24 @@ const AdminDashboard = () => {
 
   const handleChange = (x) => {
     const d = copydata.filter((element) => {
-      return element.verified == x;
-      // element.date === getFormattedDate() &&
+      return element.guideRequired === x;
+
+      //  element.date === getFormattedDate() &&
     });
     setdata(d);
     setcurrentindex(0);
   };
-
-
 
   const handleChangeall = (x) => {
-    
     const d = copydata.filter((element) => {
-      return element.verified == x || element.verified!=x;
-      // element.date === getFormattedDate() &&
+      return element.guideRequired === x || element.guideRequired != x;
+
+      //  element.date === getFormattedDate() &&
     });
     setdata(d);
     setcurrentindex(0);
- 
   };
+
 
 
 
@@ -158,9 +156,6 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     if (data.length) {
-      console.log(data);
-
-      console.log(data[0].verified);
       settoday(
         data.reduce((acc, element) => {
           return (
@@ -179,15 +174,6 @@ const AdminDashboard = () => {
           );
         }, 0)
       );
-      //       setdrop(
-      //         data.reduce((acc, element) => {
-      //           return (
-      //             acc +
-      //             (element.date === getFormattedDate() &&
-      //               element.status === "out-for-delivery")
-      //           );
-      //         }, 0)
-      //       );
     }
   }, [copydata]);
 
@@ -202,7 +188,7 @@ const AdminDashboard = () => {
       /> */}
 
       <AdminDefaultLayout>
-        <p className="dash-heading">User Dashboard</p>
+        <p className="dash-heading">Booking Dashboard</p>
 
         <div className="navbar search-nav navbar-light">
           <div className="container-search">
@@ -243,18 +229,19 @@ const AdminDashboard = () => {
             <div className="cards" style={{ display: "flex" }}>
 
 
+
             <div
                 className="card"
                 name="picked"
                 onClick={() => handleChangeall(true)}
               >
                 <div className="card-body" onClick={() => handleChangeall(true)}>
-                  <p className="card-title prices">{copydata.length  }</p>
+                  <p className="card-title prices">{copydata.length}</p>
                   <p
                     className="card-subtitle mb-2 today-order"
                     onClick={() => handleChangeall(true)}
                   >
-                    Total User
+                    Total Booking
                   </p>
                 </div>
                 <div className="card-msg" onClick={() => handleChangeall(true)}>
@@ -265,7 +252,7 @@ const AdminDashboard = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     style={{height: "65px",
-                      width: "81px"}}
+                    width: "81px"}}
                   >
                     <rect
                       width="64"
@@ -290,9 +277,6 @@ const AdminDashboard = () => {
 
 
 
-
-
-
               <div
                 className="card"
                 name="picked"
@@ -304,7 +288,7 @@ const AdminDashboard = () => {
                     className="card-subtitle mb-2 today-order"
                     onClick={() => handleChange(true)}
                   >
-                    Verified User
+                    Driver Wanted
                   </p>
                 </div>
                 <div className="card-msg" onClick={() => handleChange(true)}>
@@ -315,7 +299,7 @@ const AdminDashboard = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     style={{height: "65px",
-                      width: "81px"}}
+                    width: "81px"}}
                   >
                     <rect
                       width="64"
@@ -344,7 +328,7 @@ const AdminDashboard = () => {
                     className="card-subtitle mb-2 today-order"
                     onClick={() => handleChange(false)}
                   >
-                    Not Verified User
+                    Driver Not Wanted
                   </p>
                 </div>
                 <div className="card-msg" onClick={() => handleChange(false)}>
@@ -393,4 +377,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default AdminBookingDashboard;

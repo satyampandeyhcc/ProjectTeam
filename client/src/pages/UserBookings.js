@@ -29,7 +29,7 @@ function UserBookings() {
                     <p><b>{booking.bike?.name}</b></p>
                     <p>Total hours : <b>{booking.totalHours}</b></p>
                     <p>Rent per hour : <b>{booking.bike?.rentPerHour}</b></p>
-                    <p>Total amount : <b>{booking.totalAmount}</b></p>
+                    <p>Total amount : ₹ <b>{booking.totalAmount}</b></p>
                     <p>Driver Required : <b>{booking.guideRequired?"YES":"NO"}</b></p>
                 </Col>
 
