@@ -125,7 +125,7 @@ const Contact = () => {
                             alt=""
                             src={mail}
                           />
-                          <p className="text-dark text-decoration-none">
+                          <p className="text-dark text-decoration-none"    style={{textTransform:"none"}}>
                           {email}
                           </p>
                         </li>
