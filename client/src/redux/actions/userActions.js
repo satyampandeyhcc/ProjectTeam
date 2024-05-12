@@ -105,7 +105,7 @@ export const getstatus=(id)=>async dispatch=>{
   
     try {
         const params  = {id:id};
-        const response = await api.get('/api/users/status',{params})
+        const response = await api.get('/api/users/getstatus',{params})
         dispatch({type: 'GET_STATUS', payload:response.data})
         dispatch({type: 'LOADING' , payload:false})
     } catch (error) {
