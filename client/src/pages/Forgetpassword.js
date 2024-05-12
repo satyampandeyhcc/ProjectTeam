@@ -115,7 +115,7 @@ function ForgetPassword() {
       dispatch({type: 'LOADING' , payload:true})
       console.log(email);
       try {
-        const response = await fetch('https://bikeridingventure.onrender.com/api/users/verify', {
+        const response = await fetch('https://bikeridingventure.onrender.com/api/users/verifyOTP', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
