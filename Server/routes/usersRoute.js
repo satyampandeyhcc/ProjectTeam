@@ -7,6 +7,61 @@ const bcrypt = require('bcryptjs');
 const { sendEmail } = require("../Middleware/sendEmail");
 const getOTPByEmail = require("../Controllers/OtpFetch.js");
 const { welcomeSendEmail } = require("../Middleware/welcome.js");
+// const { sendverifyemail } = require("../Middleware/sendverifyemail.js");
+
+
+
+
+
+
+// const express = require("express");
+// const router = express.Router();
+// const User = require("../models/userModel");
+const nodemailer = require("nodemailer");
+// const generateOTP = require("./generateOtp");
+// const storeOTP = require("../Controllers/OtpStore");
+const { promisify } = require("util");
+
+// Setup nodemailer transporter
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "satyampandey14999@gmail.com",
+    pass: "xtwa vbsj qjiy syrb", // Use App Password or your actual password
+  },
+});
+
+// Promisify the sendMail function
+const sendMailAsync = promisify(transporter.sendMail).bind(transporter);
+
+router.post("/sendverifyemail", async (req, res) => {
+  const { id, status, email } = req.body;
+  console.log(email);
+  try {
+    // const user = await User.findByIdAndUpdate(id, { verified: status });
+    // console.log(user.status);
+    if (status) {
+      // Send verification email if user is verified
+      var mailOptions = {
+        from: "satyampandey14999@gmail.com",
+        to: email,
+        subject: "Account Verification",
+        text: "Your account has been successfully verified. You can now access all features.",
+      };
+      await sendMailAsync(mailOptions);
+    }
+    else{
+     console.log("Account is not Verified");
+    }
+    res.status(200).json({ message: "updated" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error);
+  }
+});
+
+// module.exports = {sendverifyemail};
+
 // router.post("/login", async(req, res) => {
 
 //       const {username , password,type} = req.body
@@ -320,6 +375,7 @@ router.put("/passChange", async (req, res) => {
 });
 
 router.post("/sendEmail", sendEmail);
+// router.post("/sendverifyemail", sendverifyemail);
 router.post("/welcomeSendEmail", welcomeSendEmail);
 
 router.post("/verifyOTP" , getOTPByEmail)

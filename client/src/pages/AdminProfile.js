@@ -28,13 +28,15 @@ const Contact = () => {
     const [queryParameters] = useSearchParams();
     const _id = queryParameters.get("id");
     const contact = queryParameters.get("contact");
-    const email = queryParameters.get("email");
+    // const email = queryParameters.get("email").toLowerCase();
+
+    const email = queryParameters.get("email")?.toLowerCase() || '';
     const name = queryParameters.get("name");
     const ver = queryParameters.get("verified")
     const { verified } = useSelector((state) => state.statusView);
 
     const [status, setstatus] = useState(ver==="false"?1:0);
-    console.log(ver);
+    // console.log(ver);
 
 
     useEffect(() => {
@@ -70,8 +72,9 @@ const Contact = () => {
   const { loading } = useSelector((state) => state.alertsReducer);
 
   const handleVerify = ()=>{
-    console.log(_id);
-    dispatch(VerifySubmit({id:_id,status:status}));
+    // console.log(_id);
+    console.log(status);
+    dispatch(VerifySubmit({id:_id,status:status,  email: email}));
     setstatus(!status);
   }
 
@@ -117,7 +120,7 @@ const Contact = () => {
                       <Link
                         className="text-decoration-none"
                         target="blank"
-                        to="mailto:satyampandeyhcc@gmail.com"
+                        to={`mailto:${email.toLowerCase()}`}
                       >
                         <li className="mb-3">
                           <img
@@ -125,8 +128,8 @@ const Contact = () => {
                             alt=""
                             src={mail}
                           />
-                          <p className="text-dark text-decoration-none"    style={{textTransform:"none"}}>
-                          {email}
+                          <p className="text-dark text-decoration-none">
+                          {email.toLowerCase()}
                           </p>
                         </li>
                       </Link>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import {message} from 'antd'
 const api = axios.create({
-    baseURL: "https://bikeridingventure.onrender.com/",
+    baseURL: "http://localhost:5000",
     // baseURL: "http://localhost:5000",
   });
 export const userLogin=(reqObj)=>async dispatch=>{
@@ -179,6 +179,26 @@ dispatch({ type: "LOADING", payload: false });
 }
 }
 
+// export const VerifySubmit = (formData) => async (dispatch) => {
+//     dispatch({ type: "LOADING", payload: true });
+
+//     try {
+//         console.log(formData);
+//         const response = await api.post("/api/users/updateverify", formData);
+//         if (response.status === 200) {
+//     message.success("Verification status changed!");
+// } else {
+//     message.error("Failed to send message");
+// }
+// dispatch({ type: "LOADING", payload: false });
+// } catch (error) {
+// console.error(error);
+// message.error("An error occurred while sending message");
+// dispatch({ type: "LOADING", payload: false });
+// }
+// }
+
+
 export const VerifySubmit = (formData) => async (dispatch) => {
     dispatch({ type: "LOADING", payload: true });
 
@@ -186,15 +206,25 @@ export const VerifySubmit = (formData) => async (dispatch) => {
         console.log(formData);
         const response = await api.post("/api/users/updateverify", formData);
         if (response.status === 200) {
-    message.success("Verification status changed!");
-} else {
-    message.error("Failed to send message");
-}
-dispatch({ type: "LOADING", payload: false });
-} catch (error) {
-console.error(error);
-message.error("An error occurred while sending message");
-dispatch({ type: "LOADING", payload: false });
-}
+            message.success("Verification status changed!");
+            // Send verification email
+            if(formData.status){
+
+                await api.post("/api/users/sendverifyemail", { email: formData.email ,status:formData.status});
+                message.success("Verification email sent!");
+
+            }
+            else{
+                message.info("Verification is pending!");
+            }
+        } else {
+            message.error("Failed to change verification status");
+        }
+        dispatch({ type: "LOADING", payload: false });
+    } catch (error) {
+        console.error(error);
+        message.error("An error occurred while changing verification status");
+        dispatch({ type: "LOADING", payload: false });
+    }
 }
 
