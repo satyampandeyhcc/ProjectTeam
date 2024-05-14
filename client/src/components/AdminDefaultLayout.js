@@ -140,9 +140,9 @@ function AdminDefaultLayout(props) {
             src={logo}
           
             />
-          <div  className="heading-bike" >
+          <div  className="heading-bike"      style={{textTransform:"none"}}>
 
-         BikeRidingVenture
+         bikeRidingVenture
           </div>
 
           </div>

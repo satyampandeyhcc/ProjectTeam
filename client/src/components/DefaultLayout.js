@@ -119,9 +119,10 @@ function DefaultLayout(props) {
             />
             <div
               className="heading-bike"
+              style={{textTransform:"none"}}
           
             >
-              BikeRidingVenture
+              bikeRidingVenture
             </div>
           </div>
         </Link>

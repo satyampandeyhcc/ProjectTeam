@@ -220,6 +220,7 @@ const Contact = () => {
                             className="my-logo-contact text-decoration-none mb-2"
                             alt=""
                             src={mail}
+                            style={{textTransform:"none"}}
                          
                           />
                           <p className="text-dark text-decoration-none"    style={{textTransform:"none"}} >

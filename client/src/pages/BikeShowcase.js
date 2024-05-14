@@ -187,7 +187,7 @@ function BikeShowcase() {
                   <NavLink className="button-781" to="/allstore" >
                     <span>
 
-                   Durgakund Churaha, Varanasi
+                   Rathyatra Chauraha, Varanasi
                     </span>
             </NavLink>
 

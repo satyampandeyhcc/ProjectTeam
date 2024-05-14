@@ -60,7 +60,7 @@ const Footer = () => {
             </h6>
             <p>
               <Link target='blank' to="https://maps.app.goo.gl/UN4CCqPbg4dnBaz67" className="text-reset">
-              Show Room no.14,15 <br /> Varanasi Residency <br /> Haewliya Colony <br /> Varanasi, UttarPradesh, 221007
+              Show Room no.14,15 <br /> Varanasi Residency <br /> Haewliya Colony <br />  Rathyatra Chauraha Varanasi, UttarPradesh, 221007
               </Link>
             </p>
           </div>
@@ -83,7 +83,7 @@ const Footer = () => {
               Check us out
             </h6>
             <p className='icons'>
-              <Link target='blank' to="https://wa.me/c/918318453686" className="text-reset">
+              <Link target='blank' to="tel:+918318453686" className="text-reset">
               <FaWhatsapp />
               </Link>
             </p>
@@ -118,7 +118,7 @@ const Footer = () => {
           <div class="col-12">
             <p>
               BikeRiding Venture ©2024 | All Rights Reserved, designed and deployed by
-              <a href="#">&nbsp;Satyam Pandey <i class="fa fa-love"></i></a>
+              <a href="#">&nbsp;Haribol Team Member <i class="fa fa-love"></i></a>
             </p>
           </div>
         </div>

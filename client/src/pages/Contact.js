@@ -88,7 +88,7 @@ const Contact = () => {
                           {/* Show Room no.14,15 Darpan Residency Dhindsa Colony
                           Khanpur, Kharar, 140301 */}
 
-                          Show Room no.14,15 Varanasi Residency Haewliya Colony Varanasi, UttarPradesh, 221007
+                          Show Room no.14,15 Varanasi Residency Haewliya Colony Rathyatra Chauraha Varanasi, UttarPradesh, 221007
                         </p>
                       </li>
                     </Link>

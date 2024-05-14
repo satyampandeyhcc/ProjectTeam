@@ -46,17 +46,17 @@ const Allstore = () => {
       <div className="card-body">
         <div>
 
-          <h6 className="font-weight-bold mb-1 d-inline">1- DURGAKUND CHURAHA </h6>{" "}
+          <h6 className="font-weight-bold mb-1 d-inline">1- RATHYATRA CHAURAHA </h6>{" "}
 
           <div>
-          <span className='text-muted ml-3'> JRS Bhawan, Durgakund,Varanasi-221005, Uttar Pradesh, India.
+          <span className='text-muted ml-3'> Show Room No.14,15 Varanasi Residency Haewliya Colony Rathyatra CHAURAHA Varanasi, UttarPradesh
                     
                     Pin Code: 221010
                     <br></br>
-                    Email:-durgabiking@gmail.com
+                    Email:-bikeridingventure@gmail.com
                     <br></br>
 
-                    contact:- 98786574233</span>
+                    contact:- 8318453686</span>
                     </div>
                   
 
@@ -72,7 +72,7 @@ const Allstore = () => {
 
 
     <div className="container ">
-              <h4>NEW STORE AVAILABLE SOON!!
+              <h4>NEW Branch AVAILABLE SOON!!
               </h4>
 
               </div>
@@ -83,17 +83,17 @@ const Allstore = () => {
       <div className="card-body">
         <div>
 
-          <h6 className="font-weight-bold mb-1 d-inline">2- RATHYATRA CHURAHA  </h6>{" "}
+          <h6 className="font-weight-bold mb-1 d-inline">2- Durgakund CHAURAHA   </h6>{" "}
 
           <div>
-          <span className='text-muted ml-3'> JRS Bhawan, Durgakund,Varanasi-221005, Uttar Pradesh, India.
+          <span className='text-muted ml-3'> Durga Mandir, Durgakund,Varanasi-221005, Uttar Pradesh, India.
                     
                     Pin Code: 221010
                     <br></br>
                     Email:-durgabiking@gmail.com
                     <br></br>
 
-                    contact:- 98786574233</span>
+                    contact:- 9569617895</span>
                     </div>
                   
 
@@ -113,17 +113,17 @@ const Allstore = () => {
       <div className="card-body">
         <div>
 
-          <h6 className="font-weight-bold mb-1 d-inline">3- SARNATH CHURAHA  </h6>{" "}
+          <h6 className="font-weight-bold mb-1 d-inline">3- SARNATH CHAURAHA   </h6>{" "}
 
           <div>
-          <span className='text-muted ml-3'> JRS Bhawan, Durgakund,Varanasi-221005, Uttar Pradesh, India.
+          <span className='text-muted ml-3'> Ashapur Near Reliance Tower Sarnath CHAURAHA Varanasi, UttarPradesh 
                     
-                    Pin Code: 221010
+                    Pin Code: 221007
                     <br></br>
-                    Email:-durgabiking@gmail.com
+                    Email:-sarnathbike@gmail.com
                     <br></br>
 
-                    contact:- 98786574233</span>
+                    contact:- 9793510356</span>
                     </div>
                   
 
