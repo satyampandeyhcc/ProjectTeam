@@ -1,7 +1,7 @@
 import axios from "axios";
 import {message} from 'antd'
 const api = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://bikeridingventure.onrender.com/",
     // baseURL: "http://localhost:5000",
   });
 export const userLogin=(reqObj)=>async dispatch=>{
