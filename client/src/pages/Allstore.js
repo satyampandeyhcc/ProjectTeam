@@ -9,24 +9,9 @@ import DefaultLayout from "../components/DefaultLayout";
 const Allstore = () => {
   const [resp, setResp] = useState([]);
 
-  const fetchResponses = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/users/getAllcontact");
-      if (response.ok) {
-        const data = await response.json();
-        setResp(data.reverse());
-        console.log("Response:", data);
-      } else {
-        console.error("Error fetching response:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error fetching orders:", error.message);
-    }
-  };
 
-  useEffect(() => {
-    fetchResponses();
-  }, []);
+
+
 
   return (
     <>
