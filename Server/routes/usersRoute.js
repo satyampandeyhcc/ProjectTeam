@@ -46,7 +46,7 @@ router.post("/sendverifyemail", async (req, res) => {
         from: "satyampandey14999@gmail.com",
         to: email,
         subject: "Account Verification",
-        text: "Your account has been successfully verified. You can now access all features.",
+        text: "Welcome to Bike Riding Venture. Your account has been successfully verified. You can now access all features.",
       };
       await sendMailAsync(mailOptions);
     }

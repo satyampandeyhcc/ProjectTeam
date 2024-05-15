@@ -29,8 +29,8 @@ const sendEmail = expressAsyncHandler(async (req, res) => {
   var mailOptions = {
     from: "satyampandey14999@gmail.com",
     to: email,
-    subject: "OTP from Callback Coding",
-    text: `Your OTP is: ${otp}`,
+    subject: "OTP from Bike Riding Venture",
+    text: `Welcome to Bike Riding Venture. Your OTP is: ${otp}`,
   };
   console.log(mailOptions);
   try {

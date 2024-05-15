@@ -118,7 +118,7 @@ const Footer = () => {
           <div class="col-12">
             <p>
               BikeRiding Venture ©2024 | All Rights Reserved, designed and deployed by
-              <a href="#">&nbsp;Haribol Team Member <i class="fa fa-love"></i></a>
+              <a href="#">&nbsp;Haribol <i class="fa fa-love"></i></a>
             </p>
           </div>
         </div>
