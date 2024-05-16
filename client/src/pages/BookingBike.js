@@ -78,12 +78,11 @@ function BookingBike({ match }) {
     setFrom(startTime.format("MMM DD yyyy HH:mm"));
     setTo(endTime.format("MMM DD yyyy HH:mm"));
 
-    const durationInMinutes = endTime.diff(startTime, "minutes", true) ; // Calculate duration in minutes with an additional minute
+    const durationInMinutes = endTime.diff(startTime, "minutes", true) ; 
 
-    // Convert duration in minutes to hours with two decimal places of precision
     const totalHours = (durationInMinutes / 60).toFixed(2);
 
-    setTotalHours(parseFloat(totalHours)); // Set total hours including minutes as a floating-point number with two decimal places
+    setTotalHours(parseFloat(totalHours)); 
 }
 
 
@@ -137,9 +136,9 @@ function BookingBike({ match }) {
             <p>Type / Description: {bike.fuelType}</p>
             <p> Available bikes : {bike.capacity}</p>
 
-            <p>Pick at :-&nbsp;
+            <p>Pick at & Drop at :-&nbsp;
                   <NavLink className="button-781" to="/allstore" style={{}}>
-                   Durgakund Churaha, Varanasi
+                   Rathyatra Chauraha, Varanasi
             </NavLink>
 
             </p>

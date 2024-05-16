@@ -184,7 +184,7 @@ function BikeShowcase() {
                  
                   </p> */}
 
-<p>Pick at :-&nbsp;
+<p>Pick at & Drop at :-&nbsp;
                   <NavLink className="button-781" to="/allstore" >
                     <span>
 
