@@ -176,6 +176,7 @@ function BikeShowcase() {
                   <p>Rent Per Hour: ₹{bike.rentPerHour} /-</p>
                   <p>Type: {bike.fuelType}</p>
                   <p>{bike.capacity ? `Availabile Bikes: ${bike.capacity}` : "NOT AVAILABLE"}</p>
+                  <p>Booked Bike: {bike.bookedTimeSlots.length} </p>
 
                   {/* <p>
                     Pick at Durgakund Churaha, Varanasi

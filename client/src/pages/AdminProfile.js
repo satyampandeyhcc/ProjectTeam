@@ -106,7 +106,7 @@ const Contact = () => {
                             <img
                               src={imagearr[4]}
                               
-                              style={{ width: "196px",  borderRadius:"50%"}}
+                              style={{ width: "200px", height:"200px", borderRadius:"50%"}}
                             />
                             
                           </div>
@@ -183,7 +183,7 @@ const Contact = () => {
                             <img
                               src={imagearr[0]}
                              
-                              style={{ width: "200px" , height:"200px"}}
+                              style={{ width: "auto" , height:"200px"}}
                             />
                           </div>
                         </div>
@@ -201,7 +201,7 @@ const Contact = () => {
                             <img
                               src={imagearr[1]}
                              
-                              style={{ width: "200px" , height:"200px"}}
+                              style={{ width: "auto" , height:"200px"}}
                             />
                           </div>
                         </div>
@@ -222,7 +222,7 @@ const Contact = () => {
                             <img
                               src={imagearr[2]}
                               
-                              style={{ width: "200px" , height:"200px" }}
+                              style={{ width: "auto" , height:"200px" }}
                             />
                           </div>
                         </div>
@@ -240,7 +240,7 @@ const Contact = () => {
                             <img
                               src={imagearr[3]}
                               
-                              style={{ width: "200px" , height:"200px" }}
+                              style={{ width: "auto" , height:"200px" }}
                             />
                           </div>
                         </div>

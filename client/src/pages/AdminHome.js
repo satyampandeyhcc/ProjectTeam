@@ -82,7 +82,10 @@ function AdminHome() {
                   <div className="text-left pl-2">
                     <p>{bike.name}</p>
                     <p> Rent Per Hour: ₹ {bike.rentPerHour} /-</p>
-                    <p> Type: {bike.fuelType} </p>
+                    {/* <p> Type: {bike.fuelType} </p> */}
+                    <p>{bike.capacity ? `Availabile Bikes: ${bike.capacity}` : "NOT AVAILABLE"}</p>
+                  {/* <p>Booked Bike: {bike.bookedTimeSlots.length} </p> */}
+
                   </div>
 
                   <div className="mr-4">
@@ -111,6 +114,8 @@ function AdminHome() {
           );
         })}
       </Row>
+
+      
      </AdminDefaultLayout>
     </>
   );

@@ -177,7 +177,7 @@ const Contact = () => {
                               onClick={() => {
                                 document.getElementById("file5").click();
                               }}
-                              style={{ width: "196px", borderRadius: "50%" }}
+                              style={{ width: "200px", borderRadius: "50%",height:"200px" }}
                             />
                             <input
                               type="file" // Change input type to "file"
@@ -270,7 +270,7 @@ const Contact = () => {
                         <p>
                           {" "}
                           Account verification within 24 hours unlocks your bike
-                          booking adventure!
+                          booking adventure! Email will be sent if you will verified by admin.
                         </p>
                       </>
                     )}
@@ -306,7 +306,7 @@ const Contact = () => {
                                 document.getElementById("file1").click();
                               }}
                               style={{
-                                width: "200px",
+                                width: "auto",
                                 height: "200px",
                                 borderRadius: "20px",
                               }}
@@ -338,7 +338,7 @@ const Contact = () => {
                                 document.getElementById("file2").click();
                               }}
                               style={{
-                                width: "200px",
+                                width: "auto",
                                 height: "200px",
                                 borderRadius: "20px",
                               }}
@@ -373,7 +373,7 @@ const Contact = () => {
                                 document.getElementById("file3").click();
                               }}
                               style={{
-                                width: "200px",
+                                width: "auto",
                                 height: "200px",
                                 borderRadius: "20px",
                               }}
@@ -405,7 +405,7 @@ const Contact = () => {
                                 document.getElementById("file4").click();
                               }}
                               style={{
-                                width: "200px",
+                                width: "auto",
                                 height: "200px",
                                 borderRadius: "20px",
                               }}
