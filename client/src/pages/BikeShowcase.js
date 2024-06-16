@@ -48,20 +48,7 @@ function BikeShowcase() {
     return (bike) => {
       if (!check) return true;
 
-      // const selectedFrom = moment(selectedRange[0], "MMM DD yyyy HH:mm");
-      // const selectedTo = moment(selectedRange[1], "MMM DD yyyy HH:mm");
-
-      // for (const booking of bike.bookedTimeSlots) {
-      //   const bookingFrom = moment(booking.from);
-      //   const bookingTo = moment(booking.to);
-
-      if (
-        // selectedFrom.isBetween(bookingFrom, bookingTo) ||
-        // selectedTo.isBetween(bookingFrom, bookingTo) ||
-        // bookingFrom.isBetween(selectedFrom, selectedTo) ||
-        // bookingTo.isBetween(selectedFrom, selectedTo)  ||
-        bike.capacity === 0
-      ) {
+      if (bike.capacity === 0) {
         return false;
       }
       // }
@@ -71,9 +58,9 @@ function BikeShowcase() {
   }, [check, selectedRange]);
 
   const handleBookNow = useCallback(
-    (bikeId,capacity) => {
+    (bikeId, capacity) => {
       if (token) {
-        if (capacity!=0) {
+        if (capacity != 0) {
           navigate(`/booking/${bikeId}`);
         } else {
           message.info(
@@ -101,7 +88,7 @@ function BikeShowcase() {
   // Function to disable dates before today
   const disabledDate = (current) => {
     // Disable dates before today
-    return current && current < moment().startOf('day');
+    return current && current < moment().startOf("day");
   };
   return (
     <DefaultLayout>
@@ -175,29 +162,24 @@ function BikeShowcase() {
                   <p>{bike.name}</p>
                   <p>Rent Per Hour: ₹{bike.rentPerHour} /-</p>
                   <p>Type: {bike.fuelType}</p>
-                  <p>{bike.capacity ? `Availabile Bikes: ${bike.capacity}` : "NOT AVAILABLE"}</p>
+                  <p>
+                    {bike.capacity
+                      ? `Availabile Bikes: ${bike.capacity}`
+                      : "NOT AVAILABLE"}
+                  </p>
                   <p>Booked Bike: {bike.bookedTimeSlots.length} </p>
 
-                  {/* <p>
-                    Pick at Durgakund Churaha, Varanasi
-                    <br />
-                 
-                  </p> */}
-
-<p>Pick at & Drop at :-&nbsp;
-                  <NavLink className="button-781" to="/allstore" >
-                    <span>
-
-                   Rathyatra Chauraha, Varanasi
-                    </span>
-            </NavLink>
-
-            </p>
+                  <p>
+                    Pick at & Drop at :-&nbsp;
+                    <NavLink className="button-781" to="/allstore">
+                      <span>Rathyatra Chauraha, Varanasi</span>
+                    </NavLink>
+                  </p>
                 </div>
                 <div>
                   <button
                     className="btn1 mr-2"
-                    onClick={() => handleBookNow(bike._id,bike.capacity)}
+                    onClick={() => handleBookNow(bike._id, bike.capacity)}
                   >
                     Book Now
                   </button>

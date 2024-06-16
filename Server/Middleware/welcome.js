@@ -1,11 +1,11 @@
 const expressAsyncHandler = require("express-async-handler");
-// const dotenv = require("dotenv");
+
 const nodemailer = require("nodemailer");
 const generateOTP = require("./generateOtp");
 const storeOTP = require("../Controllers/OtpStore");
 const { promisify } = require("util");
 const User = require("../models/userModel");
-// dotenv.config();
+
 
 let transporter = nodemailer.createTransport({
   service: "gmail",

@@ -8,7 +8,7 @@ import moment from "moment";
 import { bookBike } from "../redux/actions/bookingActions";
 import StripeCheckout from "react-stripe-checkout";
 import AOS from "aos";
-import { useParams,NavLink } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import { getstatus } from "../redux/actions/userActions";
@@ -17,13 +17,11 @@ const { RangePicker } = DatePicker;
 function BookingBike({ match }) {
   const { bikeid } = useParams();
   const { verified } = useSelector((state) => state.statusView);
- 
-  
-  
+
   useEffect(() => {
     dispatch(getstatus(JSON.parse(localStorage.getItem("user"))._id));
   }, []);
-  
+
   const { bikes } = useSelector((state) => state.bikesReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
   const [bike, setbike] = useState({});
@@ -48,28 +46,18 @@ function BookingBike({ match }) {
       // If guide is required, add $30 per hour
       calculatedTotalAmount += 30 * totalHours;
     }
-    
+
     // Round the totalAmount to two decimal places
     setTotalAmount(parseFloat(calculatedTotalAmount.toFixed(2)));
   }, [guide, totalHours]);
 
-  // function selectTimeSlots(values) {
-  //   setFrom(moment(values[0]).format("MMM DD yyyy HH:mm"));
-  //   setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
-
-  //   setTotalHours(values[1].diff(values[0], "hours"));
-  // }
-
-
   function selectTimeSlots(values) {
-    // Check if values is null or empty
     if (!values || values.length < 2) {
-        // Handle the case where values is null or empty
-        setFrom(null); // Reset from state
-        setTo(null); // Reset to state
-        setTotalHours(0); // Reset totalHours state
-        console.error("Invalid values array:", values);
-        return;
+      setFrom(null); // Reset from state
+      setTo(null); // Reset to state
+      setTotalHours(0); // Reset totalHours state
+      console.error("Invalid values array:", values);
+      return;
     }
 
     const startTime = moment(values[0]);
@@ -78,15 +66,12 @@ function BookingBike({ match }) {
     setFrom(startTime.format("MMM DD yyyy HH:mm"));
     setTo(endTime.format("MMM DD yyyy HH:mm"));
 
-    const durationInMinutes = endTime.diff(startTime, "minutes", true) ; 
+    const durationInMinutes = endTime.diff(startTime, "minutes", true);
 
     const totalHours = (durationInMinutes / 60).toFixed(2);
 
-    setTotalHours(parseFloat(totalHours)); 
-}
-
-
-
+    setTotalHours(parseFloat(totalHours));
+  }
 
   function onToken(token) {
     console.log(token);
@@ -107,7 +92,7 @@ function BookingBike({ match }) {
   }
   const disabledDate = (current) => {
     // Disable dates before today
-    return current && current < moment().startOf('day');
+    return current && current < moment().startOf("day");
   };
   return (
     <DefaultLayout>
@@ -136,11 +121,11 @@ function BookingBike({ match }) {
             <p>Type / Description: {bike.fuelType}</p>
             <p> Available bikes : {bike.capacity}</p>
 
-            <p>Pick at & Drop at :-&nbsp;
-                  <NavLink className="button-781" to="/allstore" style={{}}>
-                   Rathyatra Chauraha, Varanasi
-            </NavLink>
-
+            <p>
+              Pick at & Drop at :-&nbsp;
+              <NavLink className="button-781" to="/allstore" style={{}}>
+                Rathyatra Chauraha, Varanasi
+              </NavLink>
             </p>
           </div>
 
@@ -184,16 +169,25 @@ function BookingBike({ match }) {
 
               <h3>Total Amount : ₹ {totalAmount}</h3>
 
-              {verified?<StripeCheckout
-                shippingAddress
-                token={onToken}
-                currency="INR"
-                amount={totalAmount * 100}
-                stripeKey="pk_test_51OvXtUSED8rhSVdkZC0cnXzFrtPdrR3vUsDAazba7MAAiuYLd3Px8ChNcSX7u23Tmmq0UuaVJGFpgjNmSDUZJbiq00oskZnlt8"
-                // stripeKey="pk_test_51PEY8qSBvNz3idXhsIT15bA0p3ZZ0MOkfVV6bhCC8SwGvhzpoaR0YfPl1vIkf7qAJohv4UyNWrL48cBWBjzvteav00eAF5nTVL"
-              >
-               <button className="btn1">Book Now</button>
-              </StripeCheckout>:<button onClick={()=>window.location.href='/myprofile'} className="btn1">Go To verification</button>}
+              {verified ? (
+                <StripeCheckout
+                  shippingAddress
+                  token={onToken}
+                  currency="INR"
+                  amount={totalAmount * 100}
+                  stripeKey="pk_test_51OvXtUSED8rhSVdkZC0cnXzFrtPdrR3vUsDAazba7MAAiuYLd3Px8ChNcSX7u23Tmmq0UuaVJGFpgjNmSDUZJbiq00oskZnlt8"
+                  // stripeKey="pk_test_51PEY8qSBvNz3idXhsIT15bA0p3ZZ0MOkfVV6bhCC8SwGvhzpoaR0YfPl1vIkf7qAJohv4UyNWrL48cBWBjzvteav00eAF5nTVL"
+                >
+                  <button className="btn1">Book Now</button>
+                </StripeCheckout>
+              ) : (
+                <button
+                  onClick={() => (window.location.href = "/myprofile")}
+                  className="btn1"
+                >
+                  Go To verification
+                </button>
+              )}
             </div>
           )}
         </Col>

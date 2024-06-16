@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import Navbar from "../Component/Navbar";
+
 import "../admindashboard.css";
 import { Link } from "react-router-dom";
 
@@ -8,9 +8,7 @@ import { document } from "postcss";
 import { useState } from "react";
 
 import Table from "../components/Table";
-// import AdminNavbar from "./AdminNavbar";
-// import AdminNavbar2 from "./AdminNavbar2";
-// import Responsesadmin from "./Response2";
+
 import AdminDefaultLayout from "../components/AdminDefaultLayout";
 const AdminUserDashboard = () => {
   const [today, settoday] = useState(0);
@@ -31,7 +29,6 @@ const AdminUserDashboard = () => {
   const [numberVerified, setnumberVerified] = useState(0);
 
   useEffect(() => {
-    // console.log(searchValue);
     const d = data2.filter((element) => {
       return (
         element.profileName.toLowerCase().substring(0, searchValue.length) ===
@@ -47,9 +44,10 @@ const AdminUserDashboard = () => {
 
   const fetchAllUser = async () => {
     try {
-    
       // http://localhost:5000
-      const response = await fetch("  https://bikeridingventure.onrender.com/api/users/allusers");
+      const response = await fetch(
+        "  https://bikeridingventure.onrender.com/api/users/allusers"
+      );
       if (response.ok) {
         const data = await response.json();
 
@@ -61,13 +59,8 @@ const AdminUserDashboard = () => {
           }, 0)
         );
 
-        // console.log(number);
-
         setcopydata(data);
         setdata(data);
-        // setResp(data);
-        // console.log("Response:", data);
-        // console.log("Response:", data);
       } else {
         console.error("Error fetching response:", response.statusText);
       }
@@ -107,26 +100,18 @@ const AdminUserDashboard = () => {
   const handleChange = (x) => {
     const d = copydata.filter((element) => {
       return element.verified == x;
-      // element.date === getFormattedDate() &&
     });
     setdata(d);
     setcurrentindex(0);
   };
-
-
 
   const handleChangeall = (x) => {
-    
     const d = copydata.filter((element) => {
-      return element.verified == x || element.verified!=x;
-      // element.date === getFormattedDate() &&
+      return element.verified == x || element.verified != x;
     });
     setdata(d);
     setcurrentindex(0);
- 
   };
-
-
 
   useEffect(() => {
     setdata2(data.slice(currentindex * 10, (currentindex + 1) * 10));
@@ -163,44 +148,19 @@ const AdminUserDashboard = () => {
       console.log(data[0].verified);
       settoday(
         data.reduce((acc, element) => {
-          return (
-            acc +
-            // element.date === getFormattedDate() &&
-            (element.status === "picked")
-          );
+          return acc + (element.status === "picked");
         }, 0)
       );
       setpickup(
         data.reduce((acc, element) => {
-          return (
-            acc +
-            // element.date === getFormattedDate() &&
-            (element.status === "out-for-delivery")
-          );
+          return acc + (element.status === "out-for-delivery");
         }, 0)
       );
-      //       setdrop(
-      //         data.reduce((acc, element) => {
-      //           return (
-      //             acc +
-      //             (element.date === getFormattedDate() &&
-      //               element.status === "out-for-delivery")
-      //           );
-      //         }, 0)
-      //       );
     }
   }, [copydata]);
 
   return (
     <>
-      {/* <AdminNavbar2 /> */}
-      {/* <AdminNavbar
-        order={order}
-        setorder={setorder}
-        response={response}
-        setresponse={setresponse}
-      /> */}
-
       <AdminDefaultLayout>
         <p className="dash-heading">User Dashboard</p>
 
@@ -241,15 +201,16 @@ const AdminUserDashboard = () => {
         {display ? (
           <>
             <div className="cards" style={{ display: "flex" }}>
-
-
-            <div
+              <div
                 className="card"
                 name="picked"
                 onClick={() => handleChangeall(true)}
               >
-                <div className="card-body" onClick={() => handleChangeall(true)}>
-                  <p className="card-title prices">{copydata.length  }</p>
+                <div
+                  className="card-body"
+                  onClick={() => handleChangeall(true)}
+                >
+                  <p className="card-title prices">{copydata.length}</p>
                   <p
                     className="card-subtitle mb-2 today-order"
                     onClick={() => handleChangeall(true)}
@@ -264,8 +225,7 @@ const AdminUserDashboard = () => {
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{height: "65px",
-                      width: "81px"}}
+                    style={{ height: "65px", width: "81px" }}
                   >
                     <rect
                       width="64"
@@ -281,17 +241,6 @@ const AdminUserDashboard = () => {
                   </svg>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-
-
 
               <div
                 className="card"
@@ -314,8 +263,7 @@ const AdminUserDashboard = () => {
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{height: "65px",
-                      width: "81px"}}
+                    style={{ height: "65px", width: "81px" }}
                   >
                     <rect
                       width="64"
@@ -354,8 +302,7 @@ const AdminUserDashboard = () => {
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{height: "65px",
-                    width: "81px"}}
+                    style={{ height: "65px", width: "81px" }}
                   >
                     <rect
                       width="64"
@@ -375,7 +322,6 @@ const AdminUserDashboard = () => {
 
             <Table
               data={copydata2}
-              // data={copydata}
               setdata={setdata}
               serialNumber={serialNumber}
             />
@@ -386,7 +332,6 @@ const AdminUserDashboard = () => {
           </>
         ) : (
           <p></p>
-          //   <Responsesadmin />
         )}
       </AdminDefaultLayout>
     </>

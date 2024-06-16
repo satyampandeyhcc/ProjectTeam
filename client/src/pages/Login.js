@@ -25,7 +25,6 @@ function Login() {
     const username = params.get("username");
     const password = params.get("password");
 
-    // Set login form values if username and password are present
     if (username && password) {
       form.setFieldsValue({ username, password });
     }
@@ -173,8 +172,6 @@ function Login() {
               <br />
               <Link to="/adminlogin">Signin As Admin</Link>
             </Form>
-
-            {/* <button onClick={handlegoogle} className="btn1 mt-2 mb-3">Signin with Google</button> */}
           </Col>
         </Row>
       </div>

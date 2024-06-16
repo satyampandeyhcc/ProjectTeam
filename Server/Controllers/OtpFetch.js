@@ -5,8 +5,8 @@ async function getOTPByEmail(req, res) {
   try {
     const email = req.body.email;
 
-    console.log('Email:', email);
-    
+    console.log("Email:", email);
+
     // Find the latest OTP record for the given email
     const otpRecord = await OTP.findOne({ email }).sort({ createdAt: -1 });
 
@@ -16,7 +16,7 @@ async function getOTPByEmail(req, res) {
 
     const response = {
       email,
-      otp: otpRecord.otp
+      otp: otpRecord.otp,
     };
 
     return res.status(200).json(response);

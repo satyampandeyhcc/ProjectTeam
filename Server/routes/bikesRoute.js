@@ -2,12 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Bike = require("../models/bikeModel");
 
-
-
-
-
-
-
 router.get("/getallbikes", async (req, res) => {
   try {
     const bikes = await Bike.find();
@@ -37,7 +31,7 @@ router.post("/editbike", async (req, res) => {
     bike.fuelType = req.body.fuelType;
     bike.rentPerHour = req.body.rentPerHour;
     bike.capacity = req.body.capacity;
-    bike.type=req.body.type
+    bike.type = req.body.type;
 
     await bike.save();
 

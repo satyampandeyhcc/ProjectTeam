@@ -1,7 +1,7 @@
 import { Col, Row, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import DefaultLayout from "../components/DefaultLayout";
+
 import Spinner from "../components/Spinner";
 import { addBike, editBike, getAllBikes } from "../redux/actions/bikesActions";
 
@@ -38,7 +38,7 @@ function EditBike({ match }) {
     <AdminDefaultLayout>
       {loading && <Spinner />}
       <Row justify="center mt-5">
-        <Col lg={12} sm={24} xs={24} className='p-2'>
+        <Col lg={12} sm={24} xs={24} className="p-2">
           {totalbikes.length > 0 && (
             <Form
               initialValues={bike}
@@ -49,9 +49,9 @@ function EditBike({ match }) {
               <h3>Edit Bike</h3>
 
               <hr />
-            
+
               <Form.Item
-              //Adding form for the data
+                //Adding form for the data
                 name="name"
                 label="Bike name"
                 rules={[{ required: true }]}
@@ -87,10 +87,13 @@ function EditBike({ match }) {
                 <Input />
               </Form.Item>
 
-
-              <Form.Item name='type' label='Description' rules={[{required: true}]}>
-                               <Input/>
-                           </Form.Item>
+              <Form.Item
+                name="type"
+                label="Description"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
 
               <div className="text-right">
                 <button className="btn1">Edit BIKE</button>

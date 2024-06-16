@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import Navbar from "../Component/Navbar";
+
 import "../admindashboard.css";
 import { Link } from "react-router-dom";
 
@@ -8,9 +8,7 @@ import { document } from "postcss";
 import { useState } from "react";
 
 import Table from "../components/BookingTable";
-// import AdminNavbar from "./AdminNavbar";
-// import AdminNavbar2 from "./AdminNavbar2";
-// import Responsesadmin from "./Response2";
+
 import AdminDefaultLayout from "../components/AdminDefaultLayout";
 const AdminBookingDashboard = () => {
   const [today, settoday] = useState(0);
@@ -49,7 +47,9 @@ const AdminBookingDashboard = () => {
 
   const fetchAllUser = async () => {
     try {
-      const response = await fetch("https://bikeridingventure.onrender.com/api/bookings/getallbookings");
+      const response = await fetch(
+        "https://bikeridingventure.onrender.com/api/bookings/getallbookings"
+      );
       if (response.ok) {
         const data = await response.json();
 
@@ -106,8 +106,6 @@ const AdminBookingDashboard = () => {
   const handleChange = (x) => {
     const d = copydata.filter((element) => {
       return element.guideRequired === x;
-
-      //  element.date === getFormattedDate() &&
     });
     setdata(d);
     setcurrentindex(0);
@@ -116,15 +114,10 @@ const AdminBookingDashboard = () => {
   const handleChangeall = (x) => {
     const d = copydata.filter((element) => {
       return element.guideRequired === x || element.guideRequired != x;
-
-      //  element.date === getFormattedDate() &&
     });
     setdata(d);
     setcurrentindex(0);
   };
-
-
-
 
   useEffect(() => {
     setdata2(data.slice(currentindex * 10, (currentindex + 1) * 10));
@@ -145,7 +138,6 @@ const AdminBookingDashboard = () => {
   function formatDate(dateString) {
     const date = new Date(dateString);
 
-    // Extract year, month, and day from the date object
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero indexed, so adding 1
     const day = String(date.getDate()).padStart(2, "0");
@@ -158,20 +150,12 @@ const AdminBookingDashboard = () => {
     if (data.length) {
       settoday(
         data.reduce((acc, element) => {
-          return (
-            acc +
-            // element.date === getFormattedDate() &&
-            (element.status === "picked")
-          );
+          return acc + (element.status === "picked");
         }, 0)
       );
       setpickup(
         data.reduce((acc, element) => {
-          return (
-            acc +
-            // element.date === getFormattedDate() &&
-            (element.status === "out-for-delivery")
-          );
+          return acc + (element.status === "out-for-delivery");
         }, 0)
       );
     }
@@ -179,14 +163,6 @@ const AdminBookingDashboard = () => {
 
   return (
     <>
-      {/* <AdminNavbar2 /> */}
-      {/* <AdminNavbar
-        order={order}
-        setorder={setorder}
-        response={response}
-        setresponse={setresponse}
-      /> */}
-
       <AdminDefaultLayout>
         <p className="dash-heading">Booking Dashboard</p>
 
@@ -227,15 +203,15 @@ const AdminBookingDashboard = () => {
         {display ? (
           <>
             <div className="cards" style={{ display: "flex" }}>
-
-
-
-            <div
+              <div
                 className="card"
                 name="picked"
                 onClick={() => handleChangeall(true)}
               >
-                <div className="card-body" onClick={() => handleChangeall(true)}>
+                <div
+                  className="card-body"
+                  onClick={() => handleChangeall(true)}
+                >
                   <p className="card-title prices">{copydata.length}</p>
                   <p
                     className="card-subtitle mb-2 today-order"
@@ -251,8 +227,7 @@ const AdminBookingDashboard = () => {
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{height: "65px",
-                    width: "81px"}}
+                    style={{ height: "65px", width: "81px" }}
                   >
                     <rect
                       width="64"
@@ -268,14 +243,6 @@ const AdminBookingDashboard = () => {
                   </svg>
                 </div>
               </div>
-
-
-
-
-
-
-
-
 
               <div
                 className="card"
@@ -298,8 +265,7 @@ const AdminBookingDashboard = () => {
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{height: "65px",
-                    width: "81px"}}
+                    style={{ height: "65px", width: "81px" }}
                   >
                     <rect
                       width="64"
@@ -338,8 +304,7 @@ const AdminBookingDashboard = () => {
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{height: "65px",
-                    width: "81px"}}
+                    style={{ height: "65px", width: "81px" }}
                   >
                     <rect
                       width="64"
@@ -359,7 +324,6 @@ const AdminBookingDashboard = () => {
 
             <Table
               data={copydata2}
-              // data={copydata}
               setdata={setdata}
               serialNumber={serialNumber}
             />
@@ -370,7 +334,6 @@ const AdminBookingDashboard = () => {
           </>
         ) : (
           <p></p>
-          //   <Responsesadmin />
         )}
       </AdminDefaultLayout>
     </>
